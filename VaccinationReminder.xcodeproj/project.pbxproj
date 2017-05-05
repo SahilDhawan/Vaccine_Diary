@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
+		BAE930F61EBCF03000F77191 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F51EBCF03000F77191 /* MasterViewController.swift */; };
+		BAE930F81EBCF03000F77191 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F71EBCF03000F77191 /* DetailViewController.swift */; };
+		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
+		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
+		BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BAE930F51EBCF03000F77191 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		BAE930F71EBCF03000F77191 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BAE930FC1EBCF03000F77191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAE930FF1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BAE931011EBCF03000F77191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAE930ED1EBCF02E00F77191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BAE930E71EBCF02E00F77191 = {
+			isa = PBXGroup;
+			children = (
+				BAE930F21EBCF02E00F77191 /* VaccinationReminder */,
+				BAE930F11EBCF02E00F77191 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BAE930F11EBCF02E00F77191 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAE930F21EBCF02E00F77191 /* VaccinationReminder */ = {
+			isa = PBXGroup;
+			children = (
+				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
+				BAE930F51EBCF03000F77191 /* MasterViewController.swift */,
+				BAE930F71EBCF03000F77191 /* DetailViewController.swift */,
+				BAE930F91EBCF03000F77191 /* Main.storyboard */,
+				BAE930FC1EBCF03000F77191 /* Assets.xcassets */,
+				BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */,
+				BAE931011EBCF03000F77191 /* Info.plist */,
+			);
+			path = VaccinationReminder;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAE930EF1EBCF02E00F77191 /* VaccinationReminder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "VaccinationReminder" */;
+			buildPhases = (
+				BAE930EC1EBCF02E00F77191 /* Sources */,
+				BAE930ED1EBCF02E00F77191 /* Frameworks */,
+				BAE930EE1EBCF02E00F77191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VaccinationReminder;
+			productName = VaccinationReminder;
+			productReference = BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAE930E81EBCF02E00F77191 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Sahil Dhawan";
+				TargetAttributes = {
+					BAE930EF1EBCF02E00F77191 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 7Q7M69XNR3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BAE930EB1EBCF02E00F77191 /* Build configuration list for PBXProject "VaccinationReminder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BAE930E71EBCF02E00F77191;
+			productRefGroup = BAE930F11EBCF02E00F77191 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAE930EF1EBCF02E00F77191 /* VaccinationReminder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAE930EE1EBCF02E00F77191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
+				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
+				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAE930EC1EBCF02E00F77191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAE930F81EBCF03000F77191 /* DetailViewController.swift in Sources */,
+				BAE930F61EBCF03000F77191 /* MasterViewController.swift in Sources */,
+				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BAE930F91EBCF03000F77191 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAE930FA1EBCF03000F77191 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAE930FF1EBCF03000F77191 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BAE931021EBCF03000F77191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAE931031EBCF03000F77191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAE931051EBCF03100F77191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7Q7M69XNR3;
+				INFOPLIST_FILE = VaccinationReminder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BAE931061EBCF03100F77191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7Q7M69XNR3;
+				INFOPLIST_FILE = VaccinationReminder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAE930EB1EBCF02E00F77191 /* Build configuration list for PBXProject "VaccinationReminder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAE931021EBCF03000F77191 /* Debug */,
+				BAE931031EBCF03000F77191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "VaccinationReminder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAE931051EBCF03100F77191 /* Debug */,
+				BAE931061EBCF03100F77191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BAE930E81EBCF02E00F77191 /* Project object */;
+}
