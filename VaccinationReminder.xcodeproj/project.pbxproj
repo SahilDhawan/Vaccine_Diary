@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
+		BA0F687B1EBCFC9E00DAF7A3 /* Wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */; };
 		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
-		BAE930F61EBCF03000F77191 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F51EBCF03000F77191 /* MasterViewController.swift */; };
-		BAE930F81EBCF03000F77191 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F71EBCF03000F77191 /* DetailViewController.swift */; };
 		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
 		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
 		BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */; };
+		BAE9310A1EBCF4AC00F77191 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
+		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
+		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Wallpaper.jpg; path = ../../../Downloads/Wallpaper.jpg; sourceTree = "<group>"; };
 		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BAE930F51EBCF03000F77191 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		BAE930F71EBCF03000F77191 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAE930FC1EBCF03000F77191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE930FF1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE931011EBCF03000F77191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B106C1991D35B7E3923B03FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B69BA861D9569B27168B3351 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */,
+				2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BAE930E71EBCF02E00F77191 = {
 			isa = PBXGroup;
 			children = (
 				BAE930F21EBCF02E00F77191 /* VaccinationReminder */,
 				BAE930F11EBCF02E00F77191 /* Products */,
+				B69BA861D9569B27168B3351 /* Pods */,
+				B106C1991D35B7E3923B03FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +81,9 @@
 			isa = PBXGroup;
 			children = (
 				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
-				BAE930F51EBCF03000F77191 /* MasterViewController.swift */,
-				BAE930F71EBCF03000F77191 /* DetailViewController.swift */,
 				BAE930F91EBCF03000F77191 /* Main.storyboard */,
+				BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */,
+				BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */,
 				BAE930FC1EBCF03000F77191 /* Assets.xcassets */,
 				BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */,
 				BAE931011EBCF03000F77191 /* Info.plist */,
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "VaccinationReminder" */;
 			buildPhases = (
+				03FDF1F09F04CF20AE2E5812 /* [CP] Check Pods Manifest.lock */,
 				BAE930EC1EBCF02E00F77191 /* Sources */,
 				BAE930ED1EBCF02E00F77191 /* Frameworks */,
 				BAE930EE1EBCF02E00F77191 /* Resources */,
+				11DC0216D3BDD76E64F57270 /* [CP] Embed Pods Frameworks */,
+				EE61E6E5C166A73363C79E94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
+				BA0F687B1EBCFC9E00DAF7A3 /* Wallpaper.jpg in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);
@@ -135,13 +163,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03FDF1F09F04CF20AE2E5812 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		11DC0216D3BDD76E64F57270 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE61E6E5C166A73363C79E94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BAE930EC1EBCF02E00F77191 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE930F81EBCF03000F77191 /* DetailViewController.swift in Sources */,
-				BAE930F61EBCF03000F77191 /* MasterViewController.swift in Sources */,
+				BAE9310A1EBCF4AC00F77191 /* SignUpViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +338,7 @@
 		};
 		BAE931051EBCF03100F77191 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
@@ -276,6 +352,7 @@
 		};
 		BAE931061EBCF03100F77191 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
@@ -306,6 +383,7 @@
 				BAE931061EBCF03100F77191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
