@@ -8,26 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
-		BA0F687B1EBCFC9E00DAF7A3 /* Wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */; };
+		BA0F687D1EBD223400DAF7A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */; };
+		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
+		BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* Alert.swift */; };
 		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
 		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
 		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
 		BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */; };
-		BAE9310A1EBCF4AC00F77191 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */; };
+		BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE931091EBCF4AC00F77191 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
 		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Wallpaper.jpg; path = ../../../Downloads/Wallpaper.jpg; sourceTree = "<group>"; };
+		BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BA2C49411EBE7FF500F3D614 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAE930FC1EBCF03000F77191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE930FF1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE931011EBCF03000F77191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BAE931091EBCF4AC00F77191 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BA0F687E1EBD223C00DAF7A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BA0F687F1EBD224300DAF7A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA2C49411EBE7FF500F3D614 /* Alert.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BA0F68801EBD224800DAF7A3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BAE931091EBCF4AC00F77191 /* LoginViewController.swift */,
+				BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BA0F68811EBD225C00DAF7A3 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */,
+				BAE931011EBCF03000F77191 /* Info.plist */,
+				BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */,
+				BAE930F91EBCF03000F77191 /* Main.storyboard */,
+				BAE930FC1EBCF03000F77191 /* Assets.xcassets */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		BAE930E71EBCF02E00F77191 = {
 			isa = PBXGroup;
 			children = (
@@ -80,13 +121,10 @@
 		BAE930F21EBCF02E00F77191 /* VaccinationReminder */ = {
 			isa = PBXGroup;
 			children = (
-				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
-				BAE930F91EBCF03000F77191 /* Main.storyboard */,
-				BAE931091EBCF4AC00F77191 /* SignUpViewController.swift */,
-				BA0F687A1EBCFC9D00DAF7A3 /* Wallpaper.jpg */,
-				BAE930FC1EBCF03000F77191 /* Assets.xcassets */,
-				BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */,
-				BAE931011EBCF03000F77191 /* Info.plist */,
+				BA0F68811EBD225C00DAF7A3 /* SupportingFiles */,
+				BA0F687E1EBD223C00DAF7A3 /* Model */,
+				BA0F687F1EBD224300DAF7A3 /* View */,
+				BA0F68801EBD224800DAF7A3 /* Controller */,
 			);
 			path = VaccinationReminder;
 			sourceTree = "<group>";
@@ -155,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
-				BA0F687B1EBCFC9E00DAF7A3 /* Wallpaper.jpg in Resources */,
+				BA0F687D1EBD223400DAF7A3 /* GoogleService-Info.plist in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);
@@ -216,7 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE9310A1EBCF4AC00F77191 /* SignUpViewController.swift in Sources */,
+				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
+				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
+				BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,10 +383,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -357,10 +399,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

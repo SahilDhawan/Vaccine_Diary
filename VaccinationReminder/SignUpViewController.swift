@@ -2,54 +2,80 @@
 //  SignUpViewController.swift
 //  VaccinationReminder
 //
-//  Created by Sahil Dhawan on 05/05/17.
+//  Created by Sahil Dhawan on 07/05/17.
 //  Copyright © 2017 Sahil Dhawan. All rights reserved.
 //
 
 import UIKit
-
+import Firebase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
-
-    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    //MARK : Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var confirmPass: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var appTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
-        self.confirmPasswordTextField.delegate = self
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        backgroundImage.alpha = 0.8
-        appTitle.font = UIFont(name: "Hiragino Kaku Gothic ProN", size: 35)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPass.delegate = self
+        
+        //setting up placeholder text
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        confirmPass.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
-    @IBAction func segmentControlPressed(_ sender: Any)
-    {
-        let value = self.segmentControl.titleForSegment(at: self.segmentControl.selectedSegmentIndex)
-        if self.segmentControl.selectedSegmentIndex == 1
+    @IBAction func signUpButtonPressed(_ sender: Any) {
+        guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
         {
-            self.signUpButton.setTitle(value, for: .normal)
-            self.confirmPasswordTextField.isHidden = true
+            showAlert("Email or Password Text Fields can't be empty")
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
+            self.confirmPass.text = ""
+            return
+        }
+        if confirm != password
+        {
+            showAlert("Passwords Don't match. Please try again!")
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
+            self.confirmPass.text = ""
         }
         else
         {
-            self.signUpButton.setTitle(value, for: .normal)
-            self.confirmPasswordTextField.isHidden = false
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
+                
+                if error == nil
+                {
+                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
+                    self.present(controller!, animated: true, completion: nil)
+                }
+                else
+                {
+                    self.showAlert("Can not create a new user")
+                }
+                
+            })
         }
     }
 }
+
 extension SignUpViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
