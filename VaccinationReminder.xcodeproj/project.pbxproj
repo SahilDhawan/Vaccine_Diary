@@ -10,8 +10,11 @@
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
 		BA0F687D1EBD223400DAF7A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
+		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
+		BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* Alert.swift */; };
+		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
 		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
 		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
 		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
@@ -25,8 +28,11 @@
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
+		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
 		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 			children = (
 				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
 				BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */,
+				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -85,7 +92,9 @@
 		BA0F68801EBD224800DAF7A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
 				BAE931091EBCF4AC00F77191 /* LoginViewController.swift */,
+				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
 				BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */,
 			);
 			name = Controller;
@@ -258,9 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
+				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
+				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */,
+				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

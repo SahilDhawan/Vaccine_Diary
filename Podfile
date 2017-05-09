@@ -7,4 +7,7 @@ target 'VaccinationReminder' do
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Core'
+	platform :ios, '8.0'
+	use_frameworks!
+	pod 'LGSideMenuController'
 end

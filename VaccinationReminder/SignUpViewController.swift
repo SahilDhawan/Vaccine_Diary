@@ -18,61 +18,54 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmPass: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPass.delegate = self
         
         //setting up placeholder text
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        confirmPass.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "  Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        confirmPass.attributedPlaceholder = NSAttributedString(string: "  Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
-        {
-            showAlert("Email or Password Text Fields can't be empty")
-            self.emailTextField.text = ""
-            self.passwordTextField.text = ""
-            self.confirmPass.text = ""
-            return
-        }
-        if confirm != password
-        {
-            showAlert("Passwords Don't match. Please try again!")
-            self.emailTextField.text = ""
-            self.passwordTextField.text = ""
-            self.confirmPass.text = ""
-        }
-        else
-        {
-            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
-                
-                if error == nil
-                {
-                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
-                    self.present(controller!, animated: true, completion: nil)
-                }
-                else
-                {
-                    self.showAlert("Can not create a new user")
-                }
-                
-            })
-        }
+        //        guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
+        //        {
+        //            showAlert("Email or Password Text Fields can't be empty")
+        //            self.emailTextField.text = ""
+        //            self.passwordTextField.text = ""
+        //            self.confirmPass.text = ""
+        //            return
+        //        }
+        //        if confirm != password
+        //        {
+        //            showAlert("Passwords Don't match. Please try again!")
+        //            self.emailTextField.text = ""
+        //            self.passwordTextField.text = ""
+        //            self.confirmPass.text = ""
+        //        }
+        //        else
+        //        {
+        //            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
+        //
+        //                if error == nil
+        //                {
+        //                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
+        //                    self.present(controller!, animated: true, completion: nil)
+        //                }
+        //                else
+        //                {
+        //                    self.showAlert("Can not create a new user")
+        //                }
+        //
+        //            })
+        //        }
+        self.performSegue(withIdentifier: "SignUpSegue", sender: self)
     }
 }
 

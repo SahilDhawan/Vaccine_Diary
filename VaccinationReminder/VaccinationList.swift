@@ -9,92 +9,103 @@
 import Foundation
 import UIKit
 
-struct VaccinationList
+class VaccinationList : NSObject
 {
-    struct Birth
+    var VaccinationSchedule : [Vaccine] = []
+    var birthDate : Date = Date(timeIntervalSinceNow: 0)
+    
+    func setVaccineList()
     {
-        static let BCG : String = "BCG"
-        static let OPV : String = "OPV 0"
-        static let Hep_B : String = "Hep-B 1"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let date = dateFormatter.string(from: birthDate)
+        let sixWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 42, to: birthDate)!)
+        let tenWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 70, to: birthDate)!)
+        let fourteenWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 98, to: birthDate)!)
+        let sixMonthsDate = dateFormatter.string(from: Calendar.current.date(byAdding: .month, value: 6, to: birthDate)!)
+        let nineMonthsDate = dateFormatter.string(from: Calendar.current.date(byAdding: .month, value: 9, to: birthDate)!)
+        let oneYearDate = dateFormatter.string(from: Calendar.current.date(byAdding: .year, value: 1, to: birthDate)!)
+        let fifteenMonthsDate = dateFormatter.string(from: Calendar.current.date(byAdding: .month, value: 15, to: birthDate)!)
+        let eighteenMonthsDate = dateFormatter.string(from: Calendar.current.date(byAdding: .month, value: 18, to: birthDate)!)
+        let twoYearDate = dateFormatter.string(from: Calendar.current.date(byAdding: .year, value: 2, to: birthDate)!)
+        let sixYearDate = dateFormatter.string(from: Calendar.current.date(byAdding: .year, value: 6, to: birthDate)!)
+        let twelveYearDate = dateFormatter.string(from: Calendar.current.date(byAdding: .year, value: 12, to: birthDate)!)
+
+        
+        //birth
+        VaccinationSchedule.append(Vaccine("BCG",date,true))
+        VaccinationSchedule.append(Vaccine("OPV 0",date,true))
+        VaccinationSchedule.append(Vaccine("Hep-B 1",date,true))
+        
+        //SixWeeks
+        VaccinationSchedule.append(Vaccine("DTwP-1",sixWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("IPV 1",sixWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Hep-B 2",sixWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Hib 1",sixWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Rotavirus 1",sixWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("PCV 1",sixWeeksDate,true))
+        
+        //TenWeeks
+        VaccinationSchedule.append(Vaccine("DTwP 2",tenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("IPV 2",tenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Hib 2",tenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Rotavirus 2",tenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("PCV 2",tenWeeksDate,true))
+        
+        //FourteenWeeks
+        VaccinationSchedule.append(Vaccine("DTwP 3",fourteenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("IPV 3",fourteenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Hib 3",fourteenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("Rotavirus 3",fourteenWeeksDate,true))
+        VaccinationSchedule.append(Vaccine("PCV 3",fourteenWeeksDate,true))
+        
+        //SixMonths
+        VaccinationSchedule.append(Vaccine("OPV 1",sixMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("Hep-B 3",sixMonthsDate,true))
+        
+        //NineMonths
+        VaccinationSchedule.append(Vaccine("OPV 2",nineMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("MMR-1",nineMonthsDate,true))
+        
+        //OneYear
+        VaccinationSchedule.append(Vaccine("Typhoid Conjugate Vaccine",oneYearDate,true))
+        VaccinationSchedule.append(Vaccine("Hep-A 1",oneYearDate,true))
+        
+        //FifteenMonths
+        VaccinationSchedule.append(Vaccine("MMR 2",fifteenMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("Varicella 1",fifteenMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("PCV booster",fifteenMonthsDate,true))
+        
+        //EighteenMonths
+        VaccinationSchedule.append(Vaccine("DTwP B1/DTaP B1",eighteenMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("IPV B1",eighteenMonthsDate,true))
+        VaccinationSchedule.append(Vaccine("B1",eighteenMonthsDate,true))
+        
+        //TwoYears
+        VaccinationSchedule.append(Vaccine("Booster of Typhoid",twoYearDate,true))
+        VaccinationSchedule.append(Vaccine("Conjugate Vaccine",twoYearDate,true))
+        
+        //SixYears
+        
+        VaccinationSchedule.append(Vaccine("DTwP B2/DTaP B2",sixYearDate,true))
+        VaccinationSchedule.append(Vaccine("OPV 3",sixYearDate,true))
+        VaccinationSchedule.append(Vaccine("Varicella 2",sixYearDate,true))
+        VaccinationSchedule.append(Vaccine("MMR 3",sixYearDate,true))
+        
+        //TwelveYears
+        VaccinationSchedule.append(Vaccine("Tdap/Td",twelveYearDate,true))
+        VaccinationSchedule.append(Vaccine("HPV",twelveYearDate,true))
     }
     
-    struct SixWeeks
+    
+    func getTableSize() ->Int
     {
-        static let Dtwp : String = "DTwP-1"
-        static let IPV : String = "IPV 1"
-        static let Hep_B = "Hep-B 2"
-        static let Hib1 = "Hib 1"
-        static let RotaVirus = "Rotavirus 1"
-        static let PCV = "PCV 1"
+        let tableSize = VaccinationSchedule.count
+        return tableSize
     }
     
-    struct TenWeeks
+    func getVaccineDetails() -> [Vaccine]
     {
-        static let Dtp = "DTwP 2"
-        static let IPV = "IPV 2"
-        static let Hib = "Hib 2"
-        static let RotaVirus = "Rotavirus 2"
-        static let PCV = "PCV 2"
-    }
-    
-    struct FourteenWeeks
-    {
-        static let Dtwp = "DTwP 3"
-        static let IPV = "IPV 3"
-        static let Hib = "Hib 3"
-        static let RotaVirus = "Rotavirus 3"
-        static let PCV = "PCV 3"
-    }
-    
-    struct SixMonths
-    {
-        static let OPV = "OPV 1"
-        static let Hep_B = "Hep-B 3"
-    }
-    
-    struct NineMonths
-    {
-        static let OPV = "OPV 2"
-        static let MMR = "MMR-1"
-    }
-    
-    struct OneYear
-    {
-        static let Typohid = "Typhoid Conjugate Vaccine"
-        static let Hep_A = "Hep-A 1"
-    }
-    
-    struct FifteenMonths
-    {
-        static let MMR = "MMR 2"
-        static let Varicella = "Varicella 1"
-        static let PCV = "PCV booster"
-    }
-    
-    struct EighteenMonths
-    {
-        static let Dtwp = "DTwP B1/DTaP B1"
-        static let IPV = "IPV B1"
-        static let B1 = "B1"
-    }
-    
-    struct TwoYears
-    {
-        static let Typphoid = "Booster of Typhoid"
-        static let Conjugate = "Conjugate Vaccine"
-    }
-    
-    struct SixYears
-    {
-        static let Dtwp = "DTwP B2/DTaP B2"
-        static let OPV = "OPV 3"
-        static let Varicella = "Varicella 2"
-        static let MMR = "MMR 3"
-    }
-    
-    struct TwelveYears
-    {
-        static let Tdap = "Tdap/Td"
-        static let HPV = "HPV"
+        return VaccinationSchedule
     }
 }
