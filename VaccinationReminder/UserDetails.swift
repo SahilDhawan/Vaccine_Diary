@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 let gregorian = Calendar(identifier: .gregorian)
 
@@ -15,9 +16,9 @@ struct UserDetails
     static var userImage : UIImage? = nil
     static var userName : String! = ""
     static var userBirthDate : Date = Date(timeIntervalSinceNow: 0)
-    static var userGender : String = ""
+    static var userStreet : String = ""
     static var userState : String = ""
-    
+    static var locationCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     struct VaccinationDates
     {
         static let sixWeeksDate = gregorian.date(byAdding: .day, value: 42, to: UserDetails.userBirthDate)
