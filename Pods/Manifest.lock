@@ -19,10 +19,21 @@ PODS:
     - GoogleNetworkingUtilities (~> 1.2)
     - GoogleUtilities (~> 1.3)
   - FirebaseInstanceID (1.0.6)
+  - FSCalendar (2.1.1)
   - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
   - GoogleNetworkingUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
+  - GooglePlacePicker (2.2.0):
+    - GoogleMaps (= 2.2.0)
+    - GooglePlaces (= 2.2.0)
+  - GooglePlaces (2.2.0):
+    - GoogleMaps/Base (= 2.2.0)
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
@@ -31,6 +42,10 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Firebase/Auth
   - Firebase/Core
+  - FSCalendar
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -47,11 +62,15 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseAuth: 94b851fc345ce98036dfedfdc2eddeaef8fa3b4c
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
+  FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
+  GooglePlacePicker: 345b1aabd42c9d6d9bf2369c1bae1234d903e764
+  GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: 91a8b517032868d3da4727132f9045febc4b0435
+PODFILE CHECKSUM: 5ad3e227a1d9951a7d33b556532182f9f745295c
 
 COCOAPODS: 1.0.1

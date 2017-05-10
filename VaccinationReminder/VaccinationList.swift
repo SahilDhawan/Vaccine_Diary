@@ -68,7 +68,7 @@ class VaccinationList : NSObject
         VaccinationSchedule.append(Vaccine("MMR-1",nineMonthsDate,true))
         
         //OneYear
-        VaccinationSchedule.append(Vaccine("Typhoid Conjugate Vaccine",oneYearDate,true))
+        VaccinationSchedule.append(Vaccine("Typhoid Conjugate",oneYearDate,true))
         VaccinationSchedule.append(Vaccine("Hep-A 1",oneYearDate,true))
         
         //FifteenMonths

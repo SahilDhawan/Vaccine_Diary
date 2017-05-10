@@ -8,5 +8,9 @@ target 'VaccinationReminder' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Core'
 	platform :ios, '8.0'
+    pod 'FSCalendar'
+    pod 'GooglePlaces'
+  	pod 'GooglePlacePicker'
+  	pod 'GoogleMaps'
 	use_frameworks!
 end

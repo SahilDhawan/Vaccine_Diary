@@ -47,19 +47,20 @@ extension ScheduleViewController: UITableViewDataSource
         
         let vaccine = VaccinationSchedule[indexPath.item]
         //Cell Details
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VaccineCell")
-        cell?.textLabel?.text = vaccine.vaccineName
-        cell?.detailTextLabel?.text = vaccine.vaccineDate
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VaccineCell") as! VaccineTableViewCell
+        cell.vaccineLabel?.text = vaccine.vaccineName
+        cell.dateLabel?.text = vaccine.vaccineDate
         
         if !vaccine.vaccineCompletion
         {
-            cell?.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 102/255, blue: 102/255, alpha: 1)
+            cell.vaccineImageView.image = UIImage(named: "VacRed")
         }
         else
         {
-            cell?.backgroundColor = UIColor(colorLiteralRed: 204/255, green: 255/255, blue: 102/255, alpha: 1)
+            cell.vaccineImageView.image = UIImage(named: "VacGreen")
+
         }
-        return cell!
+        return cell
     }
 }
 extension ScheduleViewController : UITableViewDelegate

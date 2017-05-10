@@ -15,6 +15,14 @@
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* Alert.swift */; };
 		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
+		BA306E7D1EC1F29800DE1B6A /* VaccinationCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */; };
+		BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7E1EC2021900DE1B6A /* UserDetails.swift */; };
+		BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */; };
+		BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E821EC239B000DE1B6A /* GooglePlacesConstants.swift */; };
+		BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */; };
+		BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */; };
+		BA306E891EC23B5B00DE1B6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA306E881EC23B5B00DE1B6A /* MapKit.framework */; };
+		BA306E8B1EC23B6200DE1B6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */; };
 		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
 		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
 		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
@@ -33,6 +41,14 @@
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
+		BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarController.swift; sourceTree = "<group>"; };
+		BA306E7E1EC2021900DE1B6A /* UserDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineTableViewCell.swift; sourceTree = "<group>"; };
+		BA306E821EC239B000DE1B6A /* GooglePlacesConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesConstants.swift; sourceTree = "<group>"; };
+		BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyHospitalsViewController.swift; sourceTree = "<group>"; };
+		BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyDoctorsViewController.swift; sourceTree = "<group>"; };
+		BA306E881EC23B5B00DE1B6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA306E8B1EC23B6200DE1B6A /* CoreLocation.framework in Frameworks */,
+				BA306E891EC23B5B00DE1B6A /* MapKit.framework in Frameworks */,
 				9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +75,8 @@
 		B106C1991D35B7E3923B03FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */,
+				BA306E881EC23B5B00DE1B6A /* MapKit.framework */,
 				AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */,
 			);
 			name = Frameworks;
@@ -76,6 +96,8 @@
 			children = (
 				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
 				BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */,
+				BA306E821EC239B000DE1B6A /* GooglePlacesConstants.swift */,
+				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
 				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
 			);
 			name = Model;
@@ -84,6 +106,7 @@
 		BA0F687F1EBD224300DAF7A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* Alert.swift */,
 			);
 			name = View;
@@ -92,6 +115,9 @@
 		BA0F68801EBD224800DAF7A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */,
+				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
+				BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */,
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
 				BAE931091EBCF4AC00F77191 /* LoginViewController.swift */,
 				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
@@ -268,12 +294,18 @@
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
+				BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */,
+				BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
+				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
+				BA306E7D1EC1F29800DE1B6A /* VaccinationCalendarController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
+				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
+				BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
