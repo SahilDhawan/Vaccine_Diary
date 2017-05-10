@@ -12,8 +12,9 @@
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
 		BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */; };
+		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
-		BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* Alert.swift */; };
+		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
 		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
 		BA306E7D1EC1F29800DE1B6A /* VaccinationCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */; };
 		BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7E1EC2021900DE1B6A /* UserDetails.swift */; };
@@ -38,8 +39,9 @@
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		BA2C49411EBE7FF500F3D614 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
 		BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarController.swift; sourceTree = "<group>"; };
 		BA306E7E1EC2021900DE1B6A /* UserDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */,
-				BA2C49411EBE7FF500F3D614 /* Alert.swift */,
+				BA2C49411EBE7FF500F3D614 /* View.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				BA306E7C1EC1F29800DE1B6A /* VaccinationCalendarController.swift */,
+				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
 				BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */,
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
+				BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */,
@@ -302,7 +306,7 @@
 				BA306E7D1EC1F29800DE1B6A /* VaccinationCalendarController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
-				BA2C49421EBE7FF500F3D614 /* Alert.swift in Sources */,
+				BA2C49421EBE7FF500F3D614 /* View.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 				BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */,

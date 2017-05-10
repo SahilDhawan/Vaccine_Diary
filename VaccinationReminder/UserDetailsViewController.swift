@@ -19,8 +19,6 @@ class UserDetailsViewController: UIViewController {
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         //delegates
         nameTextField.delegate = self
         dateOfBirth.delegate = self
@@ -70,8 +68,6 @@ class UserDetailsViewController: UIViewController {
                 self.processResponse(withPlacemarks : placemark , error)
             }
         }
-
-        
         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
     }
     
@@ -93,12 +89,10 @@ class UserDetailsViewController: UIViewController {
             {
                 showAlert("Not a valid location")
             }
-            
-            
         }
     }
-
 }
+
 extension UserDetailsViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

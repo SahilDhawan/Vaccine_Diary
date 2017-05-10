@@ -16,14 +16,12 @@ class NearbyHospitalsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                //delegates
+        //delegates
         self.mapView.delegate = self
+        showAlert("\(UserDetails.locationCoordinate)")
+        
     }
-    
-    
-    }
-
-
+}
 
 extension NearbyHospitalsViewController : MKMapViewDelegate
 {

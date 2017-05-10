@@ -12,13 +12,14 @@ import UIKit
 class VaccinationList : NSObject
 {
     var VaccinationSchedule : [Vaccine] = []
-    var birthDate : Date = Date(timeIntervalSinceNow: 0)
     
     func setVaccineList()
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
+        let birthDate = UserDetails.userBirthDate
         let date = dateFormatter.string(from: birthDate)
+        
         let sixWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 42, to: birthDate)!)
         let tenWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 70, to: birthDate)!)
         let fourteenWeeksDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 98, to: birthDate)!)
