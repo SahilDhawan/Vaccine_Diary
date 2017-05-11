@@ -11,22 +11,25 @@ struct GooglePlacesConstants
 {
     static let urlScheme = "https"
     static let urlHost = "maps.googleapis.com"
-    static let urlPath = "place/search/json"
+    static let urlPath = "/maps/api/place/nearbysearch/json"
     
     struct queryKeys
     {
-        static let apiKey = "key"
         static let location = "location"
         static let radius = "radius"
-        static let types = "types"
+        static let type = "keyword"
         static let sensor = "sensor"
+        static let apiKey = "key"
+
     }
     struct queryValues
     {
-        static let apiKey = "AIzaSyCLp_xJ7NMdVpLo8qRYnzm5mmQSIz5oWkY"
         static let location = "\(UserDetails.locationCoordinate.latitude), \(UserDetails.locationCoordinate.longitude)"
         static let radius = "500"
         static let sensor = "true"
         static let hospitalType = "Hospital"
+        static let doctorType = "Doctor"
+        static let doctorKeyboard  = "Keyboard"
+        static let apiKey = "AIzaSyBJItU0E8gSaSKQOEvaaCbCcUDsmHKYJHk"
     }
 }

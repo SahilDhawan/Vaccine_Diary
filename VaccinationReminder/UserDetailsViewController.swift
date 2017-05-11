@@ -69,6 +69,7 @@ class UserDetailsViewController: UIViewController {
             }
         }
         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+        print(address)
     }
     
     func processResponse(withPlacemarks placemarks : [CLPlacemark]? , _ error : Error?)
@@ -84,6 +85,7 @@ class UserDetailsViewController: UIViewController {
                 let location : CLLocation?
                 location = (placemarks.first?.location)!
                 UserDetails.locationCoordinate = (location?.coordinate)!
+                print(UserDetails.locationCoordinate)
             }
             else
             {

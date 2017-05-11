@@ -452,6 +452,7 @@
                     <navigationItem key="navigationItem" title="Nearby Hospitals" id="LRd-xJ-oiy"/>
                     <connections>
                         <outlet property="mapView" destination="Gd0-fD-cJS" id="QSK-pr-djX"/>
+                        <outlet property="tableView" destination="Hnc-sS-Tqq" id="Ozk-g6-2xN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajP-9j-8mY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,14 +471,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="knr-yl-JAq">
-                                <rect key="frame" x="0.0" y="64" width="320" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="Z9v-0I-IIw"/>
-                                </constraints>
-                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wDC-dZ-tOg">
-                                <rect key="frame" x="0.0" y="314" width="320" height="205"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NearbyDoctorCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NearbyDoctorCell" id="C3g-h1-FYS">
@@ -494,15 +489,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="apB-2F-KDd" firstAttribute="top" secondItem="wDC-dZ-tOg" secondAttribute="bottom" id="6qP-YP-eEJ"/>
+                            <constraint firstItem="wDC-dZ-tOg" firstAttribute="top" secondItem="jGv-If-aMg" secondAttribute="bottom" id="KgC-gJ-aWy"/>
                             <constraint firstItem="wDC-dZ-tOg" firstAttribute="leading" secondItem="0XG-WQ-dQp" secondAttribute="leading" id="QUv-Kt-guq"/>
-                            <constraint firstAttribute="trailing" secondItem="knr-yl-JAq" secondAttribute="trailing" id="SZ7-l6-YcX"/>
-                            <constraint firstItem="knr-yl-JAq" firstAttribute="top" secondItem="jGv-If-aMg" secondAttribute="bottom" id="bEX-7O-ujI"/>
-                            <constraint firstItem="wDC-dZ-tOg" firstAttribute="top" secondItem="knr-yl-JAq" secondAttribute="bottom" id="bic-j4-GPM"/>
-                            <constraint firstItem="knr-yl-JAq" firstAttribute="leading" secondItem="0XG-WQ-dQp" secondAttribute="leading" id="fVa-c3-zmH"/>
                             <constraint firstAttribute="trailing" secondItem="wDC-dZ-tOg" secondAttribute="trailing" id="pAG-fP-fEG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Doctors" id="syD-qy-9im"/>
+                    <connections>
+                        <outlet property="tableView" destination="wDC-dZ-tOg" id="agp-zb-nZY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwK-49-Ljs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

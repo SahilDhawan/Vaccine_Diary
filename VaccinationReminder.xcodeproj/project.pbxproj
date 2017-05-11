@@ -13,6 +13,7 @@
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
 		BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */; };
 		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
+		BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
 		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
@@ -40,6 +41,7 @@
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
 				BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */,
 				BA306E821EC239B000DE1B6A /* GooglePlacesConstants.swift */,
+				BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */,
 				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
 				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
 			);
@@ -297,6 +300,7 @@
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
 				BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */,
+				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */,
