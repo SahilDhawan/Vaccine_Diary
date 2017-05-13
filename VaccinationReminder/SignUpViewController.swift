@@ -55,8 +55,7 @@ class SignUpViewController: UIViewController {
                         if error == nil
                         {
                             UserDetails.uid = (FIRUser?.uid)!
-                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
-                            self.present(controller!, animated: true, completion: nil)
+                            self.performSegue(withIdentifier: "SignUpSegue", sender: self)
                         }
                         else
                         {
