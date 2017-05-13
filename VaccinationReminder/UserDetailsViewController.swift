@@ -51,28 +51,52 @@ class UserDetailsViewController: UIViewController {
         //Text Field Placeholder
         nameTextField.attributedPlaceholder = NSAttributedString(string: "    Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "    Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        streetTextField.attributedPlaceholder = NSAttributedString(string: "    Street", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        streetTextField.attributedPlaceholder = NSAttributedString(string: "    Locality", attributes: [NSForegroundColorAttributeName : UIColor.white])
         stateTextField.attributedPlaceholder = NSAttributedString(string: "    State", attributes: [NSForegroundColorAttributeName : UIColor.white])
     }
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
         UserDetails.userName = nameTextField.text
         UserDetails.userState = stateTextField.text!
-        UserDetails.userStreet = streetTextField.text!
+        UserDetails.userLocality = streetTextField.text!
         
-        let address = "India, " + UserDetails.userState + ", " + UserDetails.userStreet
+        let address = "India, " + UserDetails.userState + ", " + UserDetails.userLocality
         
-            let geocoder = CLGeocoder()
-            geocoder.geocodeAddressString(address) { (placemark, error) in
-                if error == nil
-                {
-                    self.processResponse(withPlacemarks : placemark , error)
-                }
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemark, error) in
+            if error == nil
+            {
+                self.processResponse(withPlacemarks : placemark , error)
             }
-            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-            print(address)
+        }
+        savingDetailsToFirebase()
+        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+        print(address)
     }
     
+    func savingDetailsToFirebase()
+    {
+        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+        var saveDict = [String: String]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        saveDict["username"] =  UserDetails.userName
+        saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
+        saveDict["locality"] =  UserDetails.userLocality
+        saveDict["state"] =  UserDetails.userState
+        
+        if UserDetails.update
+        {
+            ref.child("users").child(UserDetails.uid).updateChildValues(saveDict)
+        }
+        else
+        {
+            
+            ref.child("users").child(UserDetails.uid).setValue(saveDict)
+        }
+    }
+    
+
     func processResponse(withPlacemarks placemarks : [CLPlacemark]? , _ error : Error?)
     {
         if error != nil

@@ -21,15 +21,15 @@ class UserProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let date = UserDetails.userBirthDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        
         //Updating Label Values
-        nameLabel.text = UserDetails.userName
-        streetLabel.text = UserDetails.userStreet
-        stateLabel.text = UserDetails.userState
-        birthDateLabel.text = dateFormatter.string(from: date)
+        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+        ref.child("users").child(UserDetails.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            self.nameLabel.text = value?["username"] as? String
+            self.streetLabel.text = value?["locality"] as? String
+            self.stateLabel.text = value?["state"] as? String
+            self.birthDateLabel.text = value?["birthDate"] as? String
+        })
         
         //navigationBar
         let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
@@ -54,4 +54,9 @@ class UserProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func UpdateButtonPressed(_ sender: Any) {
+        UserDetails.update = true
+        let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailsViewController") as! UserDetailsViewController
+        self.present(controller, animated: true, completion: nil)
+    }
 }

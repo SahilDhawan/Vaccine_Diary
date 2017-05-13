@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
             if error == nil
             {
                 self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                UserDetails.uid = (user?.uid)!
             }
             else
             {
@@ -85,6 +86,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                 }
                 else
                 {
+                    UserDetails.uid = (user?.uid)!
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
             })
