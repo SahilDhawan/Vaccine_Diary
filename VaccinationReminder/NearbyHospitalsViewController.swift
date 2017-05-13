@@ -20,8 +20,12 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //delegates
+        
+        //mapView
         mapView.delegate = self
+        self.mapView.isUserInteractionEnabled = false
+        
+        
         tableView.dataSource = self
         
         let googlePlaces  = GooglePlaces()
@@ -43,6 +47,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
                     print(self.hospitalCoordinates)
                     print(self.hospitalsArray)
                     self.tableView.reloadData()
+                    self.createMapPins()
                 }
                 catch
                 {
@@ -56,7 +61,35 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //navigationBar
+        let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        //Navigation Bar
+        self.navigationController?.navigationBar.barTintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+
+    }
+    
+    func createMapPins()
+    {
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(mapRegion, animated: true)
+        
+        for i in 0..<hospitalsArray.count
+        {
+            let mapPin = MKPointAnnotation()
+            mapPin.coordinate = hospitalCoordinates[i]
+            mapPin.title = hospitalsArray[i]
+            self.mapView.addAnnotation(mapPin)
+        }
+    }
 }
+
 extension NearbyHospitalsViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

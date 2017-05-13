@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import GooglePlaces
 import GooglePlacePicker
+import FBSDKCoreKit
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate
+{
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,8 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         UIApplication.shared.statusBarStyle = .lightContent
         FIRApp.configure()
         
+        //googlePlacesAPI
         GMSPlacesClient.provideAPIKey(GooglePlacesConstants.queryValues.apiKey)
+        
+        
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
+    }
+
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return handled
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

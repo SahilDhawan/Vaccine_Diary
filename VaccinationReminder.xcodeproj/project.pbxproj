@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
-		BA0F687D1EBD223400DAF7A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
 		BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */; };
 		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
 		BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */; };
+		BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
 		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
@@ -36,12 +36,12 @@
 		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
 		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		BA0F68811EBD225C00DAF7A3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BA0F687C1EBD223400DAF7A3 /* GoogleService-Info.plist */,
 				BAE931011EBCF03000F77191 /* Info.plist */,
+				BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */,
 				BAE930FE1EBCF03000F77191 /* LaunchScreen.storyboard */,
 				BAE930F91EBCF03000F77191 /* Main.storyboard */,
 				BAE930FC1EBCF03000F77191 /* Assets.xcassets */,
@@ -237,7 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
-				BA0F687D1EBD223400DAF7A3 /* GoogleService-Info.plist in Resources */,
+				BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);

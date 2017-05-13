@@ -7,10 +7,15 @@ target 'VaccinationReminder' do
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Core'
+	pod 'Firebase/Database'
+	pod 'FBSDKLoginKit'
+	pod 'FBSDKCoreKit'
 	platform :ios, '8.0'
-    pod 'FSCalendar'
-    pod 'GooglePlaces'
+    	pod 'FSCalendar'
+    	pod 'GooglePlaces'
   	pod 'GooglePlacePicker'
   	pod 'GoogleMaps'
+        pod 'DZNEmptyDataSet'
+	pod 'GoogleSignIn'
 	use_frameworks!
 end

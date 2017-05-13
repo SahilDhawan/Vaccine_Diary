@@ -8,18 +8,22 @@
 
 import UIKit
 import Firebase
-import ChameleonFramework
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var facebookSignInButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
-
+        
+        facebookSignInButton.readPermissions = ["email"]
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -28,11 +32,12 @@ class LoginViewController: UIViewController {
         
         //Placeholder color change
         emailTextField.attributedPlaceholder = NSAttributedString(string: "  Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
-    }
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
         
-    func firebaseLogin()
-    {
+        facebookSignInButton.delegate = self
+    }
+    
+    @IBAction func logInPressed(_ sender: Any) {
         guard let email = emailTextField.text,let password = passwordTextField.text else
         {
             print("Email or Password can't be empty")
@@ -43,11 +48,11 @@ class LoginViewController: UIViewController {
             
             if error == nil
             {
-                self.performSegue(withIdentifier: "Login", sender: self)
+                self.performSegue(withIdentifier: "LoginSegue", sender: self)
             }
             else
             {
-                print(error?.localizedDescription as Any)
+                self.showAlert((error?.localizedDescription)!)
             }
         })
         
@@ -58,6 +63,40 @@ extension LoginViewController : UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension LoginViewController : FBSDKLoginButtonDelegate
+{
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        if error != nil
+        {
+            self.showAlert(error.localizedDescription)
+        }
+        else
+        {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if error != nil
+                {
+                    self.showAlert((error?.localizedDescription)!)
+                }
+                else
+                {
+                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                }
+            })
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        //TODO
+    }
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        //TODO
         return true
     }
 }

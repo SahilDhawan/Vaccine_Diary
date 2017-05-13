@@ -28,44 +28,42 @@ class SignUpViewController: UIViewController {
         
         //setting up placeholder text
         emailTextField.attributedPlaceholder = NSAttributedString(string: "  Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password (Greater than 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.white])
         confirmPass.attributedPlaceholder = NSAttributedString(string: "  Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        
-        
+
     }
+    
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        //        guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
-        //        {
-        //            showAlert("Email or Password Text Fields can't be empty")
-        //            self.emailTextField.text = ""
-        //            self.passwordTextField.text = ""
-        //            self.confirmPass.text = ""
-        //            return
-        //        }
-        //        if confirm != password
-        //        {
-        //            showAlert("Passwords Don't match. Please try again!")
-        //            self.emailTextField.text = ""
-        //            self.passwordTextField.text = ""
-        //            self.confirmPass.text = ""
-        //        }
-        //        else
-        //        {
-        //            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
-        //
-        //                if error == nil
-        //                {
-        //                    let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
-        //                    self.present(controller!, animated: true, completion: nil)
-        //                }
-        //                else
-        //                {
-        //                    self.showAlert("Can not create a new user")
-        //                }
-        //
-        //            })
-        //        }
-        self.performSegue(withIdentifier: "SignUpSegue", sender: self)
+                guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
+                {
+                    showAlert("Email or Password Text Fields can't be empty")
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.confirmPass.text = ""
+                    return
+                }
+                if confirm != password
+                {
+                    showAlert("Passwords Don't match. Please try again!")
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.confirmPass.text = ""
+                }
+                else{
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
+        
+                        if error == nil
+                        {
+                            let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoggedIn")
+                            self.present(controller!, animated: true, completion: nil)
+                        }
+                        else
+                        {
+                            self.showAlert("Can not create a new user")
+                        }
+        
+                    })
+                }
     }
 }
 

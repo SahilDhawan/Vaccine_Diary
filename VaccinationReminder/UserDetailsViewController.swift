@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class UserDetailsViewController: UIViewController {
     
@@ -61,15 +62,15 @@ class UserDetailsViewController: UIViewController {
         
         let address = "India, " + UserDetails.userState + ", " + UserDetails.userStreet
         
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemark, error) in
-            if error == nil
-            {
-                self.processResponse(withPlacemarks : placemark , error)
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(address) { (placemark, error) in
+                if error == nil
+                {
+                    self.processResponse(withPlacemarks : placemark , error)
+                }
             }
-        }
-        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-        print(address)
+            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+            print(address)
     }
     
     func processResponse(withPlacemarks placemarks : [CLPlacemark]? , _ error : Error?)

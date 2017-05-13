@@ -4,12 +4,47 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMOAuth2.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +57,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>109FA391A23E4D018D0B5C23EDCF7316</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61AF977C23DFB1506EEC7FDC5AACAB7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6C93DE13A9E39F5C57B693BE90DBB2D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>70D2DCDE7D3CDC50D31FF925A37C8D59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9B57F4EE4746045CEAE2D933A3C8EC9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4059E3DF0F0F3361C85FCD1EEC13316</key>
+		<key>D468777BEC2DE5127A16239373FFD11F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

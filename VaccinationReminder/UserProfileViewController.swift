@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UserProfileViewController: UIViewController {
     
@@ -36,6 +37,21 @@ class UserProfileViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
+    }
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        
+        let firebaseAuth = FIRAuth.auth()
+        do
+        {
+            try firebaseAuth?.signOut()
+            let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.present(controller, animated: true, completion: nil)
+        }
+            
+        catch
+        {
+            showAlert("Problem Loggin Out. Try again!")
+        }
     }
     
 }

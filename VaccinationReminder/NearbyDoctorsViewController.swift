@@ -18,7 +18,9 @@ class NearbyDoctorsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
+        
         let googlePlaces = GooglePlaces()
         googlePlaces.fetchData(googlePlaces.createDoctorUrl()) { (data, error) in
             
@@ -46,11 +48,24 @@ class NearbyDoctorsViewController: UIViewController{
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //navigationBar
+        let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        //Navigation Bar
+        self.navigationController?.navigationBar.barTintColor = color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+
+    }
+
 }
 
 extension NearbyDoctorsViewController : UITableViewDataSource
 {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.doctorsArray.count
     }
@@ -61,3 +76,4 @@ extension NearbyDoctorsViewController : UITableViewDataSource
         return cell!
     }
 }
+
