@@ -11,10 +11,10 @@ import UIKit
 class Vaccine: NSObject {
     
     var vaccineName : String
-    var vaccineDate : String
+    var vaccineDate : Date
     var vaccineCompletion : Bool
-    
-    public init(_ name : String , _ date : String , _ completed : Bool) {
+    public init(_ name : String , _ date : Date , _ completed : Bool) {
+        
         vaccineName = name
         vaccineDate = date
         vaccineCompletion = completed

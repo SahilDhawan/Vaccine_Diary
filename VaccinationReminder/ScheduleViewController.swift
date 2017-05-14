@@ -35,6 +35,9 @@ class ScheduleViewController: UIViewController {
         
         //removing extra padding from top
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+        
+        //setup Notifications
+        VaccinationList().setNotifications()
     }
 }
 extension ScheduleViewController: UITableViewDataSource
@@ -45,11 +48,15 @@ extension ScheduleViewController: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
         let vaccine = VaccinationSchedule[indexPath.item]
         //Cell Details
         let cell = tableView.dequeueReusableCell(withIdentifier: "VaccineCell") as! VaccineTableViewCell
         cell.vaccineLabel?.text = vaccine.vaccineName
-        cell.dateLabel?.text = vaccine.vaccineDate
+        
+        cell.dateLabel?.text = dateFormatter.string(for:vaccine.vaccineDate)
         
         if !vaccine.vaccineCompletion
         {

@@ -12,10 +12,10 @@ import Firebase
 
 class UserDetailsViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var dateOfBirth: UITextField!
-    @IBOutlet weak var stateTextField: UITextField!
-    @IBOutlet weak var streetTextField: UITextField!
+    @IBOutlet weak var nameTextField: TextField!
+    @IBOutlet weak var dateOfBirth: TextField!
+    @IBOutlet weak var stateTextField: TextField!
+    @IBOutlet weak var streetTextField: TextField!
     
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad() {
@@ -49,10 +49,10 @@ class UserDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         //Text Field Placeholder
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "    Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        dateOfBirth.attributedPlaceholder = NSAttributedString(string: "    Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        streetTextField.attributedPlaceholder = NSAttributedString(string: "    Locality", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "    State", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        streetTextField.attributedPlaceholder = NSAttributedString(string: "Locality", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        stateTextField.attributedPlaceholder = NSAttributedString(string: "State", attributes: [NSForegroundColorAttributeName : UIColor.white])
     }
     
     @IBAction func saveDetailsPressed(_ sender: Any) {

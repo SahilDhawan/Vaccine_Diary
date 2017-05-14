@@ -25,6 +25,8 @@
 		BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */; };
 		BA306E891EC23B5B00DE1B6A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA306E881EC23B5B00DE1B6A /* MapKit.framework */; };
 		BA306E8B1EC23B6200DE1B6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */; };
+		BA54D0D41EC7995500AA3385 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA54D0D31EC7995400AA3385 /* UserNotifications.framework */; };
+		BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7698B71EC8F28E00B16B72 /* TextField.swift */; };
 		BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE930F31EBCF03000F77191 /* AppDelegate.swift */; };
 		BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE930F91EBCF03000F77191 /* Main.storyboard */; };
 		BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE930FC1EBCF03000F77191 /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyDoctorsViewController.swift; sourceTree = "<group>"; };
 		BA306E881EC23B5B00DE1B6A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BA54D0D31EC7995400AA3385 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		BA7698B71EC8F28E00B16B72 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA54D0D41EC7995500AA3385 /* UserNotifications.framework in Frameworks */,
 				BA306E8B1EC23B6200DE1B6A /* CoreLocation.framework in Frameworks */,
 				BA306E891EC23B5B00DE1B6A /* MapKit.framework in Frameworks */,
 				9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */,
@@ -79,6 +84,7 @@
 		B106C1991D35B7E3923B03FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA54D0D31EC7995400AA3385 /* UserNotifications.framework */,
 				BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */,
 				BA306E881EC23B5B00DE1B6A /* MapKit.framework */,
 				AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */,
@@ -113,6 +119,7 @@
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* View.swift */,
+				BA7698B71EC8F28E00B16B72 /* TextField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -304,6 +311,7 @@
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */,
+				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,

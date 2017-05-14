@@ -13,8 +13,8 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var facebookSignInButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
@@ -31,8 +31,8 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //Placeholder color change
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "  Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         facebookSignInButton.delegate = self
     }

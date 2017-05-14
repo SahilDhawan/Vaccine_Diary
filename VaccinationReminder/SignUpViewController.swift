@@ -13,9 +13,9 @@ import FirebaseAuth
 class SignUpViewController: UIViewController {
     
     //MARK : Outlets
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPass: UITextField!
+    @IBOutlet weak var emailTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
+    @IBOutlet weak var confirmPass: TextField!
     @IBOutlet weak var signUpButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool)
@@ -27,9 +27,9 @@ class SignUpViewController: UIViewController {
         confirmPass.delegate = self
         
         //setting up placeholder text
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "  Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "  Password (Greater than 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        confirmPass.attributedPlaceholder = NSAttributedString(string: "  Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (Greater than 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        confirmPass.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
 
     }
     

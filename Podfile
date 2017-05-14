@@ -9,11 +9,9 @@ target 'VaccinationReminder' do
 	pod 'Firebase/Database'
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKCoreKit'
-	platform :ios, '8.0'
     	pod 'FSCalendar'
     	pod 'GooglePlaces'
   	pod 'GooglePlacePicker'
   	pod 'GoogleMaps'
-        pod 'DZNEmptyDataSet'
 	use_frameworks!
 end

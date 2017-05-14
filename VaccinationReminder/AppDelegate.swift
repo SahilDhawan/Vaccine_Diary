@@ -11,6 +11,7 @@ import Firebase
 import GooglePlaces
 import GooglePlacePicker
 import FBSDKCoreKit
+import UserNotifications
 
 
 @UIApplicationMain
@@ -26,17 +27,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //googlePlacesAPI
         GMSPlacesClient.provideAPIKey(GooglePlacesConstants.queryValues.apiKey)
         
-        
-        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //userNotification Authorisation
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (accepted, error) in
+            if !accepted
+            {
+                print("Notification Denied")
+            }
+            
+        }
         return true
     }
-
+    
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         return handled
     }
+    
+    
+    func scheduleNotifications(_ date : Date , _ msg : String)
+    {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        // notifications do not repeat
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Vaccination Reminder"
+        content.body = msg
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: "VaccineNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil
+            {
+                print("Error occured during notification")
+            }
+        }
+    }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
