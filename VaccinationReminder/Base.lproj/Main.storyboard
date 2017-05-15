@@ -851,7 +851,7 @@
         <scene sceneID="4b0-LO-kJd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nsx-d3-tb6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedule" id="oxl-Ne-I80"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="tableIcon" id="oxl-Ne-I80"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mwz-VJ-rgR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -870,7 +870,7 @@
         <scene sceneID="V1N-Aq-m0X">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VId-cK-Tn8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" id="qaW-pV-0an"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendarIcon" id="qaW-pV-0an"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lc7-E0-Y1k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -889,7 +889,7 @@
         <scene sceneID="Yh0-Ed-K2i">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wdj-Qs-F1B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="zGe-ga-Qu1"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="userProfile" id="zGe-ga-Qu1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3xx-Zc-XPa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -908,7 +908,7 @@
         <scene sceneID="sFg-aW-m3h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pm1-Zd-HjR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hospitals" id="DlK-UN-OTE"/>
+                    <tabBarItem key="tabBarItem" title="Hospitals" image="mapIcon" id="DlK-UN-OTE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ai8-8I-nAd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -927,7 +927,7 @@
         <scene sceneID="LUq-Aw-0k0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Way-AS-vTT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Doctors" id="VKv-3e-lD1"/>
+                    <tabBarItem key="tabBarItem" title="Doctors" image="mapIcon" id="VKv-3e-lD1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NWi-2Y-pmg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -944,8 +944,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendarIcon" width="30" height="30"/>
         <image name="icon" width="500" height="498"/>
+        <image name="mapIcon" width="30" height="30"/>
+        <image name="tableIcon" width="30" height="30"/>
         <image name="userIcon" width="256" height="256"/>
+        <image name="userProfile" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4fo-Ei-Gai"/>
