@@ -14,20 +14,33 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     
     var hospitalsArray : [String] = []
     var hospitalCoordinates : [CLLocationCoordinate2D] = []
+    let locationManager = CLLocationManager()
+    var updateLocation = true
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         //mapView
         mapView.delegate = self
-        self.mapView.isUserInteractionEnabled = false
-        
         
         tableView.dataSource = self
         
+        //locationManager
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        mapView.showsUserLocation = true
+    }
+    
+    func googleApiFetch()
+    {
+        //google place api fetch
         let googlePlaces  = GooglePlaces()
         googlePlaces.fetchData(googlePlaces.createHospitalUrl()) { (data, error) in
             
@@ -46,8 +59,11 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
                     }
                     print(self.hospitalCoordinates)
                     print(self.hospitalsArray)
-                    self.tableView.reloadData()
-                    self.createMapPins()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.createMapPins()
+                    }
+                    
                 }
                 catch
                 {
@@ -72,14 +88,11 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
-
+        
     }
     
     func createMapPins()
     {
-        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(mapRegion, animated: true)
-        
         for i in 0..<hospitalsArray.count
         {
             let mapPin = MKPointAnnotation()
@@ -87,6 +100,15 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
             mapPin.title = hospitalsArray[i]
             self.mapView.addAnnotation(mapPin)
         }
+    }
+    
+    func createUserLocation()
+    {
+        
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(mapRegion, animated: true)
+        googleApiFetch()
+        self.updateLocation = false
     }
 }
 
@@ -99,5 +121,29 @@ extension NearbyHospitalsViewController : UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyHospitalCell")
         cell?.textLabel?.text = hospitalsArray[indexPath.item]
         return cell!
+    }
+}
+
+extension NearbyHospitalsViewController : CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if self.updateLocation == true
+        {
+            let location = locations.last
+            let coordinate = location?.coordinate
+            UserDetails.locationCoordinate = coordinate!
+            createUserLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showAlert("cannot fetch Current Location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse
+        {
+            locationManager.requestLocation()
+        }
     }
 }

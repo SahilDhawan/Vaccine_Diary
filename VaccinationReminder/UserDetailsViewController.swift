@@ -14,8 +14,6 @@ class UserDetailsViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: TextField!
     @IBOutlet weak var dateOfBirth: TextField!
-    @IBOutlet weak var stateTextField: TextField!
-    @IBOutlet weak var streetTextField: TextField!
     
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad() {
@@ -23,8 +21,6 @@ class UserDetailsViewController: UIViewController {
         //delegates
         nameTextField.delegate = self
         dateOfBirth.delegate = self
-        stateTextField.delegate = self
-        streetTextField.delegate = self
         
         //datePicker
         datePicker.datePickerMode = .date
@@ -51,27 +47,13 @@ class UserDetailsViewController: UIViewController {
         //Text Field Placeholder
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        streetTextField.attributedPlaceholder = NSAttributedString(string: "Locality", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        stateTextField.attributedPlaceholder = NSAttributedString(string: "State", attributes: [NSForegroundColorAttributeName : UIColor.white])
     }
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
-        UserDetails.userName = nameTextField.text
-        UserDetails.userState = stateTextField.text!
-        UserDetails.userLocality = streetTextField.text!
+        UserDetails.userName = nameTextField.text!
         
-        let address = "India, " + UserDetails.userState + ", " + UserDetails.userLocality
-        
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemark, error) in
-            if error == nil
-            {
-                self.processResponse(withPlacemarks : placemark , error)
-            }
-        }
         savingDetailsToFirebase()
         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-        print(address)
     }
     
     func savingDetailsToFirebase()
@@ -82,8 +64,6 @@ class UserDetailsViewController: UIViewController {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        saveDict["locality"] =  UserDetails.userLocality
-        saveDict["state"] =  UserDetails.userState
         
         if UserDetails.update
         {
@@ -97,28 +77,7 @@ class UserDetailsViewController: UIViewController {
     }
     
 
-    func processResponse(withPlacemarks placemarks : [CLPlacemark]? , _ error : Error?)
-    {
-        if error != nil
-        {
-            showAlert("Not a valid location")
-        }
-        else
-        {
-            if let placemarks  = placemarks , placemarks.count>0
-            {
-                let location : CLLocation?
-                location = (placemarks.first?.location)!
-                UserDetails.locationCoordinate = (location?.coordinate)!
-                print(UserDetails.locationCoordinate)
-            }
-            else
-            {
-                showAlert("Not a valid location")
-            }
-        }
     }
-}
 
 extension UserDetailsViewController : UITextFieldDelegate
 {

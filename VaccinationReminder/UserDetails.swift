@@ -13,11 +13,9 @@ let gregorian = Calendar(identifier: .gregorian)
 
 struct UserDetails
 {
-    static var userImage : UIImage? = nil
-    static var userName : String! = ""
+    static var userImage = UIImage(named:"userIcon")
+    static var userName  : String = ""
     static var userBirthDate : Date = Date(timeIntervalSinceNow: 0)
-    static var userLocality : String = ""
-    static var userState : String = ""
     static var locationCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     static var uid : String = ""
     static var update : Bool = false

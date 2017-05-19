@@ -8,27 +8,32 @@
 
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
 class UserProfileViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var streetLabel: UILabel!
-    @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var mapView: MKMapView!
     
-   
+    let locationManager = CLLocationManager()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //Updating Label Values
         let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
         ref.child("users").child(UserDetails.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
             let value = snapshot.value as? NSDictionary
-            self.nameLabel.text = value?["username"] as? String
-            self.streetLabel.text = value?["locality"] as? String
-            self.stateLabel.text = value?["state"] as? String
-            self.birthDateLabel.text = value?["birthDate"] as? String
+            let userName = value?["username"] as? String
+            let birthString = value?["birthDate"] as? String
+            self.nameLabel.text = userName!
+            self.birthDateLabel.text = birthString!
+            UserDetails.userName = userName!
+            UserDetails.userBirthDate = dateFormatter.date(from:birthString!)!
         })
         
         //navigationBar
@@ -37,9 +42,17 @@ class UserProfileViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-    }
-    @IBAction func logOutButtonPressed(_ sender: Any) {
+        //locationManager
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         
+        mapView.showsUserLocation = true
+    }
+    
+    @IBAction func logOutButtonPressed(_ sender: Any)
+    {
         let firebaseAuth = FIRAuth.auth()
         do
         {
@@ -47,7 +60,6 @@ class UserProfileViewController: UIViewController {
             let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.present(controller, animated: true, completion: nil)
         }
-            
         catch
         {
             showAlert("Problem Loggin Out. Try again!")
@@ -58,5 +70,29 @@ class UserProfileViewController: UIViewController {
         UserDetails.update = true
         let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailsViewController") as! UserDetailsViewController
         self.present(controller, animated: true, completion: nil)
+    }
+}
+
+extension UserProfileViewController : CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        let location = locations.last
+        let coordinate = location?.coordinate
+        UserDetails.locationCoordinate = coordinate!
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(mapRegion, animated: true)
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showAlert("cannot fetch Current Location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse
+        {
+            locationManager.requestLocation()
+        }
     }
 }

@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Vaccination Reminder wants to access your location to fetch nearby hospitals and doctors.</string>
 	<key>CFBundleDisplayName</key>
 	<string>VaccinationReminder</string>
 	<key>CFBundleExecutable</key>

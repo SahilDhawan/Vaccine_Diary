@@ -16,11 +16,9 @@ class NearbyDoctorsViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        
+    
+    func googleApiFetch()
+    {
         let googlePlaces = GooglePlaces()
         googlePlaces.fetchData(googlePlaces.createDoctorUrl()) { (data, error) in
             
@@ -34,7 +32,9 @@ class NearbyDoctorsViewController: UIViewController{
                     {
                         self.doctorsArray.append(result["name"] as! String)
                     }
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
                 catch
                 {
@@ -59,9 +59,10 @@ class NearbyDoctorsViewController: UIViewController{
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
-
+        tableView.dataSource = self
+        googleApiFetch()
     }
-
+    
 }
 
 extension NearbyDoctorsViewController : UITableViewDataSource
