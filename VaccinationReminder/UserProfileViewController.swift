@@ -23,18 +23,19 @@ class UserProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //Updating Label Values
-        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
-        ref.child("users").child(UserDetails.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        let fir = FirebaseMethods()
+        fir.getDataFromFirebase { (name, birthDate) in
+            self.nameLabel.text = name!
+            self.birthDateLabel.text = birthDate!
+            UserDetails.userName = name!
+
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
-            let value = snapshot.value as? NSDictionary
-            let userName = value?["username"] as? String
-            let birthString = value?["birthDate"] as? String
-            self.nameLabel.text = userName!
-            self.birthDateLabel.text = birthString!
-            UserDetails.userName = userName!
-            UserDetails.userBirthDate = dateFormatter.date(from:birthString!)!
-        })
+            UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
+        }
+        
+        
         
         //navigationBar
         let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
@@ -76,7 +77,7 @@ class UserProfileViewController: UIViewController {
 extension UserProfileViewController : CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+        
         let location = locations.last
         let coordinate = location?.coordinate
         UserDetails.locationCoordinate = coordinate!

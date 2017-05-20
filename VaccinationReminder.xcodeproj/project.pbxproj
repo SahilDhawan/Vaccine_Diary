@@ -14,6 +14,7 @@
 		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
 		BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */; };
 		BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */; };
+		BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
 		BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */; };
@@ -44,6 +45,7 @@
 		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 		BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMethods.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				BAE930F31EBCF03000F77191 /* AppDelegate.swift */,
 				BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */,
+				BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */,
 				BA306E821EC239B000DE1B6A /* GooglePlacesConstants.swift */,
 				BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */,
 				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
@@ -311,6 +314,7 @@
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyDoctorsViewController.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineTableViewCell.swift in Sources */,
+				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
 				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,

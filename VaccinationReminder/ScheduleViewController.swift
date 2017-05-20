@@ -24,10 +24,7 @@ class ScheduleViewController: UIViewController {
         tableSize = vaccineObject.getTableSize()
         VaccinationSchedule = vaccineObject.getVaccineDetails()
         
-        //tableView
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.reloadData()
+       
         
         //changing color of NavigationBar
         self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
@@ -38,6 +35,22 @@ class ScheduleViewController: UIViewController {
         
         //setup Notifications
         VaccinationList().setNotifications()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let fir = FirebaseMethods()
+        fir.getDataFromFirebase { (name, birthDate) in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
+            let vaccineObject = VaccinationList()
+            vaccineObject.setVaccineList()
+            tableSize = vaccineObject.getTableSize()
+            VaccinationSchedule = vaccineObject.getVaccineDetails()
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
+        }
     }
 }
 extension ScheduleViewController: UITableViewDataSource
@@ -70,9 +83,4 @@ extension ScheduleViewController: UITableViewDataSource
         return cell
     }
 }
-extension ScheduleViewController : UITableViewDelegate
-{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO
-    }
-}
+

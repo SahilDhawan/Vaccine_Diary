@@ -58,21 +58,15 @@ class UserDetailsViewController: UIViewController {
     
     func savingDetailsToFirebase()
     {
-        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
-        var saveDict = [String: String]()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        saveDict["username"] =  UserDetails.userName
-        saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        
+        let fir = FirebaseMethods()
         if UserDetails.update
         {
-            ref.child("users").child(UserDetails.uid).updateChildValues(saveDict)
+            fir.FirebaseUpdateData()
         }
         else
         {
             
-            ref.child("users").child(UserDetails.uid).setValue(saveDict)
+            fir.FirebaseWriteData()
         }
     }
     
