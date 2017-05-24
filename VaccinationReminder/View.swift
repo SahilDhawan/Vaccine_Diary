@@ -1,6 +1,6 @@
 //
 //  Alert.swift
-//  
+//
 //
 //  Created by Sahil Dhawan on 07/05/17.
 //
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
- extension UIViewController
+extension UIViewController
 {
     func showAlert(_ msg : String)
     {
@@ -19,6 +19,20 @@ import UIKit
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func addActivityViewController(_ activityView : UIActivityIndicatorView , _ bool : Bool)
+    {
+        if bool
+        {
+            self.view.addSubview(activityView)
+            activityView.startAnimating()
+        }
+        else
+        {
+            self.view.willRemoveSubview(activityView)
+            activityView.isHidden = true
+            activityView.stopAnimating()
+        }
+    }
     
 }
 

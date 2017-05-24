@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var facebookSignInButton: FBSDKLoginButton!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool)
     {
+        activityView.isHidden = true
         super.viewWillAppear(animated)
         
         //Placeholder color change
@@ -38,6 +40,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logInPressed(_ sender: Any) {
+        self.activityView.isHidden = false
+        addActivityViewController(self.activityView, true)
         guard let email = emailTextField.text,let password = passwordTextField.text else
         {
             print("Email or Password can't be empty")
@@ -48,6 +52,7 @@ class LoginViewController: UIViewController {
             
             if error == nil
             {
+                self.addActivityViewController(self.activityView, false)
                 self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 UserDetails.uid = (user?.uid)!
             }
@@ -71,7 +76,8 @@ extension LoginViewController : UITextFieldDelegate
 extension LoginViewController : FBSDKLoginButtonDelegate
 {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
+        self.activityView.isHidden = false
+        self.addActivityViewController(self.activityView, true)
         if error != nil
         {
             self.showAlert(error.localizedDescription)
@@ -87,6 +93,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                 else
                 {
                     UserDetails.uid = (user?.uid)!
+                    self.addActivityViewController(self.activityView, false)
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
             })

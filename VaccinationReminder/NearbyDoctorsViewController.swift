@@ -15,6 +15,7 @@ class NearbyDoctorsViewController: UIViewController{
     var doctorsArray : [String] = []
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     
     func googleApiFetch()
@@ -60,7 +61,11 @@ class NearbyDoctorsViewController: UIViewController{
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         tableView.dataSource = self
+        
+        addActivityViewController(self.activityView, true)
         googleApiFetch()
+        addActivityViewController(self.activityView, false)
+
     }
     
 }

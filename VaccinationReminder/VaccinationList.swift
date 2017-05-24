@@ -92,6 +92,8 @@ class VaccinationList : NSObject
         //TwelveYears
         VaccinationSchedule.append(Vaccine("Tdap/Td",UserDetails.VaccinationDates.twelveYearDate!,twelveYearBool))
         VaccinationSchedule.append(Vaccine("HPV",UserDetails.VaccinationDates.twelveYearDate!,twelveYearBool))
+        
+        setNotifications()
     }
     
     func setNotifications()
@@ -99,11 +101,9 @@ class VaccinationList : NSObject
         let delegate = UIApplication.shared.delegate as! AppDelegate
         for Vaccine in VaccinationSchedule
         {
-//            if !Vaccine.vaccineCompletion
-//            {
-                delegate.scheduleNotifications(Vaccine.vaccineDate, Vaccine.vaccineName)
-//            }
+            delegate.scheduleNotifications(Vaccine.vaccineDate, Vaccine.vaccineName)
         }
+        
     }
     
     func getTableSize() ->Int

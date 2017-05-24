@@ -14,31 +14,12 @@ var VaccinationSchedule : [Vaccine] = []
 class ScheduleViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Getting Details from Vaccination List
-        let vaccineObject = VaccinationList()
-        vaccineObject.setVaccineList()
-        tableSize = vaccineObject.getTableSize()
-        VaccinationSchedule = vaccineObject.getVaccineDetails()
-        
-       
-        
-        //changing color of NavigationBar
-        self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
-        //removing extra padding from top
-        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
-        
-        //setup Notifications
-        VaccinationList().setNotifications()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        //fetching Date from FireBase
         let fir = FirebaseMethods()
         fir.getDataFromFirebase { (name, birthDate) in
             let dateFormatter = DateFormatter()
@@ -48,11 +29,30 @@ class ScheduleViewController: UIViewController {
             vaccineObject.setVaccineList()
             tableSize = vaccineObject.getTableSize()
             VaccinationSchedule = vaccineObject.getVaccineDetails()
-            self.tableView.dataSource = self
-            self.tableView.reloadData()
+            DispatchQueue.main.async
+                {
+                    self.tableView.dataSource = self
+                    self.tableView.reloadData()
+                    self.addActivityViewController(self.activityView,false)
+            }
         }
+        
+        
+        //changing color of NavigationBar
+        self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        //removing extra padding from top
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addActivityViewController(activityView,true)
+    }
+    
 }
+
 extension ScheduleViewController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +78,7 @@ extension ScheduleViewController: UITableViewDataSource
         else
         {
             cell.vaccineImageView.image = UIImage(named: "VacGreen")
-
+            
         }
         return cell
     }

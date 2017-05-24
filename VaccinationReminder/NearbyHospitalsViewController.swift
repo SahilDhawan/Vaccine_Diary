@@ -19,6 +19,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad()
     {
@@ -89,6 +90,9 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         
+        //activityView
+        addActivityViewController(activityView, true)
+        
     }
     
     func createMapPins()
@@ -108,6 +112,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(mapRegion, animated: true)
         googleApiFetch()
+        addActivityViewController(self.activityView, false)
         self.updateLocation = false
     }
 }

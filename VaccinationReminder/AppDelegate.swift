@@ -15,7 +15,7 @@ import UserNotifications
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate , UNUserNotificationCenterDelegate
 {
     var window: UIWindow?
     
@@ -35,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             {
                 print("Notification Denied")
             }
+            else
+            {
+                UNUserNotificationCenter.current().delegate = self
+            }
             
         }
         return true
@@ -49,16 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func scheduleNotifications(_ date : Date , _ msg : String)
     {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents(in: .current, from: date)
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
         
-        // notifications do not repeat
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        print(msg + " \(date)")
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
         
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = "Vaccination Reminder"
-        content.body = msg
+        content.body = msg + " \(date)"
         content.sound = UNNotificationSound.default()
         
         let request = UNNotificationRequest(identifier: "VaccineNotification", content: content, trigger: trigger)
@@ -69,9 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             {
                 print("Error occured during notification")
             }
+            
         }
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

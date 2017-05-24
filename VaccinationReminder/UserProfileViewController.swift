@@ -17,25 +17,16 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    
+    
     
     let locationManager = CLLocationManager()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        addActivityViewController(activityView, true)
         //Updating Label Values
-        
-        let fir = FirebaseMethods()
-        fir.getDataFromFirebase { (name, birthDate) in
-            self.nameLabel.text = name!
-            self.birthDateLabel.text = birthDate!
-            UserDetails.userName = name!
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
-        }
-        
-        
         
         //navigationBar
         let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
@@ -50,6 +41,20 @@ class UserProfileViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
+        
+        let fir = FirebaseMethods()
+        fir.getDataFromFirebase { (name, birthDate) in
+            self.nameLabel.text = name!
+            self.birthDateLabel.text = birthDate!
+            UserDetails.userName = name!
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
+            self.addActivityViewController(self.activityView, false)
+            
+        }
+        
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any)
