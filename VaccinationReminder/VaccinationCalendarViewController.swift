@@ -14,7 +14,7 @@ class VaccinationCalendarViewController: UIViewController {
     let inMonthDatesColor = UIColor.white
     let outMonthDatesColor = UIColor.gray
     let dateFormatter = DateFormatter()
-
+    
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -41,6 +41,8 @@ class VaccinationCalendarViewController: UIViewController {
         yearLabel.text = dateFormatter.string(from: date)
         dateFormatter.dateFormat = "MMMM"
         monthLabel.text = dateFormatter.string(from: date)
+        
+        
     }
     
 }
@@ -51,37 +53,38 @@ extension VaccinationCalendarViewController :  JTAppleCalendarViewDelegate
         
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "VaccinationCalendarCell", for: indexPath) as! VaccinationCalendarCell
         cell.dateLabel.text = cellState.text
-        for vaccine in vaccines
+        
+        
+        if cellState.dateBelongsTo == .thisMonth
         {
-            
-            if cellState.dateBelongsTo == .thisMonth
+            cell.dateLabel.textColor = inMonthDatesColor
+            for vaccine in vaccines
             {
-                cell.dateLabel.textColor = inMonthDatesColor
-                
                 if date == vaccine.vaccineDate
                 {
                     cell.view.isHidden = false
                 }
             }
-            else
-            {
-                cell.dateLabel.textColor = outMonthDatesColor
-                cell.view.isHidden = true
-            }
         }
-        return cell
-        
-    }
+        else
+        {
+            cell.dateLabel.textColor = outMonthDatesColor
+            cell.view.isHidden = true
+        }
     
-    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        
-        let date = visibleDates.monthDates.first?.date
-        dateFormatter.dateFormat = "yyyy"
-        yearLabel.text = dateFormatter.string(from: date!)
-        dateFormatter.dateFormat = "MMMM"
-        monthLabel.text = dateFormatter.string(from: date!)
-    }
+    return cell
     
+}
+
+func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+    
+    let date = visibleDates.monthDates.first?.date
+    dateFormatter.dateFormat = "yyyy"
+    yearLabel.text = dateFormatter.string(from: date!)
+    dateFormatter.dateFormat = "MMMM"
+    monthLabel.text = dateFormatter.string(from: date!)
+}
+
 }
 extension VaccinationCalendarViewController : JTAppleCalendarViewDataSource
 {

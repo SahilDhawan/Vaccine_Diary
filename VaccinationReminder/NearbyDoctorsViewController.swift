@@ -13,7 +13,10 @@ import CoreLocation
 class NearbyDoctorsViewController: UIViewController{
     
     var doctorsArray : [String] = []
+    var updateLocation = true
     
+    let locationManager = CLLocationManager()
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
@@ -34,6 +37,7 @@ class NearbyDoctorsViewController: UIViewController{
                         self.doctorsArray.append(result["name"] as! String)
                     }
                     DispatchQueue.main.async {
+                        self.addActivityViewController(self.activityView, false)
                         self.tableView.reloadData()
                     }
                 }
@@ -50,24 +54,27 @@ class NearbyDoctorsViewController: UIViewController{
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addActivityViewController(self.activityView, true)
+
+        //locationManager
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         
         //navigationBar
         let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        //Navigation Bar
         self.navigationController?.navigationBar.barTintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         tableView.dataSource = self
+       
         
-        addActivityViewController(self.activityView, true)
-        googleApiFetch()
-        addActivityViewController(self.activityView, false)
-
     }
-    
 }
 
 extension NearbyDoctorsViewController : UITableViewDataSource
@@ -80,6 +87,37 @@ extension NearbyDoctorsViewController : UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyDoctorCell")
         cell?.textLabel?.text = doctorsArray[indexPath.item]
         return cell!
+    }
+    
+    func createDoctorList()
+    {
+        self.updateLocation = false
+        googleApiFetch()
+    }
+}
+
+extension NearbyDoctorsViewController : CLLocationManagerDelegate
+{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if self.updateLocation == true
+        {
+            let location = locations.last
+            let coordinate = location?.coordinate
+            UserDetails.locationCoordinate = coordinate!
+            createDoctorList()
+
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showAlert("cannot fetch Current Location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse
+        {
+            locationManager.requestLocation()
+        }
     }
 }
 

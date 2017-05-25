@@ -37,6 +37,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
+        
     }
     
     func googleApiFetch()
@@ -107,7 +108,6 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     
     func createUserLocation()
     {
-        
         let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(mapRegion, animated: true)
         googleApiFetch()

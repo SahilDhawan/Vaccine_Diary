@@ -77,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func scheduleNotifications(_ date : Date , _ msg : String)
     {
         
-        print(msg + " \(date)")
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
@@ -93,6 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             if error != nil
             {
                 print("Error occured during notification")
+            }
+            else
+            {
+                print(msg + " \(date)")
             }
             
         }

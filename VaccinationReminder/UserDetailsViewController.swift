@@ -14,9 +14,12 @@ class UserDetailsViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: TextField!
     @IBOutlet weak var dateOfBirth: TextField!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     let datePicker : UIDatePicker = UIDatePicker()
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
+        
         super.viewDidLoad()
         //delegates
         nameTextField.delegate = self
@@ -25,6 +28,9 @@ class UserDetailsViewController: UIViewController {
         //datePicker
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(handleDateChange(sender:)), for: UIControlEvents.valueChanged)
+        
+        //activityIndicatorView
+        addActivityViewController(activityView, true)
         
         //datePickerToolbar
         let toolbar = UIToolbar()
@@ -39,6 +45,24 @@ class UserDetailsViewController: UIViewController {
         dateOfBirth.inputView = datePicker
         dateOfBirth.inputAccessoryView = toolbar
         
+        //getting DataFromFirebase
+        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild(UserDetails.uid)
+            {
+                let firebase = FirebaseMethods()
+                firebase.getDataFromFirebase { (userName, birthDate) in
+                    self.addActivityViewController(self.activityView, false)
+                    self.nameTextField.text = userName
+                    self.dateOfBirth.text = birthDate
+                }
+            }
+            else
+            {
+                self.addActivityViewController(self.activityView, false)
+
+            }
+        })
     }
     
     func resign(sender : UIBarButtonItem)
@@ -67,6 +91,7 @@ class UserDetailsViewController: UIViewController {
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
     }
+    
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
         UserDetails.userName = nameTextField.text!
