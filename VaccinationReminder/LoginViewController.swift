@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
         self.passwordTextField.delegate = self
         
         facebookSignInButton.readPermissions = ["email"]
-        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -38,15 +37,8 @@ class LoginViewController: UIViewController {
         
         facebookSignInButton.delegate = self
         
-        
-        
-        //managing firebase users
-        if FIRAuth.auth()?.currentUser != nil
-        {
-            self.addActivityViewController(self.activityView, false)
-            self.performSegue(withIdentifier: "LoginSegue", sender: self)
-            UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
-        }
+        //logging out user
+        FBSDKLoginManager().logOut()
     }
     
     
@@ -69,6 +61,7 @@ class LoginViewController: UIViewController {
             }
             else
             {
+                self.addActivityViewController(self.activityView, false)
                 self.showAlert((error?.localizedDescription)!)
             }
         })
@@ -104,19 +97,30 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                 else
                 {
                     UserDetails.uid = (user?.uid)!
-                    self.addActivityViewController(self.activityView, false)
-                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                    let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+                    ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                        if snapshot.hasChild(UserDetails.uid)
+                        {
+                            self.addActivityViewController(self.activityView, false)
+                            self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                        }
+                        else 
+                        {
+                            self.addActivityViewController(self.activityView, false)
+                            self.performSegue(withIdentifier: "facebookLogin", sender: self)
+                        }
+                    })
+                    
+                   
                 }
             })
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        //TODO
     }
     
     func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-        //TODO
         return true
     }
 }

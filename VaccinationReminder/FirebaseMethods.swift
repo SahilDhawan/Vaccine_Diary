@@ -25,6 +25,7 @@ class FirebaseMethods : NSObject
         })
     }
     
+    
     func FirebaseUpdateData()
     {
         var saveDict = [String: String]()

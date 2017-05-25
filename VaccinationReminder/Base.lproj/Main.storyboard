@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UNG-3f-Dgq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="P2j-Wd-3to">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="UNG-3f-Dgq" customClass="LoginViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UNG-3f-Dgq" customClass="LoginViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JEN-Yv-SeP"/>
                         <viewControllerLayoutGuide type="bottom" id="qVx-Ut-ZmA"/>
@@ -137,7 +137,8 @@
                         <outlet property="emailTextField" destination="L8d-0F-PFK" id="4aA-mB-ZcM"/>
                         <outlet property="facebookSignInButton" destination="Fup-Tg-YyQ" id="JlF-pm-Zvk"/>
                         <outlet property="passwordTextField" destination="9RW-qU-89i" id="wet-SP-Tje"/>
-                        <segue destination="D0f-UX-86O" kind="show" identifier="LoginSegue" id="OW8-7v-nf3"/>
+                        <segue destination="D0f-UX-86O" kind="presentation" identifier="LoginSegue" id="OW8-7v-nf3"/>
+                        <segue destination="cob-rv-M8q" kind="presentation" identifier="facebookLogin" id="GsS-9G-V7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2Y-IV-SkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,25 +158,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPH-NI-1V9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfa-ca-o0G">
-                                        <rect key="frame" x="137" y="175" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" red="0.2162334323" green="0.27665311100000001" blue="0.3799453378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BSD-g7-hS8">
-                                <rect key="frame" x="85" y="84" width="150" height="150"/>
+                                <rect key="frame" x="85" y="40" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="i9u-kd-H8w"/>
                                     <constraint firstAttribute="height" constant="150" id="sNh-pT-3Xq"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="jjB-BO-zfX">
-                                <rect key="frame" x="20" y="274" width="280" height="72"/>
+                                <rect key="frame" x="20" y="230" width="280" height="72"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y3C-Yn-qLR" customClass="TextField" customModule="VaccinationReminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
@@ -198,7 +192,7 @@
                                 <color key="backgroundColor" red="0.39573992009999998" green="0.50849793219999995" blue="0.69841377049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQE-nz-VFf">
-                                <rect key="frame" x="104" y="407" width="112" height="30"/>
+                                <rect key="frame" x="104" y="363" width="112" height="30"/>
                                 <color key="backgroundColor" red="0.50026665660000003" green="0.71879959920000003" blue="0.76956134490000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="  SAVE DETAILS ">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -207,9 +201,6 @@
                                     <action selector="saveDetailsPressed:" destination="cob-rv-M8q" eventType="touchUpInside" id="ToZ-W2-vMT"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mqx-Bh-VvU">
-                                <rect key="frame" x="142" y="266" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -220,12 +211,10 @@
                             <constraint firstItem="qQE-nz-VFf" firstAttribute="centerX" secondItem="yTN-1L-5bm" secondAttribute="centerX" id="cOq-DA-Afe"/>
                             <constraint firstAttribute="trailing" secondItem="DPH-NI-1V9" secondAttribute="trailing" id="eaO-qP-dRT"/>
                             <constraint firstAttribute="trailing" secondItem="jjB-BO-zfX" secondAttribute="trailing" constant="20" id="goM-te-yJl"/>
-                            <constraint firstItem="mqx-Bh-VvU" firstAttribute="centerX" secondItem="yTN-1L-5bm" secondAttribute="centerX" id="kGX-f7-ZP5"/>
                             <constraint firstItem="jjB-BO-zfX" firstAttribute="leading" secondItem="yTN-1L-5bm" secondAttribute="leading" constant="20" id="nzE-dx-DUp"/>
                             <constraint firstItem="BSD-g7-hS8" firstAttribute="top" secondItem="Jbx-J4-P4J" secondAttribute="bottom" constant="20" id="oFj-bf-2Ya"/>
                             <constraint firstItem="DPH-NI-1V9" firstAttribute="top" secondItem="Jbx-J4-P4J" secondAttribute="bottom" id="ryX-jn-wfB"/>
                             <constraint firstItem="BSD-g7-hS8" firstAttribute="centerX" secondItem="yTN-1L-5bm" secondAttribute="centerX" id="sVj-cc-VcL"/>
-                            <constraint firstItem="mqx-Bh-VvU" firstAttribute="centerY" secondItem="yTN-1L-5bm" secondAttribute="centerY" id="vVG-6j-Xs2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="User Details" id="19p-f3-CeI"/>
@@ -356,7 +345,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="compose" id="d8y-ra-9F4">
                             <color key="tintColor" red="0.50026665660000003" green="0.71879959920000003" blue="0.76956134490000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="UpdateButtonPressed:" destination="ba8-aG-mBh" id="z7D-gQ-Lfz"/>
+                                <segue destination="9hx-bt-8dp" kind="presentation" id="OUc-xU-1t0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="LOG OUT" id="NRR-fw-ncY">
@@ -679,7 +668,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jds-wT-58Z">
             <objects>
-                <tabBarController id="D0f-UX-86O" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UsersProfileTab" id="D0f-UX-86O" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Vun-na-hhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -700,7 +689,7 @@
         <!--Vaccination Schedule-->
         <scene sceneID="f7F-qq-hCT">
             <objects>
-                <viewController id="Mg5-TZ-Ruu" customClass="ScheduleViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mg5-TZ-Ruu" customClass="ScheduleViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5wo-fH-LFo"/>
                         <viewControllerLayoutGuide type="bottom" id="Kma-hf-ZXd"/>
@@ -889,7 +878,7 @@
                         <outlet property="emailTextField" destination="2AY-Ka-W5i" id="q1T-3L-rD0"/>
                         <outlet property="passwordTextField" destination="7c9-FW-Mqf" id="TkQ-WN-Y2E"/>
                         <outlet property="signUpButton" destination="R9S-kh-LpZ" id="lbk-tS-YOL"/>
-                        <segue destination="9hx-bt-8dp" kind="show" identifier="SignUpSegue" id="BDm-6k-2zc"/>
+                        <segue destination="9hx-bt-8dp" kind="presentation" identifier="SignUpSegue" id="BDm-6k-2zc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slM-ff-y0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -899,7 +888,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4xF-t6-HCC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9hx-bt-8dp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UserDetailNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9hx-bt-8dp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Vz-UE-Agc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1020,5 +1009,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OW8-7v-nf3"/>
+        <segue reference="BDm-6k-2zc"/>
+        <segue reference="GsS-9G-V7o"/>
     </inferredMetricsTieBreakers>
 </document>

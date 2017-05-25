@@ -25,8 +25,27 @@ class UserDetailsViewController: UIViewController {
         //datePicker
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(handleDateChange(sender:)), for: UIControlEvents.valueChanged)
+        
+        //datePickerToolbar
+        let toolbar = UIToolbar()
+        toolbar.isTranslucent = false
+        toolbar.barStyle = .default
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resign(sender:)))
+        toolbar.setItems([doneButton], animated: true)
+        toolbar.isUserInteractionEnabled = true
+        toolbar.tintColor =  UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        toolbar.sizeToFit()
+        
         dateOfBirth.inputView = datePicker
+        dateOfBirth.inputAccessoryView = toolbar
+        
     }
+    
+    func resign(sender : UIBarButtonItem)
+    {
+        self.view.endEditing(true)
+    }
+    
     
     func handleDateChange(sender : UIDatePicker)
     {
@@ -54,6 +73,7 @@ class UserDetailsViewController: UIViewController {
         
         savingDetailsToFirebase()
         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+        return
     }
     
     func savingDetailsToFirebase()
@@ -70,8 +90,8 @@ class UserDetailsViewController: UIViewController {
         }
     }
     
-
-    }
+    
+}
 
 extension UserDetailsViewController : UITextFieldDelegate
 {

@@ -74,11 +74,6 @@ class UserProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func UpdateButtonPressed(_ sender: Any) {
-        UserDetails.update = true
-        let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailsViewController") as! UserDetailsViewController
-        self.present(controller, animated: true, completion: nil)
-    }
 }
 
 extension UserProfileViewController : CLLocationManagerDelegate
