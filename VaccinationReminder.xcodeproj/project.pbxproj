@@ -16,13 +16,6 @@
 		BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */; };
 		BA1EF39E1ED6C255001CA9DD /* VaccinationCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF39D1ED6C255001CA9DD /* VaccinationCalendarCell.swift */; };
 		BA1EF3A21ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF3A11ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift */; };
-		BA1EF3AB1ED777B7001CA9DD /* IMG_3387.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A41ED777B7001CA9DD /* IMG_3387.PNG */; };
-		BA1EF3AC1ED777B7001CA9DD /* IMG_3388.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A51ED777B7001CA9DD /* IMG_3388.PNG */; };
-		BA1EF3AD1ED777B7001CA9DD /* IMG_3389.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A61ED777B7001CA9DD /* IMG_3389.PNG */; };
-		BA1EF3AE1ED777B7001CA9DD /* IMG_3390.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A71ED777B7001CA9DD /* IMG_3390.PNG */; };
-		BA1EF3AF1ED777B7001CA9DD /* IMG_3391.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A81ED777B7001CA9DD /* IMG_3391.PNG */; };
-		BA1EF3B01ED777B7001CA9DD /* IMG_3392.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3A91ED777B7001CA9DD /* IMG_3392.PNG */; };
-		BA1EF3B11ED777B7001CA9DD /* IMG_3393.PNG in Resources */ = {isa = PBXBuildFile; fileRef = BA1EF3AA1ED777B7001CA9DD /* IMG_3393.PNG */; };
 		BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
@@ -55,13 +48,6 @@
 		BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA1EF39D1ED6C255001CA9DD /* VaccinationCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarCell.swift; sourceTree = "<group>"; };
 		BA1EF3A11ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarViewController.swift; sourceTree = "<group>"; };
-		BA1EF3A41ED777B7001CA9DD /* IMG_3387.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3387.PNG; path = ../../../Downloads/IMG_3387.PNG; sourceTree = "<group>"; };
-		BA1EF3A51ED777B7001CA9DD /* IMG_3388.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3388.PNG; path = ../../../Downloads/IMG_3388.PNG; sourceTree = "<group>"; };
-		BA1EF3A61ED777B7001CA9DD /* IMG_3389.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3389.PNG; path = ../../../Downloads/IMG_3389.PNG; sourceTree = "<group>"; };
-		BA1EF3A71ED777B7001CA9DD /* IMG_3390.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3390.PNG; path = ../../../Downloads/IMG_3390.PNG; sourceTree = "<group>"; };
-		BA1EF3A81ED777B7001CA9DD /* IMG_3391.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3391.PNG; path = ../../../Downloads/IMG_3391.PNG; sourceTree = "<group>"; };
-		BA1EF3A91ED777B7001CA9DD /* IMG_3392.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3392.PNG; path = ../../../Downloads/IMG_3392.PNG; sourceTree = "<group>"; };
-		BA1EF3AA1ED777B7001CA9DD /* IMG_3393.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_3393.PNG; path = ../../../Downloads/IMG_3393.PNG; sourceTree = "<group>"; };
 		BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMethods.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -171,26 +157,10 @@
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		BA1EF3A31ED77790001CA9DD /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				BA1EF3A41ED777B7001CA9DD /* IMG_3387.PNG */,
-				BA1EF3A51ED777B7001CA9DD /* IMG_3388.PNG */,
-				BA1EF3A61ED777B7001CA9DD /* IMG_3389.PNG */,
-				BA1EF3A71ED777B7001CA9DD /* IMG_3390.PNG */,
-				BA1EF3A81ED777B7001CA9DD /* IMG_3391.PNG */,
-				BA1EF3A91ED777B7001CA9DD /* IMG_3392.PNG */,
-				BA1EF3AA1ED777B7001CA9DD /* IMG_3393.PNG */,
-			);
-			name = Screenshots;
-			path = VaccinationReminder;
-			sourceTree = "<group>";
-		};
 		BAE930E71EBCF02E00F77191 = {
 			isa = PBXGroup;
 			children = (
 				BAE930F21EBCF02E00F77191 /* VaccinationReminder */,
-				BA1EF3A31ED77790001CA9DD /* Screenshots */,
 				BAE930F11EBCF02E00F77191 /* Products */,
 				B69BA861D9569B27168B3351 /* Pods */,
 				B106C1991D35B7E3923B03FD /* Frameworks */,
@@ -280,14 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
-				BA1EF3AD1ED777B7001CA9DD /* IMG_3389.PNG in Resources */,
-				BA1EF3B01ED777B7001CA9DD /* IMG_3392.PNG in Resources */,
-				BA1EF3B11ED777B7001CA9DD /* IMG_3393.PNG in Resources */,
-				BA1EF3AE1ED777B7001CA9DD /* IMG_3390.PNG in Resources */,
-				BA1EF3AF1ED777B7001CA9DD /* IMG_3391.PNG in Resources */,
 				BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */,
-				BA1EF3AB1ED777B7001CA9DD /* IMG_3387.PNG in Resources */,
-				BA1EF3AC1ED777B7001CA9DD /* IMG_3388.PNG in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);
