@@ -13,7 +13,7 @@ extension UIViewController
 {
     func showAlert(_ msg : String)
     {
-        let alertController = UIAlertController(title: "VaccinationReminder", message: msg, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Vaccine Diary", message: msg, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)

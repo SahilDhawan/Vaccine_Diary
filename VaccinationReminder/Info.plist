@@ -4,10 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Vaccination Reminder wants to access your location to fetch nearby hospitals and doctors.</string>
 	<key>CFBundleDisplayName</key>
-	<string>VaccinationReminder</string>
+	<string>Vaccine Diary</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -36,7 +34,7 @@
 	<key>FacebookAppID</key>
 	<string>1262266080568070</string>
 	<key>FacebookDisplayName</key>
-	<string>VaccinationReminder</string>
+	<string>Vaccine Diary</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -48,6 +46,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Vaccine Diary wants to access your location to fetch nearby hospitals and doctors.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

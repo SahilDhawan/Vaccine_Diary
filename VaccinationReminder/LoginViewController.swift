@@ -37,8 +37,6 @@ class LoginViewController: UIViewController {
         
         facebookSignInButton.delegate = self
         
-        //logging out user
-        FBSDKLoginManager().logOut()
     }
     
     
@@ -92,7 +90,9 @@ extension LoginViewController : FBSDKLoginButtonDelegate
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if error != nil
                 {
-                    self.showAlert((error?.localizedDescription)!)
+                    self.addActivityViewController(self.activityView, false)
+//                    self.showAlert((error?.localizedDescription)!)
+                    self.showAlert("\(error)")
                 }
                 else
                 {
