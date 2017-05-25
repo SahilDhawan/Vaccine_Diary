@@ -31,7 +31,6 @@ PODS:
   - FirebaseDatabase (3.0.1):
     - FirebaseAnalytics (~> 3.2)
   - FirebaseInstanceID (1.0.6)
-  - FSCalendar (2.1.1)
   - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleMaps (2.2.0):
@@ -49,6 +48,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
+  - JTAppleCalendar (7.0.2)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -56,10 +56,10 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - FSCalendar
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - JTAppleCalendar (~> 7.0)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -70,7 +70,6 @@ SPEC CHECKSUMS:
   FirebaseAuth: 94b851fc345ce98036dfedfdc2eddeaef8fa3b4c
   FirebaseDatabase: 34301d11621a83546f39f670d256477ba6f7fcea
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
-  FSCalendar: 04dc531f06fbde8a8e5b7394e9d4edebd45a591f
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
@@ -78,7 +77,8 @@ SPEC CHECKSUMS:
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
+  JTAppleCalendar: c14685634064ef67a68209548ff3443208af48a3
 
-PODFILE CHECKSUM: 19dbdfe38a9611a2e528beee52dc06a2895b69a5
+PODFILE CHECKSUM: 8ef3d75ed87e34bcdf469fdf82a61a78dcdf1d46
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1

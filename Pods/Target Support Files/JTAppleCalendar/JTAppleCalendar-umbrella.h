@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_VaccinationReminderVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_VaccinationReminderVersionString[];
+FOUNDATION_EXPORT double JTAppleCalendarVersionNumber;
+FOUNDATION_EXPORT const unsigned char JTAppleCalendarVersionString[];
 

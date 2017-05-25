@@ -84,7 +84,6 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
         //navigationBar
         let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        //Navigation Bar
         self.navigationController?.navigationBar.barTintColor = color
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         

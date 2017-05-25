@@ -19,6 +19,7 @@ struct UserDetails
     static var locationCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     static var uid : String = ""
     static var update : Bool = false
+    static var vaccinationList : [Vaccine] = []
     
     struct VaccinationDates
     {

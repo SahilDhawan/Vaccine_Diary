@@ -37,7 +37,18 @@ class LoginViewController: UIViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         facebookSignInButton.delegate = self
+        
+        
+        
+        //managing firebase users
+        if FIRAuth.auth()?.currentUser != nil
+        {
+            self.addActivityViewController(self.activityView, false)
+            self.performSegue(withIdentifier: "LoginSegue", sender: self)
+            UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
+        }
     }
+    
     
     @IBAction func logInPressed(_ sender: Any) {
         self.activityView.isHidden = false

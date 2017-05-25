@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import CoreLocation
+import FBSDKLoginKit
 
 class UserProfileViewController: UIViewController {
     
@@ -65,6 +66,7 @@ class UserProfileViewController: UIViewController {
             try firebaseAuth?.signOut()
             let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.present(controller, animated: true, completion: nil)
+            FBSDKLoginManager().logOut()
         }
         catch
         {

@@ -9,9 +9,9 @@ target 'VaccinationReminder' do
 	pod 'Firebase/Database'
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKCoreKit'
-    	pod 'FSCalendar'
     	pod 'GooglePlaces'
   	pod 'GooglePlacePicker'
   	pod 'GoogleMaps'
+    	pod 'JTAppleCalendar', '~> 7.0'
 	use_frameworks!
 end

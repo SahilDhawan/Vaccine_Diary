@@ -9,7 +9,6 @@
 import UIKit
 
 var tableSize : Int = 0
-var VaccinationSchedule : [Vaccine] = []
 
 class ScheduleViewController: UIViewController {
     
@@ -28,7 +27,7 @@ class ScheduleViewController: UIViewController {
             let vaccineObject = VaccinationList()
             vaccineObject.setVaccineList()
             tableSize = vaccineObject.getTableSize()
-            VaccinationSchedule = vaccineObject.getVaccineDetails()
+            UserDetails.vaccinationList = vaccineObject.getVaccineDetails()
             DispatchQueue.main.async
                 {
                     self.tableView.dataSource = self
@@ -64,7 +63,7 @@ extension ScheduleViewController: UITableViewDataSource
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        let vaccine = VaccinationSchedule[indexPath.item]
+        let vaccine = UserDetails.vaccinationList[indexPath.item]
         //Cell Details
         let cell = tableView.dequeueReusableCell(withIdentifier: "VaccineCell") as! VaccineTableViewCell
         cell.vaccineLabel?.text = vaccine.vaccineName
