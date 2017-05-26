@@ -73,6 +73,12 @@ class NearbyDoctorsViewController: UIViewController{
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         tableView.dataSource = self
        
+        //network connection
+        if Reachability().isConnectedToNetwork() == false
+        {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        }
         
     }
 }

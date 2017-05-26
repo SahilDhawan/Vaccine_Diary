@@ -20,6 +20,7 @@ struct UserDetails
     static var uid : String = ""
     static var update : Bool = false
     static var vaccinationList : [Vaccine] = []
+    static var logOut : Bool = false
     
     struct VaccinationDates
     {

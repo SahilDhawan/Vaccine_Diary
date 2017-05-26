@@ -77,12 +77,11 @@ class UserProfileViewController: UIViewController {
         let firebaseAuth = FIRAuth.auth()
         do
         {
+            UserDetails.logOut = true
             try firebaseAuth?.signOut()
             FBSDKLoginManager().logOut()
             self.addActivityViewController(self.activityView, false)
-            let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            self.present(controller, animated: true, completion: nil)
-//            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         catch
         {

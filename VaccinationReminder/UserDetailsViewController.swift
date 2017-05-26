@@ -16,6 +16,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var dateOfBirth: TextField!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveDetailsButton: UIButton!
     
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad()
@@ -96,15 +97,26 @@ class UserDetailsViewController: UIViewController {
         if UserDetails.update
         {
             cancelButton.isEnabled = true
+            saveDetailsButton.setTitle("UPDATE DETAILS", for: .normal)
         }
         else
         {
             cancelButton.isEnabled = false
         }
+        
+        //logOut New User
+        if UserDetails.logOut
+        {
+            UserDetails.logOut = false
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        
     }
     
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
+        addActivityViewController(self.activityView, true)
         UserDetails.userName = nameTextField.text!
         
         savingDetailsToFirebase()
@@ -119,10 +131,12 @@ class UserDetailsViewController: UIViewController {
             fir.FirebaseUpdateData({ (success) in
                 if success
                 {
-                    self.alertController("Data Updated")
+                    self.addActivityViewController(self.activityView, false)
+                    self.performSegue(withIdentifier: "userCreationSegue", sender: self)
                 }
                 else
                 {
+                    self.addActivityViewController(self.activityView, false)
                     self.showAlert("Could not update data")
                 }
             })
@@ -134,10 +148,12 @@ class UserDetailsViewController: UIViewController {
             fir.FirebaseWriteData({ (success) in
                 if success
                 {
-                    self.alertController("Data Saved")
+                    self.addActivityViewController(self.activityView, false)
+                    self.performSegue(withIdentifier: "userCreationSegue", sender: self)
                 }
                 else
                 {
+                    self.addActivityViewController(self.activityView, false)
                     self.showAlert("Could not update data")
                 }
             })
@@ -145,19 +161,9 @@ class UserDetailsViewController: UIViewController {
         }
     }
     
-    func alertController(_ msg : String)
-    {
-        let alertController = UIAlertController(title: "Vaccine_Diary", message: msg, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Dismiss", style: .default) { (action) in
-            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-        }
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        
-        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

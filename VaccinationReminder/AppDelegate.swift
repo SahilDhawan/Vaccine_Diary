@@ -21,30 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        //presentingViewController
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        let userVC = sb.instantiateViewController(withIdentifier: "UsersProfileTab") as! UITabBarController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        
         UIApplication.shared.statusBarStyle = .lightContent
         FIRApp.configure()
-        
-        //managing firebase users
-        if FIRAuth.auth()?.currentUser != nil
-        {
-            print("Schedule View Controller")
-            UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
-            self.window?.rootViewController = userVC
-        }
-        else
-        {
-            print("Login View Controller")
-            self.window?.rootViewController = loginVC
-        }
-        self.window?.makeKeyAndVisible()
-        
+       
         //googlePlacesAPI
         GMSPlacesClient.provideAPIKey(GooglePlacesConstants.queryValues.apiKey)
         

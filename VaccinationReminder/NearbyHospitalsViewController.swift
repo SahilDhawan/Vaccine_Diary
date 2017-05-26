@@ -93,6 +93,13 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         //activityView
         addActivityViewController(activityView, true)
         
+        //network connection
+        if Reachability().isConnectedToNetwork() == false
+        {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        }
+        
     }
     
     func createMapPins()

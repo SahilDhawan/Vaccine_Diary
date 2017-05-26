@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool)
     {
+        //empty the text in text fields
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        
         activityView.isHidden = true
         super.viewWillAppear(animated)
         
@@ -39,6 +43,21 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //auto login
+        addActivityViewController(self.activityView, true)
+        if FIRAuth.auth()?.currentUser != nil
+        {
+            UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
+            self.addActivityViewController(self.activityView, false)
+            self.performSegue(withIdentifier: "LoginSegue", sender: self)
+        }
+        else
+        {
+            self.addActivityViewController(self.activityView, false)
+        }
+    }
     
     @IBAction func logInPressed(_ sender: Any) {
         self.activityView.isHidden = false
@@ -91,8 +110,8 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                 if error != nil
                 {
                     self.addActivityViewController(self.activityView, false)
-//                    self.showAlert((error?.localizedDescription)!)
-                    self.showAlert("\(error)")
+                    self.showAlert((error?.localizedDescription)!)
+                    //                    self.showAlert("\(error)")
                 }
                 else
                 {
@@ -104,14 +123,14 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                             self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "LoginSegue", sender: self)
                         }
-                        else 
+                        else
                         {
                             self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "facebookLogin", sender: self)
                         }
                     })
                     
-                   
+                    
                 }
             })
         }

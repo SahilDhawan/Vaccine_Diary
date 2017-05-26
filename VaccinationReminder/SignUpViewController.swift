@@ -26,6 +26,11 @@ class SignUpViewController: UIViewController {
         passwordTextField.delegate = self
         confirmPass.delegate = self
         
+        //empty the text fields
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        confirmPass.text = ""
+        
         //setting up placeholder text
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (Greater than 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.white])
