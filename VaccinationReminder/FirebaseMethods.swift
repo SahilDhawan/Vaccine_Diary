@@ -26,24 +26,41 @@ class FirebaseMethods : NSObject
     }
     
     
-    func FirebaseUpdateData()
+    func FirebaseUpdateData(_ completionHandler: @escaping(_ success : Bool)->Void)
     {
         var saveDict = [String: String]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        ref.child("users").child(UserDetails.uid).updateChildValues(saveDict)
-        
+        ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
+            if error == nil
+            {
+                completionHandler(true)
+            }
+            else
+            {
+                completionHandler(false)
+            }
+        }
     }
     
-    func FirebaseWriteData()
+    func FirebaseWriteData(_ completionHandler: @escaping(_ success : Bool)->Void)
     {
         var saveDict = [String: String]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        ref.child("users").child(UserDetails.uid).setValue(saveDict)
+        ref.child("users").child(UserDetails.uid).setValue(saveDict) { (error, databaseRef) in
+            if error == nil
+            {
+                completionHandler(true)
+            }
+            else
+            {
+                completionHandler(false)
+            }
+        }
     }
 }

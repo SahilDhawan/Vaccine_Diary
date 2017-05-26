@@ -48,6 +48,12 @@ class ScheduleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addActivityViewController(activityView,true)
+        
+        if Reachability().isConnectedToNetwork() == false
+        {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        }
     }
     
 }

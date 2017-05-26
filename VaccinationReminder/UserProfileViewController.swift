@@ -56,21 +56,38 @@ class UserProfileViewController: UIViewController {
             
         }
         
+        if Reachability().isConnectedToNetwork() == false
+        {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        }
+
+        
+    }
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        UserDetails.update = true
+        let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailNavigationController") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any)
     {
+        addActivityViewController(activityView, true)
         let firebaseAuth = FIRAuth.auth()
         do
         {
             try firebaseAuth?.signOut()
+            FBSDKLoginManager().logOut()
+            self.addActivityViewController(self.activityView, false)
             let controller = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.present(controller, animated: true, completion: nil)
-            FBSDKLoginManager().logOut()
+//            self.dismiss(animated: true, completion: nil)
         }
         catch
         {
-            showAlert("Problem Loggin Out. Try again!")
+            self.addActivityViewController(self.activityView, false)
+            showAlert("Problem Logging Out. Try again!")
         }
     }
     

@@ -15,6 +15,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var nameTextField: TextField!
     @IBOutlet weak var dateOfBirth: TextField!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad()
@@ -60,7 +61,7 @@ class UserDetailsViewController: UIViewController {
             else
             {
                 self.addActivityViewController(self.activityView, false)
-
+                
             }
         })
     }
@@ -90,6 +91,16 @@ class UserDetailsViewController: UIViewController {
         //Text Field Placeholder
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        
+        //cancel button
+        if UserDetails.update
+        {
+            cancelButton.isEnabled = true
+        }
+        else
+        {
+            cancelButton.isEnabled = false
+        }
     }
     
     
@@ -97,7 +108,6 @@ class UserDetailsViewController: UIViewController {
         UserDetails.userName = nameTextField.text!
         
         savingDetailsToFirebase()
-        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
         return
     }
     
@@ -106,15 +116,49 @@ class UserDetailsViewController: UIViewController {
         let fir = FirebaseMethods()
         if UserDetails.update
         {
-            fir.FirebaseUpdateData()
+            fir.FirebaseUpdateData({ (success) in
+                if success
+                {
+                    self.alertController("Data Updated")
+                }
+                else
+                {
+                    self.showAlert("Could not update data")
+                }
+            })
+            
         }
         else
         {
             
-            fir.FirebaseWriteData()
+            fir.FirebaseWriteData({ (success) in
+                if success
+                {
+                    self.alertController("Data Saved")
+                }
+                else
+                {
+                    self.showAlert("Could not update data")
+                }
+            })
+            
         }
     }
     
+    func alertController(_ msg : String)
+    {
+        let alertController = UIAlertController(title: "Vaccine_Diary", message: msg, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Dismiss", style: .default) { (action) in
+            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+        }
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+    }
     
 }
 
