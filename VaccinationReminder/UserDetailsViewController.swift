@@ -17,6 +17,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveDetailsButton: UIButton!
+    @IBOutlet weak var activityView1: UIActivityIndicatorView!
     
     let datePicker : UIDatePicker = UIDatePicker()
     override func viewDidLoad()
@@ -62,7 +63,6 @@ class UserDetailsViewController: UIViewController {
             else
             {
                 self.addActivityViewController(self.activityView, false)
-                
             }
         })
     }
@@ -111,13 +111,16 @@ class UserDetailsViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
+        self.activityView1.isHidden = true
+
         
     }
     
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
-        addActivityViewController(self.activityView, true)
         UserDetails.userName = nameTextField.text!
+        
+        
         
         savingDetailsToFirebase()
         return
@@ -125,39 +128,51 @@ class UserDetailsViewController: UIViewController {
     
     func savingDetailsToFirebase()
     {
+        self.activityView1.isHidden = false
+        addActivityViewController(self.activityView1, true)
         let fir = FirebaseMethods()
-        if UserDetails.update
+        
+        //network connection
+        if Reachability().isConnectedToNetwork() == false
         {
-            fir.FirebaseUpdateData({ (success) in
-                if success
-                {
-                    self.addActivityViewController(self.activityView, false)
-                    self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-                }
-                else
-                {
-                    self.addActivityViewController(self.activityView, false)
-                    self.showAlert("Could not update data")
-                }
-            })
-            
+            self.addActivityViewController(self.activityView1, false)
+            showAlert("No Internet Connection")
         }
         else
         {
-            
-            fir.FirebaseWriteData({ (success) in
-                if success
-                {
-                    self.addActivityViewController(self.activityView, false)
-                    self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-                }
-                else
-                {
-                    self.addActivityViewController(self.activityView, false)
-                    self.showAlert("Could not update data")
-                }
-            })
-            
+            if UserDetails.update
+            {
+                fir.FirebaseUpdateData({ (success) in
+                    if success
+                    {
+                        self.addActivityViewController(self.activityView1, false)
+                        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+                    }
+                    else
+                    {
+                        self.addActivityViewController(self.activityView1, false)
+                        self.showAlert("Could not update data")
+                    }
+                })
+                
+            }
+            else
+            {
+                
+                fir.FirebaseWriteData({ (success) in
+                    if success
+                    {
+                        self.addActivityViewController(self.activityView1, false)
+                        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+                    }
+                    else
+                    {
+                        self.addActivityViewController(self.activityView1, false)
+                        self.showAlert("Could not update data")
+                    }
+                })
+                
+            }
         }
     }
     
