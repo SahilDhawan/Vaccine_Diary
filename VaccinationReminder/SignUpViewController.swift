@@ -36,6 +36,9 @@ class SignUpViewController: UIViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (Greater than 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.white])
         confirmPass.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         
+        UserDetails.logOut = false
+
+        
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
@@ -69,6 +72,10 @@ class SignUpViewController: UIViewController {
         
                     })
                 }
+    }
+    
+    @IBAction func logInButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

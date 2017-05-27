@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var facebookSignInButton: FBSDKLoginButton!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var activityView1: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,22 +41,34 @@ class LoginViewController: UIViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         facebookSignInButton.delegate = self
-        
+        UserDetails.logOut = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //auto login
-        addActivityViewController(self.activityView, true)
+        addActivityViewController(self.activityView1, true)
+        
         if FIRAuth.auth()?.currentUser != nil
         {
             UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
-            self.addActivityViewController(self.activityView, false)
-            self.performSegue(withIdentifier: "LoginSegue", sender: self)
+            let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChild(UserDetails.uid)
+                {
+                    self.addActivityViewController(self.activityView1, false)
+                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                }
+                else
+                {
+                    self.addActivityViewController(self.activityView1, false)
+                    self.performSegue(withIdentifier: "facebookLogin", sender: self)
+                }
+            })
         }
         else
         {
-            self.addActivityViewController(self.activityView, false)
+            self.addActivityViewController(self.activityView1, false)
         }
     }
     
@@ -72,9 +85,9 @@ class LoginViewController: UIViewController {
             
             if error == nil
             {
+                UserDetails.uid = (user?.uid)!
                 self.addActivityViewController(self.activityView, false)
                 self.performSegue(withIdentifier: "LoginSegue", sender: self)
-                UserDetails.uid = (user?.uid)!
             }
             else
             {

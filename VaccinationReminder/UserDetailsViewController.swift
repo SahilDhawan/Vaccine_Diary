@@ -18,8 +18,10 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveDetailsButton: UIButton!
     @IBOutlet weak var activityView1: UIActivityIndicatorView!
+    @IBOutlet weak var detailsLabel: UILabel!
     
     let datePicker : UIDatePicker = UIDatePicker()
+    
     override func viewDidLoad()
     {
         
@@ -98,10 +100,13 @@ class UserDetailsViewController: UIViewController {
         {
             cancelButton.isEnabled = true
             saveDetailsButton.setTitle("UPDATE DETAILS", for: .normal)
+            detailsLabel.isHidden = true
         }
         else
         {
             cancelButton.isEnabled = false
+            detailsLabel.isHidden = false
+
         }
         
         //logOut New User
@@ -111,7 +116,7 @@ class UserDetailsViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
-        self.activityView1.isHidden = true
+        activityView1.isHidden = true
 
         
     }
