@@ -12,6 +12,5 @@ target 'VaccinationReminder' do
     	pod 'GooglePlaces'
   	pod 'GooglePlacePicker'
   	pod 'GoogleMaps'
-    	pod 'JTAppleCalendar', '~> 7.0'
 	use_frameworks!
 end

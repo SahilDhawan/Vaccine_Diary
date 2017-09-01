@@ -15,8 +15,6 @@
 		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
 		BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */; };
 		BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */; };
-		BA1EF39E1ED6C255001CA9DD /* VaccinationCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF39D1ED6C255001CA9DD /* VaccinationCalendarCell.swift */; };
-		BA1EF3A21ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF3A11ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift */; };
 		BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */; };
 		BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */; };
 		BA2C49421EBE7FF500F3D614 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C49411EBE7FF500F3D614 /* View.swift */; };
@@ -48,8 +46,6 @@
 		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 		BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BA1EF39D1ED6C255001CA9DD /* VaccinationCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarCell.swift; sourceTree = "<group>"; };
-		BA1EF3A11ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationCalendarViewController.swift; sourceTree = "<group>"; };
 		BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMethods.swift; sourceTree = "<group>"; };
 		BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BA2C49411EBE7FF500F3D614 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -125,7 +121,6 @@
 		BA0F687F1EBD224300DAF7A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BA1EF39D1ED6C255001CA9DD /* VaccinationCalendarCell.swift */,
 				BA306E801EC20D0600DE1B6A /* VaccineTableViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* View.swift */,
 				BA7698B71EC8F28E00B16B72 /* TextField.swift */,
@@ -137,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
-				BA1EF3A11ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift */,
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
 				BA306E861EC23B2900DE1B6A /* NearbyDoctorsViewController.swift */,
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
@@ -328,9 +322,7 @@
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
-				BA1EF39E1ED6C255001CA9DD /* VaccinationCalendarCell.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* View.swift in Sources */,
-				BA1EF3A21ED6C3E6001CA9DD /* VaccinationCalendarViewController.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 				BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */,
