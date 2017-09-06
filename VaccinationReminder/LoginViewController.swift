@@ -42,10 +42,7 @@ class LoginViewController: UIViewController {
         
         facebookSignInButton.delegate = self
         UserDetails.logOut = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+
         //auto login
         addActivityViewController(self.activityView1, true)
         

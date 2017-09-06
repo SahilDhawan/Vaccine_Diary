@@ -81,7 +81,10 @@ class UserProfileViewController: UIViewController {
             try firebaseAuth?.signOut()
             FBSDKLoginManager().logOut()
             self.addActivityViewController(self.activityView, false)
-            self.dismiss(animated: true, completion: nil)
+            let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.window?.rootViewController = loginViewController
+        
         }
         catch
         {
