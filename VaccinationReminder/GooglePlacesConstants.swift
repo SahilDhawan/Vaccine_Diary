@@ -22,13 +22,14 @@ struct GooglePlacesConstants
         static let apiKey = "key"
 
     }
+    
     struct queryValues
     {
         static let location = "\(UserDetails.locationCoordinate.latitude), \(UserDetails.locationCoordinate.longitude)"
         static let radius = "500"
         static let sensor = "true"
         static let hospitalType = "Hospital"
-        static let doctorType = "Doctor"
+        static let pharmacyType = "pharmacy"
         static let doctorKeyboard  = "Keyboard"
         static let apiKey = "AIzaSyBJItU0E8gSaSKQOEvaaCbCcUDsmHKYJHk"
     }

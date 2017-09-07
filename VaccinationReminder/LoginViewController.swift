@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool)
     {
-        //empty the text in text fields
         emailTextField.text = ""
         passwordTextField.text = ""
         
@@ -42,29 +41,24 @@ class LoginViewController: UIViewController {
         
         facebookSignInButton.delegate = self
         UserDetails.logOut = false
-
-        //auto login
+        
         addActivityViewController(self.activityView1, true)
         
-        if FIRAuth.auth()?.currentUser != nil
-        {
+        if FIRAuth.auth()?.currentUser != nil {
             UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
             let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.hasChild(UserDetails.uid)
-                {
+                if snapshot.hasChild(UserDetails.uid) {
                     self.addActivityViewController(self.activityView1, false)
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
-                else
-                {
+                else {
                     self.addActivityViewController(self.activityView1, false)
                     self.performSegue(withIdentifier: "facebookLogin", sender: self)
                 }
             })
         }
-        else
-        {
+        else {
             self.addActivityViewController(self.activityView1, false)
         }
     }
@@ -72,22 +66,19 @@ class LoginViewController: UIViewController {
     @IBAction func logInPressed(_ sender: Any) {
         self.activityView.isHidden = false
         addActivityViewController(self.activityView, true)
-        guard let email = emailTextField.text,let password = passwordTextField.text else
-        {
+        guard let email = emailTextField.text,let password = passwordTextField.text else {
             print("Email or Password can't be empty")
             return
         }
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
-            if error == nil
-            {
+            if error == nil {
                 UserDetails.uid = (user?.uid)!
                 self.addActivityViewController(self.activityView, false)
                 self.performSegue(withIdentifier: "LoginSegue", sender: self)
             }
-            else
-            {
+            else {
                 self.addActivityViewController(self.activityView, false)
                 self.showAlert((error?.localizedDescription)!)
             }
@@ -109,22 +100,18 @@ extension LoginViewController : FBSDKLoginButtonDelegate
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         self.activityView.isHidden = false
         self.addActivityViewController(self.activityView, true)
-        if error != nil
-        {
+        if error != nil {
             self.showAlert(error.localizedDescription)
         }
-        else
-        {
+        else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-                if error != nil
-                {
+                if error != nil {
                     self.addActivityViewController(self.activityView, false)
                     self.showAlert((error?.localizedDescription)!)
                     //                    self.showAlert("\(error)")
                 }
-                else
-                {
+                else {
                     UserDetails.uid = (user?.uid)!
                     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
                     ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in

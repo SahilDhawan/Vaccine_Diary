@@ -38,6 +38,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
         mapView.showsUserLocation = true
         
+        self.setupNavigationBar()
     }
     
     func googleApiFetch()
@@ -83,10 +84,6 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //navigationBar
-        let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         

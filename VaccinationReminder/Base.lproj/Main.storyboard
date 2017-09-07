@@ -479,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="7297.5" y="-1241.1971830985915"/>
         </scene>
-        <!--Nearby Doctors-->
+        <!--Nearby Pharmacies-->
         <scene sceneID="qZ9-Ye-5Yi">
             <objects>
-                <viewController id="DbN-oi-p1u" customClass="NearbyDoctorsViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DbN-oi-p1u" customClass="NearbyPharmacyViewController" customModule="VaccinationReminder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jGv-If-aMg"/>
                         <viewControllerLayoutGuide type="bottom" id="apB-2F-KDd"/>
@@ -529,7 +529,7 @@
                             <constraint firstItem="HSQ-ZX-b3j" firstAttribute="centerX" secondItem="0XG-WQ-dQp" secondAttribute="centerX" id="xUI-w2-dre"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Nearby Doctors" id="syD-qy-9im"/>
+                    <navigationItem key="navigationItem" title="Nearby Pharmacies" id="syD-qy-9im"/>
                     <connections>
                         <outlet property="activityView" destination="HSQ-ZX-b3j" id="OEi-YJ-s0D"/>
                         <outlet property="tableView" destination="wDC-dZ-tOg" id="agp-zb-nZY"/>
@@ -543,10 +543,13 @@
         <scene sceneID="jds-wT-58Z">
             <objects>
                 <tabBarController storyboardIdentifier="UsersProfileTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D0f-UX-86O" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Vun-na-hhy">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="Vun-na-hhy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="nsx-d3-tb6" kind="relationship" relationship="viewControllers" id="5lg-zy-e0B"/>
@@ -571,75 +574,152 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8oY-ij-jPh">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VaccineCell" id="jBC-sa-FBr" customClass="VaccineTableViewCell" customModule="VaccinationReminder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jBC-sa-FBr" id="e1a-8f-hjI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DYh-8o-s1O">
+                                <rect key="frame" x="0.0" y="74" width="320" height="435"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K3S-S5-af4">
+                                    <size key="itemSize" width="298" height="67"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VaccineCell" id="g8S-2J-gbg" customClass="VaccineCollectionViewCell" customModule="VaccinationReminder" customModuleProvider="target">
+                                        <rect key="frame" x="11" y="0.0" width="298" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zsP-b4-QFc">
-                                                    <rect key="frame" x="5" y="5" width="35" height="35"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VacRed" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-Zz-RUs">
+                                                    <rect key="frame" x="10" y="13.5" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="49c-QQ-YMz"/>
-                                                        <constraint firstAttribute="width" constant="35" id="giO-Ii-r3x"/>
+                                                        <constraint firstAttribute="width" constant="40" id="AUW-ma-15v"/>
+                                                        <constraint firstAttribute="height" constant="40" id="dUs-2Q-S4r"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1F-Y4-Yxy">
-                                                    <rect key="frame" x="60" y="12" width="61" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.17228409650000001" green="0.2203960717" blue="0.30237403509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh3-iM-jwX">
-                                                    <rect key="frame" x="271" y="13" width="36" height="19"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xpX-zO-Wx5">
+                                                    <rect key="frame" x="60" y="23" width="228" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIo-Va-yfY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAw-dg-KDw">
+                                                            <rect key="frame" x="114" y="0.0" width="114" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="N1F-Y4-Yxy" firstAttribute="leading" secondItem="zsP-b4-QFc" secondAttribute="trailing" constant="20" id="138-PF-ZPx"/>
-                                                <constraint firstItem="N1F-Y4-Yxy" firstAttribute="centerY" secondItem="vh3-iM-jwX" secondAttribute="centerY" id="44s-h3-YKU"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vh3-iM-jwX" secondAttribute="trailing" constant="5" id="7yP-cX-Qul"/>
-                                                <constraint firstItem="zsP-b4-QFc" firstAttribute="centerY" secondItem="N1F-Y4-Yxy" secondAttribute="centerY" id="NBL-fy-Rkj"/>
-                                                <constraint firstItem="zsP-b4-QFc" firstAttribute="leading" secondItem="e1a-8f-hjI" secondAttribute="leading" constant="5" id="TTz-vm-cfN"/>
-                                                <constraint firstItem="zsP-b4-QFc" firstAttribute="top" secondItem="e1a-8f-hjI" secondAttribute="top" constant="5" id="WiV-83-Mro"/>
-                                                <constraint firstItem="vh3-iM-jwX" firstAttribute="top" secondItem="e1a-8f-hjI" secondAttribute="topMargin" constant="5" id="le0-if-rQr"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="xpX-zO-Wx5" firstAttribute="leading" secondItem="MeA-Zz-RUs" secondAttribute="trailing" constant="10" id="0tg-Ce-hkK"/>
+                                            <constraint firstItem="MeA-Zz-RUs" firstAttribute="leading" secondItem="g8S-2J-gbg" secondAttribute="leading" constant="10" id="2as-lz-OUc"/>
+                                            <constraint firstItem="MeA-Zz-RUs" firstAttribute="centerY" secondItem="g8S-2J-gbg" secondAttribute="centerY" id="CSQ-cI-8LC"/>
+                                            <constraint firstItem="xpX-zO-Wx5" firstAttribute="centerY" secondItem="g8S-2J-gbg" secondAttribute="centerY" id="cvg-Lg-kue"/>
+                                            <constraint firstAttribute="trailing" secondItem="xpX-zO-Wx5" secondAttribute="trailing" constant="10" id="gkR-Xd-yc6"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="dateLabel" destination="vh3-iM-jwX" id="SRM-mw-kax"/>
-                                            <outlet property="vaccineImageView" destination="zsP-b4-QFc" id="Lyw-od-Dvu"/>
-                                            <outlet property="vaccineLabel" destination="N1F-Y4-Yxy" id="gzj-uE-hVz"/>
+                                            <outlet property="dateLabel" destination="eAw-dg-KDw" id="IaH-YT-rBI"/>
+                                            <outlet property="vaccineImageView" destination="MeA-Zz-RUs" id="bgn-aK-e5l"/>
+                                            <outlet property="vaccineLabel" destination="HIo-Va-yfY" id="rXP-3H-wsG"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ewv-YE-Ggi">
                                 <rect key="frame" x="142" y="241" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmq-5P-FML">
+                                <rect key="frame" x="10" y="139.5" width="300" height="240"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xI5-Dz-NQy">
+                                        <rect key="frame" x="15" y="15" width="270" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zip-wL-SzC">
+                                                <rect key="frame" x="0.0" y="0.0" width="135" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myd-bN-ebf">
+                                                <rect key="frame" x="135" y="0.0" width="135" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="zme-PA-AGA"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Lxd-dT-q8Y">
+                                        <rect key="frame" x="10" y="55" width="280" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-q6-4Xr">
+                                        <rect key="frame" x="237" y="200" width="48" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="tno-rN-Kj9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="CLOSE">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="Mg5-TZ-Ruu" eventType="touchUpInside" id="BTq-di-dkr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.53919226990000002" green="0.77268707869999997" blue="0.76423604040000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xI5-Dz-NQy" firstAttribute="top" secondItem="lmq-5P-FML" secondAttribute="top" constant="15" id="6Z9-AL-TJ5"/>
+                                    <constraint firstAttribute="height" constant="240" id="PGH-VR-C1r"/>
+                                    <constraint firstItem="xI5-Dz-NQy" firstAttribute="leading" secondItem="lmq-5P-FML" secondAttribute="leading" constant="15" id="WOm-63-lOA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lxd-dT-q8Y" secondAttribute="trailing" constant="10" id="aP6-4D-CyE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jjd-q6-4Xr" secondAttribute="trailing" constant="15" id="bkl-Iw-kJ4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jjd-q6-4Xr" secondAttribute="bottom" constant="10" id="fJc-fu-afx"/>
+                                    <constraint firstAttribute="trailing" secondItem="xI5-Dz-NQy" secondAttribute="trailing" constant="15" id="jYB-8r-iAZ"/>
+                                    <constraint firstItem="Lxd-dT-q8Y" firstAttribute="leading" secondItem="lmq-5P-FML" secondAttribute="leading" constant="10" id="lXC-RM-1Py"/>
+                                    <constraint firstItem="Jjd-q6-4Xr" firstAttribute="top" secondItem="Lxd-dT-q8Y" secondAttribute="bottom" constant="10" id="wXJ-Wt-b9H"/>
+                                    <constraint firstItem="Lxd-dT-q8Y" firstAttribute="top" secondItem="xI5-Dz-NQy" secondAttribute="bottom" constant="10" id="z6l-RR-xJ2"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.17228409650000001" green="0.2203960717" blue="0.30237403509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8oY-ij-jPh" secondAttribute="trailing" id="056-s9-YfK"/>
-                            <constraint firstItem="8oY-ij-jPh" firstAttribute="leading" secondItem="8de-ro-3e9" secondAttribute="leading" id="925-kZ-ZXY"/>
+                            <constraint firstItem="DYh-8o-s1O" firstAttribute="leading" secondItem="8de-ro-3e9" secondAttribute="leading" id="17d-Ue-SFN"/>
+                            <constraint firstItem="lmq-5P-FML" firstAttribute="centerY" secondItem="8de-ro-3e9" secondAttribute="centerY" id="2Ey-Ti-Q9j"/>
+                            <constraint firstItem="DYh-8o-s1O" firstAttribute="top" secondItem="5wo-fH-LFo" secondAttribute="bottom" constant="10" id="2Xr-Da-iUK"/>
+                            <constraint firstItem="Kma-hf-ZXd" firstAttribute="top" secondItem="DYh-8o-s1O" secondAttribute="bottom" constant="10" id="6h8-Nf-Kfl"/>
+                            <constraint firstItem="lmq-5P-FML" firstAttribute="leading" secondItem="8de-ro-3e9" secondAttribute="leading" constant="10" id="AlP-7v-5ad"/>
                             <constraint firstItem="ewv-YE-Ggi" firstAttribute="centerY" secondItem="8de-ro-3e9" secondAttribute="centerY" id="Hri-Lf-V3O"/>
                             <constraint firstItem="ewv-YE-Ggi" firstAttribute="centerX" secondItem="8de-ro-3e9" secondAttribute="centerX" id="b75-bW-Wlt"/>
-                            <constraint firstItem="Kma-hf-ZXd" firstAttribute="top" secondItem="8oY-ij-jPh" secondAttribute="bottom" id="qpB-nX-ua2"/>
-                            <constraint firstItem="8oY-ij-jPh" firstAttribute="top" secondItem="5wo-fH-LFo" secondAttribute="bottom" id="wC2-0p-b2U"/>
+                            <constraint firstItem="lmq-5P-FML" firstAttribute="centerX" secondItem="8de-ro-3e9" secondAttribute="centerX" id="q8h-Jb-hNm"/>
+                            <constraint firstAttribute="trailing" secondItem="DYh-8o-s1O" secondAttribute="trailing" id="r9R-9r-cXr"/>
+                            <constraint firstAttribute="trailing" secondItem="lmq-5P-FML" secondAttribute="trailing" constant="10" id="sHt-Nz-26v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vaccination Schedule" id="gco-za-Gcn"/>
                     <connections>
                         <outlet property="activityView" destination="ewv-YE-Ggi" id="r2Z-PC-czk"/>
-                        <outlet property="tableView" destination="8oY-ij-jPh" id="VO7-6u-TH3"/>
+                        <outlet property="collectionView" destination="DYh-8o-s1O" id="NNA-Xm-jqo"/>
+                        <outlet property="detailDate" destination="Myd-bN-ebf" id="oTT-xu-ya6"/>
+                        <outlet property="detailName" destination="Zip-wL-SzC" id="emh-vB-Rb0"/>
+                        <outlet property="flowLayout" destination="K3S-S5-af4" id="v2N-cw-IgM"/>
+                        <outlet property="textView" destination="Lxd-dT-q8Y" id="skd-fe-bLH"/>
+                        <outlet property="vaccineDetail" destination="lmq-5P-FML" id="Xcs-PG-ECP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plC-cr-qPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -780,7 +860,7 @@
         <scene sceneID="4b0-LO-kJd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nsx-d3-tb6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedule" image="tableIcon" id="oxl-Ne-I80"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="schedule" id="oxl-Ne-I80"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mwz-VJ-rgR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -799,7 +879,7 @@
         <scene sceneID="Yh0-Ed-K2i">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wdj-Qs-F1B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="userProfile" id="zGe-ga-Qu1"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="zGe-ga-Qu1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3xx-Zc-XPa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -818,7 +898,7 @@
         <scene sceneID="sFg-aW-m3h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pm1-Zd-HjR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hospitals" image="mapIcon" id="DlK-UN-OTE"/>
+                    <tabBarItem key="tabBarItem" title="Hospitals" image="hospital" id="DlK-UN-OTE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ai8-8I-nAd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -833,11 +913,11 @@
             </objects>
             <point key="canvasLocation" x="6300" y="-1241.1971830985915"/>
         </scene>
-        <!--Doctors-->
+        <!--Pharmacies-->
         <scene sceneID="LUq-Aw-0k0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Way-AS-vTT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Doctors" image="mapIcon" id="VKv-3e-lD1"/>
+                    <tabBarItem key="tabBarItem" title="Pharmacies" image="clinic" id="VKv-3e-lD1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NWi-2Y-pmg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -854,11 +934,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="VacRed" width="500" height="498"/>
+        <image name="clinic" width="26" height="26"/>
+        <image name="hospital" width="25" height="25"/>
         <image name="icon" width="500" height="498"/>
-        <image name="mapIcon" width="30" height="30"/>
-        <image name="tableIcon" width="30" height="30"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="schedule" width="25" height="25"/>
         <image name="userIcon" width="256" height="256"/>
-        <image name="userProfile" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OW8-7v-nf3"/>

@@ -39,13 +39,13 @@ class GooglePlaces : NSObject
         return urlComponents.url!
     }
     
-    func createDoctorUrl() -> URL
+    func createPharmacyUrl() -> URL
     {
         var urlComponents = URLComponents()
         urlComponents.scheme = GooglePlacesConstants.urlScheme
         urlComponents.host = GooglePlacesConstants.urlHost
         urlComponents.path = GooglePlacesConstants.urlPath
-        urlComponents.queryItems = createQueryArray(GooglePlacesConstants.queryValues.doctorType)
+        urlComponents.queryItems = createQueryArray(GooglePlacesConstants.queryValues.pharmacyType)
         return urlComponents.url!
     }
     

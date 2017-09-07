@@ -13,10 +13,12 @@ class Vaccine: NSObject {
     var vaccineName : String
     var vaccineDate : Date
     var vaccineCompletion : Bool
-    public init(_ name : String , _ date : Date , _ completed : Bool) {
+    var vaccinationDetail : String
+    public init(_ name : String , _ date : Date , _ completed : Bool , _ detail : String) {
         
         vaccineName = name
         vaccineDate = date
         vaccineCompletion = completed
+        vaccinationDetail = detail
     }
 }

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UIApplication.shared.statusBarStyle = .lightContent
         FIRApp.configure()
-       
+        
         //googlePlacesAPI
         GMSPlacesClient.provideAPIKey(GooglePlacesConstants.queryValues.apiKey)
         
@@ -53,28 +53,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func scheduleNotifications(_ date : Date , _ msg : String)
     {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
         
-        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = "Vaccination Reminder"
         content.body = msg + " \(date)"
         content.sound = UNNotificationSound.default()
         
-        let request = UNNotificationRequest(identifier: "VaccineNotification", content: content, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().add(request) { (error) in
-            if error != nil
-            {
+            if error != nil {
                 print("Error occured during notification")
-            }
-            else
-            {
+            } else {
                 print(msg + " \(date)")
             }
-            
         }
     }
     

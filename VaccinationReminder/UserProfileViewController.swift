@@ -20,20 +20,12 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
-    
-    
     let locationManager = CLLocationManager()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         addActivityViewController(activityView, true)
-        //Updating Label Values
-        
-        //navigationBar
-        let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        //Navigation Bar
-        self.navigationController?.navigationBar.barTintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         //locationManager
         locationManager.requestWhenInUseAuthorization()
@@ -42,7 +34,23 @@ class UserProfileViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         mapView.showsUserLocation = true
-        
+        getDataFromFirebase()
+        if Reachability().isConnectedToNetwork() == false
+        {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        }
+
+        self.setupNavigationBar()
+    }
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        UserDetails.update = true
+        let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailNavigationController") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    func getDataFromFirebase() {
         let fir = FirebaseMethods()
         fir.getDataFromFirebase { (name, birthDate) in
             self.nameLabel.text = name!
@@ -55,20 +63,6 @@ class UserProfileViewController: UIViewController {
             self.addActivityViewController(self.activityView, false)
             
         }
-        
-        if Reachability().isConnectedToNetwork() == false
-        {
-            self.addActivityViewController(self.activityView, false)
-            showAlert("No Internet Connection")
-        }
-
-        
-    }
-    
-    @IBAction func editButtonPressed(_ sender: Any) {
-        UserDetails.update = true
-        let controller = storyboard?.instantiateViewController(withIdentifier: "UserDetailNavigationController") as! UINavigationController
-        self.present(controller, animated: true, completion: nil)
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any)
@@ -105,7 +99,6 @@ extension UserProfileViewController : CLLocationManagerDelegate
         let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(mapRegion, animated: true)
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         showAlert("cannot fetch Current Location")

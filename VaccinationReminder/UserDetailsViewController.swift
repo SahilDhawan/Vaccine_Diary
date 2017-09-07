@@ -50,7 +50,16 @@ class UserDetailsViewController: UIViewController {
         dateOfBirth.inputView = datePicker
         dateOfBirth.inputAccessoryView = toolbar
         
-        //getting DataFromFirebase
+        getDataFromFirebase()
+        self.setupNavigationBar()
+    }
+    
+    func resign(sender : UIBarButtonItem)
+    {
+        self.view.endEditing(true)
+    }
+    
+    func getDataFromFirebase() {
         let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(UserDetails.uid)
@@ -69,12 +78,6 @@ class UserDetailsViewController: UIViewController {
         })
     }
     
-    func resign(sender : UIBarButtonItem)
-    {
-        self.view.endEditing(true)
-    }
-    
-    
     func handleDateChange(sender : UIDatePicker)
     {
         UserDetails.userBirthDate = datePicker.date
@@ -86,11 +89,6 @@ class UserDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let color = UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
-        //Navigation Bar
-        self.navigationController?.navigationBar.barTintColor = color
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        
         //Text Field Placeholder
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
