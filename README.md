@@ -38,12 +38,3 @@ Nearby Hospitals View Controller showcases the nearby hospitals in a map view an
 
 #### Nearby Doctors
 Nearby Doctors View Controller showcases all the nearby doctors in the form of list which is fetched from the google places API.
-
-### Screenshots
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3387.imageset/IMG_3387.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3388.imageset/IMG_3388.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3389.imageset/IMG_3389.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3390.imageset/IMG_3390.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3391.imageset/IMG_3391.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3392.imageset/IMG_3392.PNG" height = "50%" width = "25%"></img>
-<img src = "https://github.com/SahilDhawan/Vaccine_Diary/blob/master/VaccinationReminder/Assets.xcassets/IMG_3393.imageset/IMG_3393.PNG" height = "50%" width = "25%"></img>
