@@ -35,8 +35,7 @@ class UserProfileViewController: UIViewController {
         
         mapView.showsUserLocation = true
         getDataFromFirebase()
-        if Reachability().isConnectedToNetwork() == false
-        {
+        if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
         }
@@ -61,7 +60,6 @@ class UserProfileViewController: UIViewController {
             dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
             self.addActivityViewController(self.activityView, false)
-            
         }
     }
     
@@ -69,8 +67,7 @@ class UserProfileViewController: UIViewController {
     {
         addActivityViewController(activityView, true)
         let firebaseAuth = FIRAuth.auth()
-        do
-        {
+        do {
             UserDetails.logOut = true
             try firebaseAuth?.signOut()
             FBSDKLoginManager().logOut()
@@ -78,19 +75,16 @@ class UserProfileViewController: UIViewController {
             let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.window?.rootViewController = loginViewController
-        
         }
-        catch
-        {
+        catch {
             self.addActivityViewController(self.activityView, false)
             showAlert("Problem Logging Out. Try again!")
         }
     }
-    
 }
 
-extension UserProfileViewController : CLLocationManagerDelegate
-{
+extension UserProfileViewController : CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
@@ -105,8 +99,7 @@ extension UserProfileViewController : CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse
-        {
+        if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
     }

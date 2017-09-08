@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-class GooglePlaces : NSObject
-{
-    func createQueryArray(_ type : String)->[URLQueryItem]
-    {
+class GooglePlaces : NSObject {
+    
+    func createQueryArray(_ type : String)->[URLQueryItem] {
         var queryDictionary : [String:String] = [:]
         queryDictionary[GooglePlacesConstants.queryKeys.location] = GooglePlacesConstants.queryValues.location
         queryDictionary[GooglePlacesConstants.queryKeys.radius] = GooglePlacesConstants.queryValues.radius
@@ -21,16 +20,14 @@ class GooglePlaces : NSObject
         queryDictionary[GooglePlacesConstants.queryKeys.apiKey] = GooglePlacesConstants.queryValues.apiKey
         
         var queryArray : [URLQueryItem] = []
-        for (key,value) in queryDictionary
-        {
+        for (key,value) in queryDictionary {
             let queryItem = URLQueryItem(name: key, value: value)
             queryArray.append(queryItem)
         }
         return queryArray
     }
     
-    func createHospitalUrl() -> URL
-    {
+    func createHospitalUrl() -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = GooglePlacesConstants.urlScheme
         urlComponents.host = GooglePlacesConstants.urlHost
@@ -39,8 +36,7 @@ class GooglePlaces : NSObject
         return urlComponents.url!
     }
     
-    func createPharmacyUrl() -> URL
-    {
+    func createPharmacyUrl() -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = GooglePlacesConstants.urlScheme
         urlComponents.host = GooglePlacesConstants.urlHost
@@ -49,19 +45,16 @@ class GooglePlaces : NSObject
         return urlComponents.url!
     }
     
-    func fetchData(_ url : URL, _ completionHandler : @escaping(_ data:Data?,_ error : Error?) -> Void)
-    {
+    func fetchData(_ url : URL, _ completionHandler : @escaping(_ data:Data?,_ error : Error?) -> Void) {
         let url = url
         print(url)
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
-            if error == nil
-            {
+            if error == nil {
                 completionHandler(data,nil)
             }
-            else
-            {
+            else {
                 completionHandler(nil,error)
             }
         }

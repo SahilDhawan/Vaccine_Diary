@@ -13,8 +13,7 @@ struct GooglePlacesConstants
     static let urlHost = "maps.googleapis.com"
     static let urlPath = "/maps/api/place/nearbysearch/json"
     
-    struct queryKeys
-    {
+    struct queryKeys {
         static let location = "location"
         static let radius = "radius"
         static let type = "keyword"
@@ -23,8 +22,7 @@ struct GooglePlacesConstants
 
     }
     
-    struct queryValues
-    {
+    struct queryValues {
         static let location = "\(UserDetails.locationCoordinate.latitude), \(UserDetails.locationCoordinate.longitude)"
         static let radius = "500"
         static let sensor = "true"

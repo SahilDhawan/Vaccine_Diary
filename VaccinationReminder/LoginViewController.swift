@@ -87,16 +87,16 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController : UITextFieldDelegate
-{
+extension LoginViewController : UITextFieldDelegate{
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
 
-extension LoginViewController : FBSDKLoginButtonDelegate
-{
+extension LoginViewController : FBSDKLoginButtonDelegate {
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         self.activityView.isHidden = false
         self.addActivityViewController(self.activityView, true)
@@ -115,19 +115,15 @@ extension LoginViewController : FBSDKLoginButtonDelegate
                     UserDetails.uid = (user?.uid)!
                     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
                     ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                        if snapshot.hasChild(UserDetails.uid)
-                        {
+                        if snapshot.hasChild(UserDetails.uid) {
                             self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "LoginSegue", sender: self)
                         }
-                        else
-                        {
+                        else {
                             self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "facebookLogin", sender: self)
                         }
                     })
-                    
-                    
                 }
             })
         }

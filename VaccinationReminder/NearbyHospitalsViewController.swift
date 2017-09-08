@@ -21,15 +21,14 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         //mapView
         mapView.delegate = self
         
         tableView.dataSource = self
-        
+        tableView.allowsSelection = false
         //locationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
@@ -41,20 +40,16 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         self.setupNavigationBar()
     }
     
-    func googleApiFetch()
-    {
+    func googleApiFetch() {
         //google place api fetch
         let googlePlaces  = GooglePlaces()
         googlePlaces.fetchData(googlePlaces.createHospitalUrl()) { (data, error) in
             
-            if error == nil
-            {
-                do
-                {
+            if error == nil {
+                do {
                     let dict = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
                     let resultsArray = dict["results"] as! [[String:AnyObject]]
-                    for result in resultsArray
-                    {
+                    for result in resultsArray {
                         self.hospitalsArray.append(result["name"] as! String)
                         let geometryArray = result["geometry"] as! [String:AnyObject]
                         let locationArray = geometryArray["location"] as! [String:AnyObject]
@@ -68,13 +63,11 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
                     }
                     
                 }
-                catch
-                {
+                catch {
                     self.showAlert("Unwanted error has occurred")
                 }
             }
-            else
-            {
+            else {
                 self.showAlert((error?.localizedDescription)!)
                 print(error.debugDescription)
             }
@@ -83,8 +76,6 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         
         //activityView
@@ -99,10 +90,8 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    func createMapPins()
-    {
-        for i in 0..<hospitalsArray.count
-        {
+    func createMapPins() {
+        for i in 0..<hospitalsArray.count {
             let mapPin = MKPointAnnotation()
             mapPin.coordinate = hospitalCoordinates[i]
             mapPin.title = hospitalsArray[i]
@@ -110,8 +99,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func createUserLocation()
-    {
+    func createUserLocation() {
         let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(mapRegion, animated: true)
         googleApiFetch()
@@ -125,9 +113,10 @@ extension NearbyHospitalsViewController : UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.hospitalsArray.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyHospitalCell")
-        cell?.textLabel?.text = hospitalsArray[indexPath.item]
+        cell?.textLabel?.text = "\(indexPath.item + 1). " + hospitalsArray[indexPath.item]
         return cell!
     }
 }
@@ -135,8 +124,7 @@ extension NearbyHospitalsViewController : UITableViewDataSource
 extension NearbyHospitalsViewController : CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if self.updateLocation == true
-        {
+        if self.updateLocation == true {
             let location = locations.last
             let coordinate = location?.coordinate
             UserDetails.locationCoordinate = coordinate!
@@ -145,7 +133,9 @@ extension NearbyHospitalsViewController : CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        showAlert("cannot fetch Current Location")
+        showAlert("cannot fetch current location")
+        addActivityViewController(self.activityView, false)
+
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

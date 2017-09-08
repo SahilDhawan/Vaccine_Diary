@@ -18,8 +18,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmPass: TextField!
     @IBOutlet weak var signUpButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         emailTextField.delegate = self
@@ -37,41 +36,34 @@ class SignUpViewController: UIViewController {
         confirmPass.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         UserDetails.logOut = false
-
-        
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
-                guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else
-                {
-                    showAlert("Email or Password Text Fields can't be empty")
-                    self.emailTextField.text = ""
-                    self.passwordTextField.text = ""
-                    self.confirmPass.text = ""
-                    return
+        guard let email = emailTextField.text , let password = passwordTextField.text , let confirm = confirmPass.text  else {
+            showAlert("Email or Password Text Fields can't be empty")
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
+            self.confirmPass.text = ""
+            return
+        }
+        if confirm != password {
+            showAlert("Passwords Don't match. Please try again!")
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
+            self.confirmPass.text = ""
+        }
+        else {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
+                
+                if error == nil {
+                    UserDetails.uid = (FIRUser?.uid)!
+                    self.performSegue(withIdentifier: "SignUpSegue", sender: self)
                 }
-                if confirm != password
-                {
-                    showAlert("Passwords Don't match. Please try again!")
-                    self.emailTextField.text = ""
-                    self.passwordTextField.text = ""
-                    self.confirmPass.text = ""
+                else {
+                    self.showAlert("Can not create a new user")
                 }
-                else{
-                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
-        
-                        if error == nil
-                        {
-                            UserDetails.uid = (FIRUser?.uid)!
-                            self.performSegue(withIdentifier: "SignUpSegue", sender: self)
-                        }
-                        else
-                        {
-                            self.showAlert("Can not create a new user")
-                        }
-        
-                    })
-                }
+            })
+        }
     }
     
     @IBAction func logInButtonPressed(_ sender: Any) {
@@ -79,8 +71,8 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController : UITextFieldDelegate
-{
+extension SignUpViewController : UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

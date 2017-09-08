@@ -63,6 +63,7 @@ class ScheduleViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func closeButtonPressed(_ sender: Any) {
         vaccineDetail.isHidden = true
         collectionView.alpha = 1.0
@@ -71,8 +72,8 @@ class ScheduleViewController: UIViewController {
     }
 }
 
-extension ScheduleViewController: UICollectionViewDataSource
-{
+extension ScheduleViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tableSize
     }

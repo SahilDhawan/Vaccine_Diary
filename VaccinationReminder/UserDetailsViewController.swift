@@ -22,8 +22,7 @@ class UserDetailsViewController: UIViewController {
     
     let datePicker : UIDatePicker = UIDatePicker()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         
         super.viewDidLoad()
         //delegates
@@ -54,16 +53,18 @@ class UserDetailsViewController: UIViewController {
         self.setupNavigationBar()
     }
     
-    func resign(sender : UIBarButtonItem)
-    {
+    func resign(sender : UIBarButtonItem) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateString = dateFormatter.string(from: Date())
+        dateOfBirth.text = dateString
         self.view.endEditing(true)
     }
     
     func getDataFromFirebase() {
         let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild(UserDetails.uid)
-            {
+            if snapshot.hasChild(UserDetails.uid) {
                 let firebase = FirebaseMethods()
                 firebase.getDataFromFirebase { (userName, birthDate) in
                     self.addActivityViewController(self.activityView, false)
@@ -71,15 +72,13 @@ class UserDetailsViewController: UIViewController {
                     self.dateOfBirth.text = birthDate
                 }
             }
-            else
-            {
+            else {
                 self.addActivityViewController(self.activityView, false)
             }
         })
     }
     
-    func handleDateChange(sender : UIDatePicker)
-    {
+    func handleDateChange(sender : UIDatePicker) {
         UserDetails.userBirthDate = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -94,91 +93,69 @@ class UserDetailsViewController: UIViewController {
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         //cancel button
-        if UserDetails.update
-        {
+        if UserDetails.update {
             cancelButton.isEnabled = true
             saveDetailsButton.setTitle("UPDATE DETAILS", for: .normal)
             detailsLabel.isHidden = true
         }
-        else
-        {
+        else {
             cancelButton.isEnabled = false
             detailsLabel.isHidden = false
-
+            
         }
         
         //logOut New User
-        if UserDetails.logOut
-        {
+        if UserDetails.logOut {
             UserDetails.logOut = false
             self.dismiss(animated: true, completion: nil)
         }
-        
         activityView1.isHidden = true
-
-        
     }
     
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
         UserDetails.userName = nameTextField.text!
-        
-        
-        
         savingDetailsToFirebase()
         return
     }
     
-    func savingDetailsToFirebase()
-    {
+    func savingDetailsToFirebase() {
         self.activityView1.isHidden = false
         addActivityViewController(self.activityView1, true)
         let fir = FirebaseMethods()
         
         //network connection
-        if Reachability().isConnectedToNetwork() == false
-        {
+        if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView1, false)
             showAlert("No Internet Connection")
         }
-        else
-        {
-            if UserDetails.update
-            {
+        else {
+            if UserDetails.update {
                 fir.FirebaseUpdateData({ (success) in
-                    if success
-                    {
+                    if success {
                         self.addActivityViewController(self.activityView1, false)
                         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
                     }
-                    else
-                    {
+                    else {
                         self.addActivityViewController(self.activityView1, false)
                         self.showAlert("Could not update data")
                     }
                 })
-                
             }
-            else
-            {
-                
+            else {
                 fir.FirebaseWriteData({ (success) in
-                    if success
-                    {
+                    if success {
                         self.addActivityViewController(self.activityView1, false)
                         self.performSegue(withIdentifier: "userCreationSegue", sender: self)
                     }
-                    else
-                    {
+                    else {
                         self.addActivityViewController(self.activityView1, false)
                         self.showAlert("Could not update data")
                     }
                 })
-                
             }
         }
     }
-    
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -186,8 +163,8 @@ class UserDetailsViewController: UIViewController {
     
 }
 
-extension UserDetailsViewController : UITextFieldDelegate
-{
+extension UserDetailsViewController : UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

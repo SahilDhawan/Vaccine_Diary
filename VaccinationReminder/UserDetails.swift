@@ -11,8 +11,7 @@ import CoreLocation
 
 let gregorian = Calendar(identifier: .gregorian)
 
-struct UserDetails
-{
+struct UserDetails {
     static var userImage = UIImage(named:"userIcon")
     static var userName  : String = ""
     static var userBirthDate : Date = Date()
@@ -22,8 +21,7 @@ struct UserDetails
     static var vaccinationList : [Vaccine] = []
     static var logOut : Bool = false
     
-    struct VaccinationDates
-    {
+    struct VaccinationDates {
         static let sixWeeksDate = gregorian.date(byAdding: .day, value: 42, to: UserDetails.userBirthDate)
         static let tenWeeksDate = gregorian.date(byAdding: .day, value: 70, to: UserDetails.userBirthDate)
         static let fourteenWeeksDate = gregorian.date(byAdding: .day, value: 98, to: UserDetails.userBirthDate)

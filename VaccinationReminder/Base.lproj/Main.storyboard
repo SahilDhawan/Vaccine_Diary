@@ -492,7 +492,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wDC-dZ-tOg">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="314" width="320" height="205"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NearbyDoctorCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NearbyDoctorCell" textLabel="75c-j8-N06" style="IBUITableViewCellStyleDefault" id="C3g-h1-FYS">
@@ -518,12 +518,21 @@
                                 <rect key="frame" x="142" y="241" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EHF-MG-OwU">
+                                <rect key="frame" x="0.0" y="64" width="320" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Zq7-sL-9ih"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="apB-2F-KDd" firstAttribute="top" secondItem="wDC-dZ-tOg" secondAttribute="bottom" id="6qP-YP-eEJ"/>
-                            <constraint firstItem="wDC-dZ-tOg" firstAttribute="top" secondItem="jGv-If-aMg" secondAttribute="bottom" id="KgC-gJ-aWy"/>
                             <constraint firstItem="wDC-dZ-tOg" firstAttribute="leading" secondItem="0XG-WQ-dQp" secondAttribute="leading" id="QUv-Kt-guq"/>
+                            <constraint firstItem="EHF-MG-OwU" firstAttribute="top" secondItem="jGv-If-aMg" secondAttribute="bottom" id="X10-hv-VbT"/>
+                            <constraint firstItem="wDC-dZ-tOg" firstAttribute="top" secondItem="EHF-MG-OwU" secondAttribute="bottom" id="ZcY-Sh-AYs"/>
+                            <constraint firstItem="EHF-MG-OwU" firstAttribute="leading" secondItem="0XG-WQ-dQp" secondAttribute="leading" id="eJH-9p-f5O"/>
+                            <constraint firstAttribute="trailing" secondItem="EHF-MG-OwU" secondAttribute="trailing" id="gDX-gc-jPR"/>
                             <constraint firstAttribute="trailing" secondItem="wDC-dZ-tOg" secondAttribute="trailing" id="pAG-fP-fEG"/>
                             <constraint firstItem="HSQ-ZX-b3j" firstAttribute="centerY" secondItem="0XG-WQ-dQp" secondAttribute="centerY" id="vuI-jG-WsA"/>
                             <constraint firstItem="HSQ-ZX-b3j" firstAttribute="centerX" secondItem="0XG-WQ-dQp" secondAttribute="centerX" id="xUI-w2-dre"/>
@@ -532,6 +541,7 @@
                     <navigationItem key="navigationItem" title="Nearby Pharmacies" id="syD-qy-9im"/>
                     <connections>
                         <outlet property="activityView" destination="HSQ-ZX-b3j" id="OEi-YJ-s0D"/>
+                        <outlet property="mapView" destination="EHF-MG-OwU" id="cau-DU-MON"/>
                         <outlet property="tableView" destination="wDC-dZ-tOg" id="agp-zb-nZY"/>
                     </connections>
                 </viewController>
@@ -663,7 +673,7 @@
                                     <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Lxd-dT-q8Y">
                                         <rect key="frame" x="10" y="55" width="280" height="135"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -943,7 +953,7 @@
         <image name="userIcon" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OW8-7v-nf3"/>
+        <segue reference="4fo-Ei-Gai"/>
         <segue reference="A2m-FX-xyT"/>
     </inferredMetricsTieBreakers>
 </document>
