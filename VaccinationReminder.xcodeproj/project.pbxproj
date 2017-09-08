@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
+		5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */; };
+		5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA31F632D3A002426A4 /* Geometry.swift */; };
+		5F5E8EA61F632D44002426A4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA51F632D44002426A4 /* Location.swift */; };
+		5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA71F632D55002426A4 /* Viewport.swift */; };
+		5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA91F632D63002426A4 /* OpeningHours.swift */; };
+		5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EAB1F632D6E002426A4 /* Photo.swift */; };
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
 		BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1752F21ED821CA005131F3 /* NetworkConnection.swift */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
@@ -37,6 +44,13 @@
 
 /* Begin PBXFileReference section */
 		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
+		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesObject.swift; sourceTree = "<group>"; };
+		5F5E8EA31F632D3A002426A4 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		5F5E8EA51F632D44002426A4 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		5F5E8EA71F632D55002426A4 /* Viewport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viewport.swift; sourceTree = "<group>"; };
+		5F5E8EA91F632D63002426A4 /* OpeningHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningHours.swift; sourceTree = "<group>"; };
+		5F5E8EAB1F632D6E002426A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
@@ -83,6 +97,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F5E8E9C1F632456002426A4 /* GooglePlaceObject */ = {
+			isa = PBXGroup;
+			children = (
+				5F5E8E9F1F632D23002426A4 /* Result.swift */,
+				5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */,
+				5F5E8EA31F632D3A002426A4 /* Geometry.swift */,
+				5F5E8EA71F632D55002426A4 /* Viewport.swift */,
+				5F5E8EA51F632D44002426A4 /* Location.swift */,
+				5F5E8EA91F632D63002426A4 /* OpeningHours.swift */,
+				5F5E8EAB1F632D6E002426A4 /* Photo.swift */,
+			);
+			name = GooglePlaceObject;
+			sourceTree = "<group>";
+		};
 		B106C1991D35B7E3923B03FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +141,7 @@
 				BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */,
 				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
 				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
+				5F5E8E9C1F632456002426A4 /* GooglePlaceObject */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,15 +340,22 @@
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
 				BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */,
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
+				5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyPharmacyViewController.swift in Sources */,
+				5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineCollectionViewCell.swift in Sources */,
+				5F5E8EA01F632D23002426A4 /* Result.swift in Sources */,
 				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
+				5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */,
 				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
+				5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
+				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
+				5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */,
 				BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Extensions.swift in Sources */,

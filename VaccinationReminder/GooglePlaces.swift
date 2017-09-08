@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import AlamofireObjectMapper
 
 class GooglePlaces : NSObject {
     
@@ -45,19 +47,20 @@ class GooglePlaces : NSObject {
         return urlComponents.url!
     }
     
-    func fetchData(_ url : URL, _ completionHandler : @escaping(_ data:Data?,_ error : Error?) -> Void) {
+    func fetchData(_ url : URL, _ completionHandler : @escaping(_ result:[PlacesObject]?,_ error : Error?) -> Void) {
         let url = url
-        print(url)
-        let urlRequest = URLRequest(url: url)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
-            if error == nil {
-                completionHandler(data,nil)
+        let urlString = url.absoluteString
+        
+        Alamofire.request(urlString).responseObject { (response : DataResponse<Result>) in
+            
+            if response.result.error == nil {
+                let result = response.result.value
+                let resultArray = result?.results
+                completionHandler(resultArray,nil)
+            } else {
+                completionHandler(nil,response.result.error)
             }
-            else {
-                completionHandler(nil,error)
-            }
+            
         }
-        dataTask.resume()
     }
 }

@@ -43,29 +43,17 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     func googleApiFetch() {
         //google place api fetch
         let googlePlaces  = GooglePlaces()
-        googlePlaces.fetchData(googlePlaces.createHospitalUrl()) { (data, error) in
+        googlePlaces.fetchData(googlePlaces.createHospitalUrl()) { (result, error) in
             
             if error == nil {
-                do {
-                    let dict = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
-                    let resultsArray = dict["results"] as! [[String:AnyObject]]
-                    for result in resultsArray {
-                        self.hospitalsArray.append(result["name"] as! String)
-                        let geometryArray = result["geometry"] as! [String:AnyObject]
-                        let locationArray = geometryArray["location"] as! [String:AnyObject]
-                        self.hospitalCoordinates.append(CLLocationCoordinate2D(latitude: locationArray["lat"] as! CLLocationDegrees, longitude: locationArray["lng"] as! CLLocationDegrees))
-                    }
-                    print(self.hospitalCoordinates)
-                    print(self.hospitalsArray)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.createMapPins()
-                    }
-                    
+                for hospital in result! {
+                    self.hospitalsArray.append(hospital.name!)
+                    let geometryArray = hospital.geometry!
+                    let locationArray = geometryArray.location
+                    self.hospitalCoordinates.append(CLLocationCoordinate2D(latitude: (locationArray?.lat)!, longitude: (locationArray?.lng)!))
                 }
-                catch {
-                    self.showAlert("Unwanted error has occurred")
-                }
+                self.tableView.reloadData()
+                self.createMapPins()
             }
             else {
                 self.showAlert((error?.localizedDescription)!)
@@ -135,7 +123,7 @@ extension NearbyHospitalsViewController : CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         showAlert("cannot fetch current location")
         addActivityViewController(self.activityView, false)
-
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

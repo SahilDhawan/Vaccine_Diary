@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "088445D283B45932FD1FFB9A4FF3BD11"
+               BlueprintIdentifier = "1D3E2FBCDF37C3EC0FF877384D8B4315"
                BuildableName = "Pods_VaccinationReminder.framework"
                BlueprintName = "Pods-VaccinationReminder"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "088445D283B45932FD1FFB9A4FF3BD11"
+            BlueprintIdentifier = "1D3E2FBCDF37C3EC0FF877384D8B4315"
             BuildableName = "Pods_VaccinationReminder.framework"
             BlueprintName = "Pods-VaccinationReminder"
             ReferencedContainer = "container:Pods.xcodeproj">

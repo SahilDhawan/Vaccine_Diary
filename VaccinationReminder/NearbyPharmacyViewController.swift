@@ -25,27 +25,18 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
     
     func googleApiFetch() {
         let googlePlaces = GooglePlaces()
-        googlePlaces.fetchData(googlePlaces.createPharmacyUrl()) { (data, error) in
+        googlePlaces.fetchData(googlePlaces.createPharmacyUrl()) { (result, error) in
             
             if error == nil {
-                do {
-                    let dict = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
-                    let resultsArray = dict["results"] as! [[String:AnyObject]]
-                    for result in resultsArray {
-                        self.pharmacyArray.append(result["name"] as! String)
-                        let geometryArray = result["geometry"] as! [String:AnyObject]
-                        let locationArray = geometryArray["location"] as! [String:AnyObject]
-                        self.pharmacyCoordinates.append(CLLocationCoordinate2D(latitude: locationArray["lat"] as! CLLocationDegrees, longitude: locationArray["lng"] as! CLLocationDegrees))
-                    }
-                    DispatchQueue.main.async {
-                        self.addActivityViewController(self.activityView, false)
-                        self.tableView.reloadData()
-                        self.createMapPins()
-                    }
+                for pharmacy in result! {
+                    self.pharmacyArray.append(pharmacy.name!)
+                    let geometryArray = pharmacy.geometry!
+                    let locationArray = geometryArray.location
+                    self.pharmacyCoordinates.append(CLLocationCoordinate2D(latitude: (locationArray?.lat)!, longitude: (locationArray?.lng)!))
                 }
-                catch {
-                    self.showAlert("Unwanted error has occurred")
-                }
+                self.addActivityViewController(self.activityView, false)
+                self.tableView.reloadData()
+                self.createMapPins()
             }
             else {
                 self.showAlert((error?.localizedDescription)!)
