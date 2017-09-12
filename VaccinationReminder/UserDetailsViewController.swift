@@ -19,8 +19,10 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var saveDetailsButton: UIButton!
     @IBOutlet weak var activityView1: UIActivityIndicatorView!
     @IBOutlet weak var detailsLabel: UILabel!
+    @IBOutlet weak var notificationTimeField: TextField!
     
     let datePicker : UIDatePicker = UIDatePicker()
+    let timePicker : UIDatePicker = UIDatePicker()
     
     override func viewDidLoad() {
         
@@ -32,6 +34,10 @@ class UserDetailsViewController: UIViewController {
         //datePicker
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(handleDateChange(sender:)), for: UIControlEvents.valueChanged)
+        
+        //timePicker
+        timePicker.datePickerMode = .time
+        timePicker.addTarget(self, action: #selector(handleTimeChange(sender:)), for: UIControlEvents.valueChanged)
         
         //activityIndicatorView
         addActivityViewController(activityView, true)
@@ -46,18 +52,45 @@ class UserDetailsViewController: UIViewController {
         toolbar.tintColor =  UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
         toolbar.sizeToFit()
         
+        //timePickerToolbar
+        let timeToolbar = UIToolbar()
+        timeToolbar.isTranslucent = false
+        timeToolbar.barStyle = .default
+        let timeDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resignTime(sender:)))
+        timeToolbar.setItems([timeDoneButton], animated: true)
+        timeToolbar.isUserInteractionEnabled = true
+        timeToolbar.tintColor =  UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        timeToolbar.sizeToFit()
+        
         dateOfBirth.inputView = datePicker
         dateOfBirth.inputAccessoryView = toolbar
+        
+        
+        notificationTimeField.inputView = timePicker
+        notificationTimeField.inputAccessoryView = timeToolbar
         
         getDataFromFirebase()
         self.setupNavigationBar()
     }
     
     func resign(sender : UIBarButtonItem) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        let dateString = dateFormatter.string(from: Date())
-        dateOfBirth.text = dateString
+        if dateOfBirth.text == "" {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateString = dateFormatter.string(from: Date())
+            dateOfBirth.text = dateString
+        }
+        self.view.endEditing(true)
+        
+    }
+    
+    func resignTime(sender : UIBarButtonItem) {
+        if notificationTimeField.text == "" {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh-mm a"
+            let dateString = dateFormatter.string(from: Date())
+            notificationTimeField.text = dateString
+        }
         self.view.endEditing(true)
     }
     
@@ -66,10 +99,11 @@ class UserDetailsViewController: UIViewController {
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(UserDetails.uid) {
                 let firebase = FirebaseMethods()
-                firebase.getDataFromFirebase { (userName, birthDate) in
+                firebase.getDataFromFirebase { (userName, birthDate , time) in
                     self.addActivityViewController(self.activityView, false)
                     self.nameTextField.text = userName
                     self.dateOfBirth.text = birthDate
+                    self.notificationTimeField.text = time
                 }
             }
             else {
@@ -86,11 +120,21 @@ class UserDetailsViewController: UIViewController {
         dateOfBirth.text = dateString
     }
     
+    func handleTimeChange(sender : UIDatePicker) {
+        UserDetails.notificationTime = timePicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh-mm a"
+        let dateString = dateFormatter.string(from: UserDetails.notificationTime)
+        notificationTimeField.text = dateString
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Text Field Placeholder
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
         dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        notificationTimeField.attributedPlaceholder = NSAttributedString(string: "Notification Time", attributes: [NSForegroundColorAttributeName : UIColor.white])
         
         //cancel button
         if UserDetails.update {

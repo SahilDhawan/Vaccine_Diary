@@ -15,6 +15,9 @@ struct UserDetails {
     static var userImage = UIImage(named:"userIcon")
     static var userName  : String = ""
     static var userBirthDate : Date = Date()
+    static var notificationTime : Date = Date()
+    
+    
     static var locationCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     static var uid : String = ""
     static var update : Bool = false

@@ -143,8 +143,4 @@ class VaccinationList : NSObject
     {
         return VaccinationSchedule
     }
-    
-    
-    
-    
 }

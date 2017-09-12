@@ -19,6 +19,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var notificationTimeLabel: UILabel!
     
     let locationManager = CLLocationManager()
 
@@ -51,20 +52,21 @@ class UserProfileViewController: UIViewController {
     
     func getDataFromFirebase() {
         let fir = FirebaseMethods()
-        fir.getDataFromFirebase { (name, birthDate) in
+        fir.getDataFromFirebase { (name, birthDate,time) in
             self.nameLabel.text = name!
             self.birthDateLabel.text = birthDate!
+            self.notificationTimeLabel.text = time!
             UserDetails.userName = name!
-            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
+            dateFormatter.dateFormat = "hh-mm a"
+            UserDetails.notificationTime = dateFormatter.date(from: time!)!
             self.addActivityViewController(self.activityView, false)
         }
     }
     
-    @IBAction func logOutButtonPressed(_ sender: Any)
-    {
+    @IBAction func logOutButtonPressed(_ sender: Any) {
         addActivityViewController(activityView, true)
         let firebaseAuth = FIRAuth.auth()
         do {

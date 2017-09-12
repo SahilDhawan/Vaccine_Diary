@@ -97,7 +97,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F5E8E9C1F632456002426A4 /* GooglePlaceObject */ = {
+		5F5E8E9C1F632456002426A4 /* GooglePlacesObject */ = {
 			isa = PBXGroup;
 			children = (
 				5F5E8E9F1F632D23002426A4 /* Result.swift */,
@@ -108,7 +108,7 @@
 				5F5E8EA91F632D63002426A4 /* OpeningHours.swift */,
 				5F5E8EAB1F632D6E002426A4 /* Photo.swift */,
 			);
-			name = GooglePlaceObject;
+			name = GooglePlacesObject;
 			sourceTree = "<group>";
 		};
 		B106C1991D35B7E3923B03FD /* Frameworks */ = {
@@ -141,7 +141,7 @@
 				BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */,
 				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
 				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
-				5F5E8E9C1F632456002426A4 /* GooglePlaceObject */,
+				5F5E8E9C1F632456002426A4 /* GooglePlacesObject */,
 			);
 			name = Model;
 			sourceTree = "<group>";

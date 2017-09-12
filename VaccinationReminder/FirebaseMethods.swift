@@ -12,14 +12,15 @@ import Firebase
 class FirebaseMethods : NSObject {
     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
     
-    func getDataFromFirebase(_ completionHandler : @escaping(_ name : String?, _ birthDate : String?)-> Void) {
+    func getDataFromFirebase(_ completionHandler : @escaping(_ name : String?, _ birthDate : String? , _ time : String?)-> Void) {
         //Updating Label Values
         ref.child("users").child(UserDetails.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
             let userName = value?["username"] as? String
             let birthString = value?["birthDate"] as? String
-            completionHandler(userName,birthString)
+            let notificationTime = value?["notificationTime"] as? String
+            completionHandler(userName,birthString,notificationTime)
         })
     }
     
@@ -30,6 +31,8 @@ class FirebaseMethods : NSObject {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
+        dateFormatter.dateFormat = "hh-mm a"
+        saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
             if error == nil {
                 completionHandler(true)
@@ -46,6 +49,8 @@ class FirebaseMethods : NSObject {
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
+        dateFormatter.dateFormat = "hh-mm a"
+        saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         ref.child("users").child(UserDetails.uid).setValue(saveDict) { (error, databaseRef) in
             if error == nil {
                 completionHandler(true)
