@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
 		5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */; };
 		5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA31F632D3A002426A4 /* Geometry.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
+		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesObject.swift; sourceTree = "<group>"; };
 		5F5E8EA31F632D3A002426A4 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		BA0F68801EBD224800DAF7A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
 				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
 				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
@@ -355,6 +358,7 @@
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
+				5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */,
 				5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */,
 				BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,

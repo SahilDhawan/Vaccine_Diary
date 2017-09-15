@@ -12,8 +12,11 @@ import CoreLocation
 
 class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
     
-    var pharmacyArray : [String] = []
+    var pharmacyArray : [PlacesObject] = []
     var pharmacyCoordinates : [CLLocationCoordinate2D] = []
+    var pharmacyDetailArray : [[String : String]] = []
+    var currentPharmacy = [String:String]()
+    var currentPharmacyLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     let locationManager = CLLocationManager()
     var updateLocation = true
     
@@ -28,11 +31,31 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         googlePlaces.fetchData(googlePlaces.createPharmacyUrl()) { (result, error) in
             
             if error == nil {
+                self.pharmacyArray = result!
                 for pharmacy in result! {
-                    self.pharmacyArray.append(pharmacy.name!)
                     let geometryArray = pharmacy.geometry!
                     let locationArray = geometryArray.location
                     self.pharmacyCoordinates.append(CLLocationCoordinate2D(latitude: (locationArray?.lat)!, longitude: (locationArray?.lng)!))
+                    
+                    //pharmacy detail array
+                    var pharmacyDetail = [String:String]()
+                    pharmacyDetail["Name"] = pharmacy.name!
+                    pharmacyDetail["Address"] = pharmacy.vicinity!
+                    if let rating = pharmacy.rating {
+                        pharmacyDetail["Rating"] = "\(rating)"
+                    } else {
+                        pharmacyDetail["Rating"] = "Information Not Available"
+                    }
+                    if let openingHour = pharmacy.openingHours?.openNow!{
+                        if openingHour == true {
+                            pharmacyDetail["Open Now"] = "Yes"
+                        } else {
+                            pharmacyDetail["Open Now"] = "No"
+                        }
+                    }else {
+                        pharmacyDetail["Open Now"] = "Information Not Available"
+                    }
+                    self.pharmacyDetailArray.append(pharmacyDetail)
                 }
                 self.addActivityViewController(self.activityView, false)
                 self.tableView.reloadData()
@@ -58,7 +81,7 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         tableView.dataSource = self
-        tableView.allowsSelection = false
+        tableView.delegate = self
         
         //network connection
         if Reachability().isConnectedToNetwork() == false {
@@ -68,6 +91,13 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         mapView.delegate = self
         mapView.showsUserLocation = true
         self.setupNavigationBar()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! DetailTableViewController
+        destination.currentPlace = currentPharmacy
+        destination.fromHospital = false
+        destination.currentPlaceLocation = currentPharmacyLocation
     }
 }
 
@@ -79,7 +109,8 @@ extension NearbyPharmacyViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyDoctorCell")
-        cell?.textLabel?.text = "\(indexPath.item + 1). " + pharmacyArray[indexPath.item]
+        cell?.textLabel?.text = "\(indexPath.item + 1). " + pharmacyArray[indexPath.item].name!
+        cell?.accessoryType = .disclosureIndicator
         return cell!
     }
     
@@ -87,7 +118,7 @@ extension NearbyPharmacyViewController : UITableViewDataSource
         for i in 0..<pharmacyArray.count {
             let mapPin = MKPointAnnotation()
             mapPin.coordinate = pharmacyCoordinates[i]
-            mapPin.title = pharmacyArray[i]
+            mapPin.title = pharmacyArray[i].name!
             self.mapView.addAnnotation(mapPin)
         }
     }
@@ -100,6 +131,17 @@ extension NearbyPharmacyViewController : UITableViewDataSource
         self.updateLocation = false
     }
 }
+
+
+extension NearbyPharmacyViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        currentPharmacy = pharmacyDetailArray[indexPath.item]
+        currentPharmacyLocation = pharmacyCoordinates[indexPath.item]
+        self.performSegue(withIdentifier: "pharmacyDetailSegue", sender: self)
+        self.tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
+
 
 extension NearbyPharmacyViewController : CLLocationManagerDelegate {
     

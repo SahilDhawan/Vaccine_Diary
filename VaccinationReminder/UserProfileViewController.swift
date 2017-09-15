@@ -106,3 +106,4 @@ extension UserProfileViewController : CLLocationManagerDelegate {
         }
     }
 }
+
