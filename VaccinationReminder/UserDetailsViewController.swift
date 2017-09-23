@@ -76,7 +76,7 @@ class UserDetailsViewController: UIViewController {
     func resign(sender : UIBarButtonItem) {
         if dateOfBirth.text == "" {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             let dateString = dateFormatter.string(from: Date())
             dateOfBirth.text = dateString
         }
@@ -87,7 +87,7 @@ class UserDetailsViewController: UIViewController {
     func resignTime(sender : UIBarButtonItem) {
         if notificationTimeField.text == "" {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh-mm a"
+            dateFormatter.dateFormat = "HH-mm"
             let dateString = dateFormatter.string(from: Date())
             notificationTimeField.text = dateString
         }
@@ -115,7 +115,7 @@ class UserDetailsViewController: UIViewController {
     func handleDateChange(sender : UIDatePicker) {
         UserDetails.userBirthDate = datePicker.date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: UserDetails.userBirthDate)
         dateOfBirth.text = dateString
     }
@@ -123,7 +123,7 @@ class UserDetailsViewController: UIViewController {
     func handleTimeChange(sender : UIDatePicker) {
         UserDetails.notificationTime = timePicker.date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh-mm a"
+        dateFormatter.dateFormat = "HH-mm"
         let dateString = dateFormatter.string(from: UserDetails.notificationTime)
         notificationTimeField.text = dateString
     }

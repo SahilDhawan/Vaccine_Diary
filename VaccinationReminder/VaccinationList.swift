@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class VaccinationList : NSObject
 {
@@ -130,7 +131,11 @@ class VaccinationList : NSObject
         {
             delegate.scheduleNotifications(Vaccine.vaccineDate, Vaccine.vaccineName)
         }
-        
+        print(UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notifications) in
+            for notification in notifications {
+                print(notification.trigger)
+            }
+        }))
     }
     
     func getTableSize() ->Int

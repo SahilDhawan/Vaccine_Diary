@@ -53,24 +53,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func scheduleNotifications(_ date : Date , _ msg : String)
     {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents(in: .current, from: date)
-        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
-//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
-        
+        var dayComponents = Calendar.current.dateComponents([.month,.day,.year], from: date)
+        let timeComponents = Calendar.current.dateComponents([.hour , .minute], from: UserDetails.notificationTime)
+        dayComponents.second = 0
+        dayComponents.minute = timeComponents.minute
+        dayComponents.hour = timeComponents.hour
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = "Vaccination Reminder"
         content.body = msg + " \(date)"
         content.sound = UNNotificationSound.default()
         
         let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().add(request) { (error) in
             if error != nil {
                 print("Error occured during notification")
             } else {
-                print(msg + " \(date)")
+                
             }
         }
     }
