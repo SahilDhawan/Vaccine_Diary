@@ -65,9 +65,9 @@ class ScheduleViewController: UIViewController {
         let fir = FirebaseMethods()
         fir.getDataFromFirebase { (name, birthDate,time) in
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
-            dateFormatter.dateFormat = "HH-mm"
+            dateFormatter.dateFormat = "h:mm a"
             let vaccineObject = VaccinationList()
             UserDetails.notificationTime = dateFormatter.date(from: time!)!
             vaccineObject.setVaccineList()

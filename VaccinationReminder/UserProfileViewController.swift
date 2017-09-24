@@ -59,9 +59,9 @@ class UserProfileViewController: UIViewController {
             self.notificationTimeLabel.text = time!
             UserDetails.userName = name!
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
-            dateFormatter.dateFormat = "HH-mm"
+            dateFormatter.dateFormat = "h:mm a"
             UserDetails.notificationTime = dateFormatter.date(from: time!)!
             self.addActivityViewController(self.activityView, false)
             self.editButtonItem.isEnabled = true

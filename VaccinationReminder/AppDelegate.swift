@@ -57,11 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         dayComponents.hour = timeComponents.hour
         let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
         let content = UNMutableNotificationContent()
-        content.title = title + " Vaccination Pending"
+        content.title = title + " Vaccination Today"
         content.body = msg
         content.sound = UNNotificationSound.default()
-        
-        let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
+        let notif_identifier = title + " current"
+        let request = UNNotificationRequest(identifier: notif_identifier, content: content, trigger: trigger)
         
         //schedule new notifications
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -86,8 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         content.title = title + " Vaccination Tommorrow"
         content.body = msg
         content.sound = UNNotificationSound.default()
-        
-        let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
+        let notif_identifier = title + " previous"
+
+        let request = UNNotificationRequest(identifier: notif_identifier, content: content, trigger: trigger)
         
         //schedule new notifications
         UNUserNotificationCenter.current().add(request) { (error) in

@@ -29,10 +29,10 @@ class FirebaseMethods : NSObject {
     func FirebaseUpdateData(_ completionHandler: @escaping(_ success : Bool)->Void) {
         var saveDict = [String: String]()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        dateFormatter.dateFormat = "HH-mm"
+        dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
             if error == nil {
@@ -49,10 +49,10 @@ class FirebaseMethods : NSObject {
     func FirebaseWriteData(_ completionHandler: @escaping(_ success : Bool)->Void) {
         var saveDict = [String: String]()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
-        dateFormatter.dateFormat = "HH-mm"
+        dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         ref.child("users").child(UserDetails.uid).setValue(saveDict) { (error, databaseRef) in
             if error == nil {

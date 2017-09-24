@@ -75,7 +75,7 @@
 		BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BA54D0D31EC7995400AA3385 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		BA7698B71EC8F28E00B16B72 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaccinationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE930F01EBCF02E00F77191 /* Vaccine_Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vaccine_Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE930F31EBCF03000F77191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAE930FA1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAE930FC1EBCF03000F77191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		BAE930F11EBCF02E00F77191 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */,
+				BAE930F01EBCF02E00F77191 /* Vaccine_Diary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,9 +218,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BAE930EF1EBCF02E00F77191 /* VaccinationReminder */ = {
+		BAE930EF1EBCF02E00F77191 /* Vaccine_Diary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "VaccinationReminder" */;
+			buildConfigurationList = BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "Vaccine_Diary" */;
 			buildPhases = (
 				03FDF1F09F04CF20AE2E5812 /* [CP] Check Pods Manifest.lock */,
 				BAE930EC1EBCF02E00F77191 /* Sources */,
@@ -233,9 +233,9 @@
 			);
 			dependencies = (
 			);
-			name = VaccinationReminder;
+			name = Vaccine_Diary;
 			productName = VaccinationReminder;
-			productReference = BAE930F01EBCF02E00F77191 /* VaccinationReminder.app */;
+			productReference = BAE930F01EBCF02E00F77191 /* Vaccine_Diary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -268,7 +268,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BAE930EF1EBCF02E00F77191 /* VaccinationReminder */,
+				BAE930EF1EBCF02E00F77191 /* Vaccine_Diary */,
 			);
 		};
 /* End PBXProject section */
@@ -494,7 +494,7 @@
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccineDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -512,7 +512,7 @@
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccineDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "VaccinationReminder" */ = {
+		BAE931041EBCF03100F77191 /* Build configuration list for PBXNativeTarget "Vaccine_Diary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BAE931051EBCF03100F77191 /* Debug */,
