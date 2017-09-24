@@ -74,10 +74,11 @@ class UserDetailsViewController: UIViewController {
     }
     
     func resign(sender : UIBarButtonItem) {
-        if dateOfBirth.text == "" {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let dateString = dateFormatter.string(from: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: Date())
+        let currentString = dateFormatter.string(from: datePicker.date)
+        if dateString == currentString {
             dateOfBirth.text = dateString
         }
         self.view.endEditing(true)
@@ -85,10 +86,11 @@ class UserDetailsViewController: UIViewController {
     }
     
     func resignTime(sender : UIBarButtonItem) {
-        if notificationTimeField.text == "" {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH-mm"
-            let dateString = dateFormatter.string(from: Date())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH-mm"
+        let dateString = dateFormatter.string(from: Date())
+        let currentString = dateFormatter.string(from: timePicker.date)
+        if dateString == currentString {
             notificationTimeField.text = dateString
         }
         self.view.endEditing(true)
@@ -202,6 +204,7 @@ class UserDetailsViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
+        UserDetails.update = false
         self.dismiss(animated: true, completion: nil)
     }
     

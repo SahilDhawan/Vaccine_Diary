@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import UserNotifications
 
 class FirebaseMethods : NSObject {
     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
@@ -35,6 +36,8 @@ class FirebaseMethods : NSObject {
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
             if error == nil {
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 completionHandler(true)
             }
             else {

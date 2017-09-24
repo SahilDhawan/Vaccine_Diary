@@ -357,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAo-Cn-vhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4627.5" y="-1865.4929577464789"/>
+            <point key="canvasLocation" x="4714" y="-2646"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="BTh-rG-qB9">
@@ -526,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiD-rm-Hqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7298" y="-2013"/>
+            <point key="canvasLocation" x="7384" y="-2013"/>
         </scene>
         <!--Nearby Hospitals-->
         <scene sceneID="ld5-W5-2pp">
@@ -1246,7 +1246,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="A2m-FX-xyT"/>
-        <segue reference="OW8-7v-nf3"/>
+        <segue reference="4fo-Ei-Gai"/>
         <segue reference="L0y-sy-Iuj"/>
     </inferredMetricsTieBreakers>
 </document>

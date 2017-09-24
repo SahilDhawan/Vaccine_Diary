@@ -52,7 +52,7 @@ class VaccinationList : NSObject
         VaccinationSchedule.append(Vaccine("DTwP 2",UserDetails.VaccinationDates.tenWeeksDate!,tenWeeksBool, "DPT (also DTP and DTwP) refers to a class of combination vaccines against three infectious diseases in humans: diphtheria, pertussis (whooping cough), and tetanus. The vaccine components include diphtheria and tetanus toxoids and killed whole cells of the organism that cause pertussis (wP).\nDTaP and Tdap refer to similar combination vaccines in which the component with lower case \"a\" is acellular.\nAlso available is the DT or TD vaccine, which lacks the pertussis component. The Tdap vaccine is currently recommended by the CDC and covers tetanus, diphtheria and pertussis (CDC Vaccines, 2013)."))
         
         VaccinationSchedule.append(Vaccine("IPV 2",UserDetails.VaccinationDates.tenWeeksDate!,tenWeeksBool , "Inactivated polio vaccine (IPV) was developed in 1955 by Dr Jonas Salk. Also called the Salk vaccine IPV consists of inactivated (killed) poliovirus strains of all three poliovirus types. IPV is given by intramuscular or intradermal injection and needs to be administered by a trained health worker. IVP produces antibodies in the blood to all three types of poliovirus. In the event of infection, these antibodies prevent the spread of the virus to the central nervous system and protect against paralysis."))
-            
+        
         VaccinationSchedule.append(Vaccine("Hib 2",UserDetails.VaccinationDates.tenWeeksDate!,tenWeeksBool,"The Haemophilus influenzae type B vaccine, often called Hib vaccine, is a vaccine used to prevent Haemophilus influenzae type b (Hib) infection.[1] In countries that include it as a routine vaccine, rates of severe Hib infections have decreased more than 90%. It has therefore resulted in a decrease in the rate of meningitis, pneumonia, and epiglottitis.\nIt is recommended by both the World Health Organization and Centers for Disease Control and Prevention. Two or three doses should be given before six months of age. In the United States a fourth dose is recommended between 12 and 15 months of age. The first dose is recommended around six weeks of age with at least four weeks between doses. If only two doses are used, another dose later in life is recommended. It is given by injection into a muscle."))
         
         VaccinationSchedule.append(Vaccine("Rotavirus 2",UserDetails.VaccinationDates.tenWeeksDate!,tenWeeksBool , "Rotavirus is the most common cause of diarrhoeal disease among infants and young children. It is a genus of double-stranded RNA viruses in the family Reoviridae. Nearly every child in the world is infected with rotavirus at least once by the age of five. Immunity develops with each infection, so subsequent infections are less severe; adults are rarely affected. There are eight species of this virus, referred to as A, B, C, D, E, F, G and H. Rotavirus A, the most common species, causes more than 90% of rotavirus infections in humans."
@@ -121,31 +121,26 @@ class VaccinationList : NSObject
         
         VaccinationSchedule.append(Vaccine("HPV",UserDetails.VaccinationDates.twelveYearDate!,twelveYearBool , "Human papilloma virus (HPV) vaccines are vaccines that prevent infection by certain types of human papillomavirus. Available vaccines protect against either two, four, or nine types of HPV. All vaccines protect against at least HPV type 16 and 18 that cause the greatest risk of cervical cancer. It is estimated that they may prevent 70% of cervical cancer, 80% of anal cancer, 60% of vaginal cancer, 40% of vulvar cancer, and possibly some mouth cancer. They additionally prevent some genital warts with the vaccines against 4 and 9 HPV types providing greater protection."))
         
-        setNotifications()
+        UserDetails.vaccinationList = VaccinationSchedule
     }
     
-    func setNotifications()
-    {
+    func setNotifications() {
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        for Vaccine in VaccinationSchedule
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        for Vaccine in UserDetails.vaccinationList
         {
-            delegate.scheduleNotifications(Vaccine.vaccineDate, Vaccine.vaccineName)
+            delegate.scheduleNotifications(Vaccine.vaccineDate, Vaccine.vaccinationDetail, title: Vaccine.vaccineName)
+            delegate.scheduleDayBeforeNotifications(Vaccine.vaccineDate, Vaccine.vaccinationDetail, title: Vaccine.vaccineName)
         }
-        print(UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notifications) in
+        
+       UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notifications) in
             for notification in notifications {
                 print(notification.trigger)
             }
-        }))
+        })
     }
+
     
-    func getTableSize() ->Int
-    {
-        let tableSize = VaccinationSchedule.count
-        return tableSize
-    }
-    
-    func getVaccineDetails() -> [Vaccine]
-    {
-        return VaccinationSchedule
-    }
 }

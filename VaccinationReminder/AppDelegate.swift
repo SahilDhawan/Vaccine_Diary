@@ -31,12 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         //userNotification Authorisation
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (accepted, error) in
-            if !accepted
-            {
+            if !accepted {
                 print("Notification Denied")
             }
-            else
-            {
+            else {
                 UNUserNotificationCenter.current().delegate = self
             }
             
@@ -51,8 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     
-    func scheduleNotifications(_ date : Date , _ msg : String)
-    {
+    func scheduleNotifications(_ date : Date , _ msg : String , title : String ) {
         var dayComponents = Calendar.current.dateComponents([.month,.day,.year], from: date)
         let timeComponents = Calendar.current.dateComponents([.hour , .minute], from: UserDetails.notificationTime)
         dayComponents.second = 0
@@ -60,11 +57,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         dayComponents.hour = timeComponents.hour
         let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
         let content = UNMutableNotificationContent()
-        content.title = "Vaccination Reminder"
-        content.body = msg + " \(date)"
+        content.title = title + " Vaccination Pending"
+        content.body = msg
         content.sound = UNNotificationSound.default()
         
         let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
+        
+        //schedule new notifications
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print("Error occured during notification")
+            } else {
+                
+            }
+        }
+    }
+    
+    func scheduleDayBeforeNotifications(_ date : Date , _ msg : String , title : String ) {
+        let previousDate = gregorian.date(byAdding: .day, value: -1, to: date)
+        var dayComponents = Calendar.current.dateComponents([.month,.day,.year], from: previousDate!)
+        let timeComponents = Calendar.current.dateComponents([.hour , .minute], from: UserDetails.notificationTime)
+        dayComponents.second = 0
+        dayComponents.minute = timeComponents.minute
+        dayComponents.hour = timeComponents.hour
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
+        let content = UNMutableNotificationContent()
+        content.title = title + " Vaccination Tommorrow"
+        content.body = msg
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: msg, content: content, trigger: trigger)
+        
+        //schedule new notifications
         UNUserNotificationCenter.current().add(request) { (error) in
             if error != nil {
                 print("Error occured during notification")

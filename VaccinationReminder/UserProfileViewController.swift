@@ -52,6 +52,7 @@ class UserProfileViewController: UIViewController {
     
     func getDataFromFirebase() {
         let fir = FirebaseMethods()
+        editButtonItem.isEnabled = false
         fir.getDataFromFirebase { (name, birthDate,time) in
             self.nameLabel.text = name!
             self.birthDateLabel.text = birthDate!
@@ -63,6 +64,7 @@ class UserProfileViewController: UIViewController {
             dateFormatter.dateFormat = "HH-mm"
             UserDetails.notificationTime = dateFormatter.date(from: time!)!
             self.addActivityViewController(self.activityView, false)
+            self.editButtonItem.isEnabled = true
         }
     }
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import UserNotifications
 var tableSize : Int = 0
 
 class ScheduleViewController: UIViewController {
@@ -20,10 +20,22 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var textView: UITextView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         addActivityViewController(activityView,true)
-        
+        setupViewController()
+    }
+    
+    // if the user updates notification time or birth date
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if UserDetails.update {
+            setupViewController()
+            UserDetails.update = false
+        }
+    }
+    
+    func setupViewController() {
         if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
@@ -48,20 +60,23 @@ class ScheduleViewController: UIViewController {
     }
     
     func getDataFromFirebase(){
+        self.addActivityViewController(self.activityView,true)
+
         let fir = FirebaseMethods()
         fir.getDataFromFirebase { (name, birthDate,time) in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
             dateFormatter.dateFormat = "HH-mm"
-            UserDetails.notificationTime = dateFormatter.date(from: time!)!
             let vaccineObject = VaccinationList()
+            UserDetails.notificationTime = dateFormatter.date(from: time!)!
             vaccineObject.setVaccineList()
-            tableSize = vaccineObject.getTableSize()
-            UserDetails.vaccinationList = vaccineObject.getVaccineDetails()
+            vaccineObject.setNotifications()
+            tableSize = UserDetails.vaccinationList.count
+
             DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.addActivityViewController(self.activityView,false)
+                self.collectionView.reloadData()
+                self.addActivityViewController(self.activityView,false)
             }
         }
     }
@@ -70,7 +85,7 @@ class ScheduleViewController: UIViewController {
         vaccineDetail.isHidden = true
         collectionView.alpha = 1.0
         collectionView.isUserInteractionEnabled = true
-
+        
     }
 }
 
@@ -115,7 +130,7 @@ extension ScheduleViewController : UICollectionViewDelegate {
         if vaccine.vaccineCompletion {
             vaccineDetail.backgroundColor = UIColor(colorLiteralRed: 164/255, green: 211/255, blue: 158/255, alpha: 1)
         } else {
-             vaccineDetail.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 142/255, blue: 92/255, alpha: 1)
+            vaccineDetail.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 142/255, blue: 92/255, alpha: 1)
         }
         collectionView.alpha = 0.3
         collectionView.isUserInteractionEnabled = false
