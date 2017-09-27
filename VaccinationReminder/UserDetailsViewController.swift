@@ -174,31 +174,33 @@ class UserDetailsViewController: UIViewController {
         if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView1, false)
             showAlert("No Internet Connection")
-        }
-        else {
-            if UserDetails.update {
-                fir.FirebaseUpdateData({ (success) in
-                    if success {
-                        self.addActivityViewController(self.activityView1, false)
-                        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-                    }
-                    else {
-                        self.addActivityViewController(self.activityView1, false)
-                        self.showAlert("Could not update data")
-                    }
-                })
-            }
-            else {
-                fir.FirebaseWriteData({ (success) in
-                    if success {
-                        self.addActivityViewController(self.activityView1, false)
-                        self.performSegue(withIdentifier: "userCreationSegue", sender: self)
-                    }
-                    else {
-                        self.addActivityViewController(self.activityView1, false)
-                        self.showAlert("Could not update data")
-                    }
-                })
+        } else {
+            if nameTextField.text == "" || dateOfBirth.text == "" || notificationTimeField.text == "" {
+                self.showAlert("Fields cannot be empty !")
+                self.addActivityViewController(self.activityView1, false)
+            } else {
+                if UserDetails.update {
+                    fir.FirebaseUpdateData({ (success) in
+                        if success {
+                            self.addActivityViewController(self.activityView1, false)
+                            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+                        }
+                        else {
+                            self.addActivityViewController(self.activityView1, false)
+                            self.showAlert("Could not update data")
+                        }
+                    })
+                } else {
+                    fir.FirebaseWriteData({ (success) in
+                        if success {
+                            self.addActivityViewController(self.activityView1, false)
+                            self.performSegue(withIdentifier: "userCreationSegue", sender: self)
+                        } else {
+                            self.addActivityViewController(self.activityView1, false)
+                            self.showAlert("Could not update data")
+                        }
+                    })
+                }
             }
         }
     }

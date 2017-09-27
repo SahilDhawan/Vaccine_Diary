@@ -86,34 +86,32 @@ class DetailTableViewController : UITableViewController {
     }
     
     func createUserLocation() {
-        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(mapRegion, animated: true)
         self.updateLocation = false
     }
 
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height : CGFloat
         if indexPath == IndexPath(row: 0, section: 0){
-            if nameLabel.frame.height > 30 {
-                nameLabelHeight =  60.0
+            height = nameLabel.frame.height + 15.0
+            if height > 45 {
+                return height
             } else {
-                nameLabelHeight = 45.0
+                return 45.0
             }
-            return nameLabelHeight
-            
         } else if indexPath == IndexPath(row: 1, section: 0){
-            if addressLabel.frame.height > 30 {
-                addressLabelHeight =  60.0
+
+            height = addressLabel.frame.height + 15.0
+            if height > 45 {
+                return height
             } else {
-                addressLabelHeight = 45.0
+                return 45.0
             }
-            return addressLabelHeight
         } else {
             return 45.0
         }
     }
-    
-    
 }
 
 extension DetailTableViewController : CLLocationManagerDelegate
