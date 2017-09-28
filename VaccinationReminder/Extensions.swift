@@ -30,10 +30,10 @@ extension UIViewController {
     }
     
     func setupNavigationBar() {
-        self.navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 44/255, green: 56/255, blue: 77/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = colors.darkBlueColor
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : colors.whiteColor]
+        self.navigationController?.navigationBar.tintColor = colors.whiteColor
     }
 }
 

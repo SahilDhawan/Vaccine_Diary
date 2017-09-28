@@ -14,6 +14,7 @@ import FBSDKLoginKit
 
 class UserProfileViewController: UIViewController {
     
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
@@ -40,7 +41,8 @@ class UserProfileViewController: UIViewController {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
         }
-
+        cardView.clipsToBounds = true
+        cardView.layer.cornerRadius = 20
         self.setupNavigationBar()
     }
     

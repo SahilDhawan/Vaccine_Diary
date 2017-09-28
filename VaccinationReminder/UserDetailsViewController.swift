@@ -12,14 +12,15 @@ import Firebase
 
 class UserDetailsViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: TextField!
-    @IBOutlet weak var dateOfBirth: TextField!
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var dateOfBirthTextField: UITextField!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var activityView1: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveDetailsButton: UIButton!
-    @IBOutlet weak var activityView1: UIActivityIndicatorView!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var notificationTimeField: TextField!
+    @IBOutlet weak var notificationTimeField: UITextField!
     
     let datePicker : UIDatePicker = UIDatePicker()
     let timePicker : UIDatePicker = UIDatePicker()
@@ -29,7 +30,7 @@ class UserDetailsViewController: UIViewController {
         super.viewDidLoad()
         //delegates
         nameTextField.delegate = self
-        dateOfBirth.delegate = self
+        dateOfBirthTextField.delegate = self
         
         //datePicker
         datePicker.datePickerMode = .date
@@ -49,7 +50,7 @@ class UserDetailsViewController: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resign(sender:)))
         toolbar.setItems([doneButton], animated: true)
         toolbar.isUserInteractionEnabled = true
-        toolbar.tintColor =  UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        toolbar.tintColor =  colors.darkBlueColor
         toolbar.sizeToFit()
         
         //timePickerToolbar
@@ -59,11 +60,11 @@ class UserDetailsViewController: UIViewController {
         let timeDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resignTime(sender:)))
         timeToolbar.setItems([timeDoneButton], animated: true)
         timeToolbar.isUserInteractionEnabled = true
-        timeToolbar.tintColor =  UIColor(colorLiteralRed: 55/255, green: 71/255, blue: 97/255, alpha: 1)
+        timeToolbar.tintColor =  colors.darkBlueColor
         timeToolbar.sizeToFit()
         
-        dateOfBirth.inputView = datePicker
-        dateOfBirth.inputAccessoryView = toolbar
+        dateOfBirthTextField.inputView = datePicker
+        dateOfBirthTextField.inputAccessoryView = toolbar
         
         
         notificationTimeField.inputView = timePicker
@@ -71,6 +72,11 @@ class UserDetailsViewController: UIViewController {
         
         getDataFromFirebase()
         self.setupNavigationBar()
+        
+        
+        //card View
+        cardView.clipsToBounds = true
+        cardView.layer.cornerRadius = 20.0
     }
     
     func resign(sender : UIBarButtonItem) {
@@ -79,7 +85,7 @@ class UserDetailsViewController: UIViewController {
         let dateString = dateFormatter.string(from: Date())
         let currentString = dateFormatter.string(from: datePicker.date)
         if dateString == currentString {
-            dateOfBirth.text = dateString
+            dateOfBirthTextField.text = dateString
         }
         self.view.endEditing(true)
         
@@ -104,7 +110,7 @@ class UserDetailsViewController: UIViewController {
                 firebase.getDataFromFirebase { (userName, birthDate , time) in
                     self.addActivityViewController(self.activityView, false)
                     self.nameTextField.text = userName
-                    self.dateOfBirth.text = birthDate
+                    self.dateOfBirthTextField.text = birthDate
                     self.notificationTimeField.text = time
                 }
             }
@@ -119,7 +125,7 @@ class UserDetailsViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         let dateString = dateFormatter.string(from: UserDetails.userBirthDate)
-        dateOfBirth.text = dateString
+        dateOfBirthTextField.text = dateString
     }
     
     func handleTimeChange(sender : UIDatePicker) {
@@ -134,9 +140,9 @@ class UserDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Text Field Placeholder
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        dateOfBirth.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        notificationTimeField.attributedPlaceholder = NSAttributedString(string: "Notification Time", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : colors.grayColor])
+        dateOfBirthTextField.attributedPlaceholder = NSAttributedString(string: "Date Of Birth", attributes: [NSForegroundColorAttributeName : colors.grayColor])
+        notificationTimeField.attributedPlaceholder = NSAttributedString(string: "Notification Time", attributes: [NSForegroundColorAttributeName : colors.grayColor])
         
         //cancel button
         if UserDetails.update {
@@ -175,7 +181,7 @@ class UserDetailsViewController: UIViewController {
             self.addActivityViewController(self.activityView1, false)
             showAlert("No Internet Connection")
         } else {
-            if nameTextField.text == "" || dateOfBirth.text == "" || notificationTimeField.text == "" {
+            if nameTextField.text == "" || dateOfBirthTextField.text == "" || notificationTimeField.text == "" {
                 self.showAlert("Fields cannot be empty !")
                 self.addActivityViewController(self.activityView1, false)
             } else {

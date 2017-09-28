@@ -36,8 +36,8 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //Placeholder color change
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSForegroundColorAttributeName : UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : colors.whiteColor])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSForegroundColorAttributeName : colors.whiteColor])
         
         facebookSignInButton.delegate = self
         UserDetails.logOut = false
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
             else {
                 self.showAlert((error?.localizedDescription)!)
             }
-
+            
         })
         
     }
@@ -103,6 +103,9 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             self.addActivityViewController(self.activityView, false)
         }
         else {
+            if result.isCancelled {
+                self.addActivityViewController(self.activityView, false)
+            } else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if error != nil {
@@ -114,15 +117,16 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
                     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
                     ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                         if snapshot.hasChild(UserDetails.uid) {
+                            self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "LoginSegue", sender: self)
-                        }
-                        else {
+                        } else {
+                            self.addActivityViewController(self.activityView, false)
                             self.performSegue(withIdentifier: "facebookLogin", sender: self)
                         }
                     })
                 }
-                self.addActivityViewController(self.activityView, false)
             })
+        }
         }
     }
     

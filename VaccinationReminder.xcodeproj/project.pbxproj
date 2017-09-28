@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
+		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
 		5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */; };
 		5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA31F632D3A002426A4 /* Geometry.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesObject.swift; sourceTree = "<group>"; };
 		5F5E8EA31F632D3A002426A4 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineCollectionViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* Extensions.swift */,
+				5F34AB1B1F7D1EBA00986027 /* Colors.swift */,
 				BA7698B71EC8F28E00B16B72 /* TextField.swift */,
 			);
 			name = View;
@@ -350,6 +353,7 @@
 				BA306E811EC20D0600DE1B6A /* VaccineCollectionViewCell.swift in Sources */,
 				5F5E8EA01F632D23002426A4 /* Result.swift in Sources */,
 				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
+				5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */,
 				5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */,
 				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,

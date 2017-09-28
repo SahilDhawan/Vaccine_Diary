@@ -128,9 +128,9 @@ extension ScheduleViewController : UICollectionViewDelegate {
         textView.text = vaccine.vaccinationDetail
         
         if vaccine.vaccineCompletion {
-            vaccineDetail.backgroundColor = UIColor(colorLiteralRed: 164/255, green: 211/255, blue: 158/255, alpha: 1)
+            vaccineDetail.backgroundColor = colors.greenColor
         } else {
-            vaccineDetail.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 142/255, blue: 92/255, alpha: 1)
+            vaccineDetail.backgroundColor = colors.redColor
         }
         collectionView.alpha = 0.3
         collectionView.isUserInteractionEnabled = false

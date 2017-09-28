@@ -36,7 +36,6 @@ class DetailTableViewController : UITableViewController {
         }
         self.setupNavigationBar()
         setupTableView()
-        setupMapView()
         setupLocationManager()
         createMapPin()
         createUserLocation()
@@ -46,17 +45,16 @@ class DetailTableViewController : UITableViewController {
     func setupTableView() {
         nameLabel.text = currentPlace["Name"]
         nameLabel.sizeToFit()
-        nameLabelHeight = nameLabel.frame.size.height
         
         addressLabel.text = currentPlace["Address"]
         addressLabel.sizeToFit()
-        addressLabelHeight = nameLabel.frame.size.height
         
         ratingLabel.text = currentPlace["Rating"]
         openNowLabel.text = currentPlace["Open Now"]
         
         tableView.tableFooterView = UIView()
         tableView.reloadData()
+        setupMapView()
     }
     
     func setupMapView() {
@@ -65,9 +63,17 @@ class DetailTableViewController : UITableViewController {
         let tabBarHeight = self.tabBarController?.tabBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         mapView.translatesAutoresizingMaskIntoConstraints = true
-        let mapHeight  = self.view.frame.height - navigationBarHeight! - tabBarHeight! - statusBarHeight - nameLabelHeight - addressLabelHeight - 90.0
+        nameLabelHeight = nameLabel.frame.height + 15.0
+        addressLabelHeight = addressLabel.frame.height + 15.0
+        if nameLabelHeight < 45 {
+            nameLabelHeight  = 45.0
+        }
+        if addressLabelHeight < 45 {
+            addressLabelHeight = 45.0
+        }
+        let mapHeight  = self.view.frame.height - navigationBarHeight! - tabBarHeight! - statusBarHeight - 90 - nameLabelHeight  - addressLabelHeight
         mapView.showsUserLocation = true
-        mapView.frame.size = CGSize(width: self.view.frame.width, height: mapHeight)
+        mapView.frame.size.height = mapHeight
     }
     
     func setupLocationManager(){

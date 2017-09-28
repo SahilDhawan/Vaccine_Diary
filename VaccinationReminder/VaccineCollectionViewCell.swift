@@ -19,7 +19,7 @@ class VaccineCollectionViewCell: UICollectionViewCell {
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
         
-        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderColor = colors.grayColor.cgColor
         self.layer.borderWidth = 1.0
     }
 }
