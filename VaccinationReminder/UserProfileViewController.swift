@@ -23,7 +23,8 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var notificationTimeLabel: UILabel!
     
     let locationManager = CLLocationManager()
-
+    let defaults = UserDefaults.standard
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -41,8 +42,18 @@ class UserProfileViewController: UIViewController {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
         }
+        cardView.dropShadow()
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 20
+        
+        //getting user image
+        if let imageData = defaults.object(forKey: "userImage") as? NSData {
+            let image = UIImage(data: imageData as Data)
+            userImage.image = image
+        } else {
+            self.userImage.image = UIImage(named: "userIcon")
+        }
+        
         self.setupNavigationBar()
     }
     

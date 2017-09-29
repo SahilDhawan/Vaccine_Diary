@@ -21,9 +21,12 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var saveDetailsButton: UIButton!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var notificationTimeField: UITextField!
+    @IBOutlet weak var userImage: UIImageView!
     
     let datePicker : UIDatePicker = UIDatePicker()
     let timePicker : UIDatePicker = UIDatePicker()
+    let imagePicker = UIImagePickerController()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         
@@ -66,7 +69,6 @@ class UserDetailsViewController: UIViewController {
         dateOfBirthTextField.inputView = datePicker
         dateOfBirthTextField.inputAccessoryView = toolbar
         
-        
         notificationTimeField.inputView = timePicker
         notificationTimeField.inputAccessoryView = timeToolbar
         
@@ -75,8 +77,20 @@ class UserDetailsViewController: UIViewController {
         
         
         //card View
+        cardView.dropShadow()
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 20.0
+        
+        //imagePicker
+        imagePicker.delegate = self
+        
+        //getting user image
+        if let imageData = defaults.object(forKey: "userImage") as? NSData {
+            let image = UIImage(data: imageData as Data)
+            userImage.image = image
+        } else {
+            self.userImage.image = UIImage(named: "userIcon")
+        }
     }
     
     func resign(sender : UIBarButtonItem) {
@@ -167,6 +181,10 @@ class UserDetailsViewController: UIViewController {
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
         UserDetails.userName = nameTextField.text!
+        if userImage.image != UIImage(named : "userIcon") {
+            let imageData = UIImageJPEGRepresentation(userImage.image!, 1)
+            defaults.set(imageData, forKey: "userImage")
+        }
         savingDetailsToFirebase()
         return
     }
@@ -216,6 +234,27 @@ class UserDetailsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func cameraButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Vaccine Diary", message: "Choose an option", preferredStyle: .alert)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let galleryAction = UIAlertAction(title: "Photo Album", style: .default) { (action) in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let removeAction = UIAlertAction(title: "Remove Photo", style: .destructive) { (action) in
+            self.userImage.image = UIImage(named: "userIcon")
+            self.defaults.removeObject(forKey: "userImage")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cameraAction)
+        alert.addAction(galleryAction)
+        alert.addAction(removeAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UserDetailsViewController : UITextFieldDelegate {
@@ -223,5 +262,20 @@ extension UserDetailsViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension UserDetailsViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        userImage.contentMode = .scaleAspectFit
+        userImage.image = image!
+        
+        dismiss(animated: true, completion: nil)
     }
 }

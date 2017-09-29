@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Vaccine Diary wants to access your camera to upload the image of user</string>
 	<key>CFBundleDisplayName</key>
 	<string>Vaccine Diary</string>
 	<key>CFBundleExecutable</key>
