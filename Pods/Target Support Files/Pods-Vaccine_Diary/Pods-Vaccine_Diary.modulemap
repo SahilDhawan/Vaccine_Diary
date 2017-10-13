@@ -1,0 +1,6 @@
+framework module Pods_Vaccine_Diary {
+  umbrella header "Pods-Vaccine_Diary-umbrella.h"
+
+  export *
+  module * { export * }
+}
