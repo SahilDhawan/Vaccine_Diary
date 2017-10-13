@@ -63,4 +63,15 @@ class FirebaseMethods : NSObject {
             }
         }
     }
+    
+    func FirebasePasswordReset(_ email : String , completionHandler : @escaping(_ bool : Bool, _ error : Error?) -> Void){
+        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+            if error != nil {
+                completionHandler(false,error!)
+            } else {
+                completionHandler(true,nil)
+            }
+        })
+    }
+    
 }

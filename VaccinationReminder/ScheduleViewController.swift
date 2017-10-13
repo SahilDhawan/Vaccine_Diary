@@ -105,9 +105,9 @@ extension ScheduleViewController: UICollectionViewDataSource {
         cell.dateLabel?.text = dateFormatter.string(for:vaccine.vaccineDate)
         
         if !vaccine.vaccineCompletion {
-            cell.vaccineImageView.image = UIImage(named: "VacRed")
+            cell.vaccineImageView.image = UIImage(named: "orangeVaccine")
         }else {
-            cell.vaccineImageView.image = UIImage(named: "VacGreen")
+            cell.vaccineImageView.image = UIImage(named: "greenVaccine")
         }
         return cell
     }

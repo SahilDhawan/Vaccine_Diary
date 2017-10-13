@@ -15,6 +15,89 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Password Reset View Controller-->
+        <scene sceneID="6Kc-hw-0X3">
+            <objects>
+                <viewController id="Ccr-Nj-iBl" customClass="PasswordResetViewController" customModule="Vaccine_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XTy-8H-obu"/>
+                        <viewControllerLayoutGuide type="bottom" id="auL-Je-jKa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VcM-TN-KK5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccine Diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYG-jL-vtM">
+                                <rect key="frame" x="88" y="179.5" width="145" height="30"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vaccine" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-kp-MeT">
+                                <rect key="frame" x="110" y="64.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="MO6-nH-Ml0"/>
+                                    <constraint firstAttribute="height" constant="100" id="SXd-aG-gM5"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4jW-pn-1UX">
+                                <rect key="frame" x="36" y="249.5" width="248" height="69"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pwI-XC-cKs">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="32"/>
+                                        <color key="backgroundColor" red="0.13575088977813721" green="0.1753251850605011" blue="0.23763364553451538" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-sH-mNc">
+                                        <rect key="frame" x="0.0" y="37" width="248" height="32"/>
+                                        <color key="backgroundColor" red="0.47843137254901957" green="0.68235294117647061" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="SEND RESET EMAIL">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetPasswordButtonPressed" destination="Ccr-Nj-iBl" eventType="touchUpInside" id="w8B-tx-pLz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxu-ej-LjG">
+                                <rect key="frame" x="10" y="25" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Jih-jT-9OK"/>
+                                    <constraint firstAttribute="height" constant="30" id="kfC-mo-z62"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed" destination="Ccr-Nj-iBl" eventType="touchUpInside" id="b65-Qo-dKW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4jW-pn-1UX" firstAttribute="centerX" secondItem="VcM-TN-KK5" secondAttribute="centerX" id="6Us-DL-r3R"/>
+                            <constraint firstItem="uxu-ej-LjG" firstAttribute="leading" secondItem="VcM-TN-KK5" secondAttribute="leading" constant="10" id="6W7-bc-tTR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4jW-pn-1UX" secondAttribute="trailing" constant="20" id="GlW-Dl-h5m"/>
+                            <constraint firstItem="aYG-jL-vtM" firstAttribute="centerX" secondItem="VcM-TN-KK5" secondAttribute="centerX" id="Stv-cz-B1x"/>
+                            <constraint firstItem="4jW-pn-1UX" firstAttribute="centerY" secondItem="VcM-TN-KK5" secondAttribute="centerY" id="X6U-YY-Mpx"/>
+                            <constraint firstItem="9yI-kp-MeT" firstAttribute="centerX" secondItem="VcM-TN-KK5" secondAttribute="centerX" id="gsI-wJ-dBp"/>
+                            <constraint firstItem="4jW-pn-1UX" firstAttribute="top" secondItem="aYG-jL-vtM" secondAttribute="bottom" constant="40" id="pWT-o0-W9s"/>
+                            <constraint firstItem="4jW-pn-1UX" firstAttribute="leading" secondItem="VcM-TN-KK5" secondAttribute="leadingMargin" constant="20" id="q47-zN-xhy"/>
+                            <constraint firstItem="aYG-jL-vtM" firstAttribute="top" secondItem="9yI-kp-MeT" secondAttribute="bottom" constant="15" id="r5i-8t-7Ub"/>
+                            <constraint firstItem="uxu-ej-LjG" firstAttribute="top" secondItem="XTy-8H-obu" secondAttribute="bottom" constant="5" id="tXX-0m-9nC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="pwI-XC-cKs" id="G8T-vr-99L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKG-wD-XSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="-1313"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="P2j-Wd-3to">
             <objects>
@@ -33,6 +116,9 @@
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Ccr-Nj-iBl" kind="presentation" id="bnP-9U-WnM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccine Diary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg9-ik-1j5">
                                 <rect key="frame" x="88" y="157" width="145" height="30"/>
@@ -95,7 +181,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-0W-EXM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vaccine" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-0W-EXM">
                                 <rect key="frame" x="110" y="42" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="D3T-46-ZD1"/>
@@ -156,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2Y-IV-SkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850" y="-1321"/>
+            <point key="canvasLocation" x="2850" y="-1313"/>
         </scene>
         <!--Edit User Details-->
         <scene sceneID="8pT-cq-bmt">
@@ -1111,7 +1197,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="qal-zq-SxQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vaccine" translatesAutoresizingMaskIntoConstraints="NO" id="qal-zq-SxQ">
                                 <rect key="frame" x="110" y="37" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Az7-Oj-Lm0"/>
@@ -1269,16 +1355,17 @@
     </scenes>
     <resources>
         <image name="VacRed" width="500" height="498"/>
+        <image name="back" width="13" height="13"/>
         <image name="camera" width="50" height="50"/>
         <image name="clinic" width="26" height="26"/>
         <image name="hospital" width="25" height="25"/>
-        <image name="icon" width="500" height="498"/>
         <image name="profile" width="25" height="25"/>
         <image name="schedule" width="25" height="25"/>
         <image name="userIcon" width="256" height="256"/>
+        <image name="vaccine" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A2m-FX-xyT"/>
+        <segue reference="BDm-6k-2zc"/>
         <segue reference="OW8-7v-nf3"/>
         <segue reference="LXF-Bb-1pq"/>
     </inferredMetricsTieBreakers>

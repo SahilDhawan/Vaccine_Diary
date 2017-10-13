@@ -16,6 +16,7 @@
 		5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA71F632D55002426A4 /* Viewport.swift */; };
 		5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA91F632D63002426A4 /* OpeningHours.swift */; };
 		5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EAB1F632D6E002426A4 /* Photo.swift */; };
+		5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */; };
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
 		BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1752F21ED821CA005131F3 /* NetworkConnection.swift */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
@@ -55,6 +56,7 @@
 		5F5E8EA71F632D55002426A4 /* Viewport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viewport.swift; sourceTree = "<group>"; };
 		5F5E8EA91F632D63002426A4 /* OpeningHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningHours.swift; sourceTree = "<group>"; };
 		5F5E8EAB1F632D6E002426A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
 				BAE931091EBCF4AC00F77191 /* LoginViewController.swift */,
 				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
+				5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */,
 				BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */,
 			);
 			name = Controller;
@@ -366,6 +369,7 @@
 				5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */,
 				BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
+				5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Extensions.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
