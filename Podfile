@@ -2,18 +2,18 @@
 # platform :ios, '9.0'
 
 target 'VaccinationReminder' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-	pod 'Firebase/Auth'
-	pod 'Firebase/Core'
-	pod 'Firebase/Database'
-	pod 'FBSDKLoginKit'
-	pod 'FBSDKCoreKit'
-    	pod 'GooglePlaces'
-  	pod 'GooglePlacePicker'
-  	pod 'GoogleMaps'
+    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKCoreKit'
+    pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
+    pod 'GoogleMaps'
     pod 'Alamofire', '~> 4.5'
     pod 'AlamofireObjectMapper', '~> 4.0'
-
-	use_frameworks!
+    
+    use_frameworks!
 end

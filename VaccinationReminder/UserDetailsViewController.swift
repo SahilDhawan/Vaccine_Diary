@@ -96,11 +96,9 @@ class UserDetailsViewController: UIViewController {
     func resign(sender : UIBarButtonItem) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        let dateString = dateFormatter.string(from: Date())
         let currentString = dateFormatter.string(from: datePicker.date)
-        if dateString == currentString {
-            dateOfBirthTextField.text = dateString
-        }
+        dateOfBirthTextField.text = currentString
+        UserDetails.userBirthDate = datePicker.date
         self.view.endEditing(true)
         
     }
@@ -108,11 +106,9 @@ class UserDetailsViewController: UIViewController {
     func resignTime(sender : UIBarButtonItem) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
-        let dateString = dateFormatter.string(from: Date())
         let currentString = dateFormatter.string(from: timePicker.date)
-        if dateString == currentString {
-            notificationTimeField.text = dateString
-        }
+        notificationTimeField.text = currentString
+        UserDetails.notificationTime = timePicker.date
         self.view.endEditing(true)
     }
     
@@ -135,18 +131,16 @@ class UserDetailsViewController: UIViewController {
     }
     
     func handleDateChange(sender : UIDatePicker) {
-        UserDetails.userBirthDate = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        let dateString = dateFormatter.string(from: UserDetails.userBirthDate)
+        let dateString = dateFormatter.string(from: sender.date)
         dateOfBirthTextField.text = dateString
     }
     
     func handleTimeChange(sender : UIDatePicker) {
-        UserDetails.notificationTime = timePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
-        let dateString = dateFormatter.string(from: UserDetails.notificationTime)
+        let dateString = dateFormatter.string(from: sender.date)
         notificationTimeField.text = dateString
     }
     

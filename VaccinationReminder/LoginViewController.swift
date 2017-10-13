@@ -23,7 +23,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
-        
         facebookSignInButton.readPermissions = ["email"]
     }
     
@@ -79,9 +78,7 @@ class LoginViewController: UIViewController {
             else {
                 self.showAlert((error?.localizedDescription)!)
             }
-            
         })
-        
     }
 }
 
@@ -106,27 +103,27 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             if result.isCancelled {
                 self.addActivityViewController(self.activityView, false)
             } else {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-                if error != nil {
-                    self.showAlert((error?.localizedDescription)!)
-                    self.showAlert("\(String(describing: error))")
-                }
-                else {
-                    UserDetails.uid = (user?.uid)!
-                    let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
-                    ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                        if snapshot.hasChild(UserDetails.uid) {
-                            self.addActivityViewController(self.activityView, false)
-                            self.performSegue(withIdentifier: "LoginSegue", sender: self)
-                        } else {
-                            self.addActivityViewController(self.activityView, false)
-                            self.performSegue(withIdentifier: "facebookLogin", sender: self)
-                        }
-                    })
-                }
-            })
-        }
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                    if error != nil {
+                        self.showAlert((error?.localizedDescription)!)
+                        self.showAlert("\(String(describing: error))")
+                    }
+                    else {
+                        UserDetails.uid = (user?.uid)!
+                        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+                        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                            if snapshot.hasChild(UserDetails.uid) {
+                                self.addActivityViewController(self.activityView, false)
+                                self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                            } else {
+                                self.addActivityViewController(self.activityView, false)
+                                self.performSegue(withIdentifier: "facebookLogin", sender: self)
+                            }
+                        })
+                    }
+                })
+            }
         }
     }
     
