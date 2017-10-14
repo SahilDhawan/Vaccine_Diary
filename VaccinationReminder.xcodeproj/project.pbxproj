@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D190AE43B0AADC1134D798B /* Pods_Vaccine_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */; };
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
@@ -46,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.release.xcconfig"; sourceTree = "<group>"; };
+		20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vaccine_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		5F5E8EA91F632D63002426A4 /* OpeningHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningHours.swift; sourceTree = "<group>"; };
 		5F5E8EAB1F632D6E002426A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VaccinationReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 		BAE930FF1EBCF03000F77191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE931011EBCF03000F77191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAE931091EBCF4AC00F77191 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F49D720EEC1F5D14F64F8476 /* Pods-Vaccine_Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vaccine_Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary.release.xcconfig"; sourceTree = "<group>"; };
+		FADC9D37A8D43E275691D728 /* Pods-Vaccine_Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vaccine_Diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				BA306E8B1EC23B6200DE1B6A /* CoreLocation.framework in Frameworks */,
 				BA306E891EC23B5B00DE1B6A /* MapKit.framework in Frameworks */,
 				9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */,
+				2D190AE43B0AADC1134D798B /* Pods_Vaccine_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +127,7 @@
 				BA306E8A1EC23B6200DE1B6A /* CoreLocation.framework */,
 				BA306E881EC23B5B00DE1B6A /* MapKit.framework */,
 				AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */,
+				20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,8 +135,8 @@
 		B69BA861D9569B27168B3351 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */,
-				2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */,
+				FADC9D37A8D43E275691D728 /* Pods-Vaccine_Diary.debug.xcconfig */,
+				F49D720EEC1F5D14F64F8476 /* Pods-Vaccine_Diary.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -300,13 +304,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vaccine_Diary-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		11DC0216D3BDD76E64F57270 /* [CP] Embed Pods Frameworks */ = {
@@ -315,13 +322,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE61E6E5C166A73363C79E94 /* [CP] Copy Pods Resources */ = {
@@ -330,13 +350,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VaccinationReminder/Pods-VaccinationReminder-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -494,7 +519,7 @@
 		};
 		BAE931051EBCF03100F77191 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64B5DD19C2611DFAABB417F1 /* Pods-VaccinationReminder.debug.xcconfig */;
+			baseConfigurationReference = FADC9D37A8D43E275691D728 /* Pods-Vaccine_Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -502,8 +527,9 @@
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccineDiary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PODS_PODFILE_DIR_PATH = "$(SRCROOT)/.";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_NAME = Vaccine_Diary;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -512,7 +538,7 @@
 		};
 		BAE931061EBCF03100F77191 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D2ACB4B33B0FF6CBB955BCA /* Pods-VaccinationReminder.release.xcconfig */;
+			baseConfigurationReference = F49D720EEC1F5D14F64F8476 /* Pods-Vaccine_Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -520,8 +546,8 @@
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccineDiary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "dhawan-sahil.VaccinationReminder";
+				PRODUCT_NAME = Vaccine_Diary;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -22,11 +22,13 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var notificationTimeField: UITextField!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var segmentController : UISegmentedControl!
     
     let datePicker : UIDatePicker = UIDatePicker()
     let timePicker : UIDatePicker = UIDatePicker()
     let imagePicker = UIImagePickerController()
     let defaults = UserDefaults.standard
+    let userGenderArray = ["Boy" , "Girl"]
     
     override func viewDidLoad() {
         
@@ -75,6 +77,9 @@ class UserDetailsViewController: UIViewController {
         getDataFromFirebase()
         self.setupNavigationBar()
         
+        //segmentController
+        let font = UIFont.systemFont(ofSize: 18.0)
+        segmentController.setTitleTextAttributes([NSFontAttributeName : font], for: .normal)
         
         //card View
         cardView.dropShadow()
@@ -89,7 +94,13 @@ class UserDetailsViewController: UIViewController {
             let image = UIImage(data: imageData as Data)
             userImage.image = image
         } else {
-            self.userImage.image = UIImage(named: "userIcon")
+            if UserDetails.userGender == "Boy" {
+                self.userImage.image = UIImage(named: "boy")
+            } else {
+                self.userImage.image = UIImage(named: "girl")
+            }
+            userImage.backgroundColor = UIColor.clear
+
         }
     }
     
@@ -117,11 +128,16 @@ class UserDetailsViewController: UIViewController {
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(UserDetails.uid) {
                 let firebase = FirebaseMethods()
-                firebase.getDataFromFirebase { (userName, birthDate , time) in
+                firebase.getDataFromFirebase { (userName, birthDate , time , userGender) in
                     self.addActivityViewController(self.activityView, false)
                     self.nameTextField.text = userName
                     self.dateOfBirthTextField.text = birthDate
                     self.notificationTimeField.text = time
+                    if userGender == "Boy" {
+                        self.segmentController.selectedSegmentIndex = 0
+                    } else {
+                        self.segmentController.selectedSegmentIndex = 1
+                    }
                 }
             }
             else {
@@ -175,7 +191,8 @@ class UserDetailsViewController: UIViewController {
     
     @IBAction func saveDetailsPressed(_ sender: Any) {
         UserDetails.userName = nameTextField.text!
-        if userImage.image != UIImage(named : "userIcon") {
+        
+        if userImage.image != UIImage(named : "girl") ||  userImage.image != UIImage(named : "boy") {
             let imageData = UIImageJPEGRepresentation(userImage.image!, 1)
             defaults.set(imageData, forKey: "userImage")
         }
@@ -197,6 +214,7 @@ class UserDetailsViewController: UIViewController {
                 self.showAlert("Fields cannot be empty !")
                 self.addActivityViewController(self.activityView1, false)
             } else {
+                UserDetails.userGender = userGenderArray[segmentController.selectedSegmentIndex]
                 if UserDetails.update {
                     fir.FirebaseUpdateData({ (success) in
                         if success {
@@ -219,7 +237,17 @@ class UserDetailsViewController: UIViewController {
                         }
                     })
                 }
+                
             }
+            
+        }
+    }
+    
+    @IBAction func segmentValueChanged(){
+        if segmentController.selectedSegmentIndex == 0 {
+            userImage.image = UIImage(named : "boy")
+        } else {
+            userImage.image = UIImage(named : "girl")
         }
     }
     

@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'VaccinationReminder' do
+target 'Vaccine_Diary' do
     # Comment this line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
     pod 'Firebase/Auth'
@@ -14,6 +14,5 @@ target 'VaccinationReminder' do
     pod 'GoogleMaps'
     pod 'Alamofire', '~> 4.5'
     pod 'AlamofireObjectMapper', '~> 4.0'
-    
     use_frameworks!
 end

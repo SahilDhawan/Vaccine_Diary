@@ -16,8 +16,7 @@ struct UserDetails {
     static var userName  : String = ""
     static var userBirthDate : Date = Date()
     static var notificationTime : Date = Date()
-    
-    
+    static var userGender : String = "Boy"
     static var locationCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     static var uid : String = ""
     static var update : Bool = false
@@ -25,16 +24,16 @@ struct UserDetails {
     static var logOut : Bool = false
     
     struct VaccinationDates {
-        static let sixWeeksDate = gregorian.date(byAdding: .day, value: 42, to: UserDetails.userBirthDate)
-        static let tenWeeksDate = gregorian.date(byAdding: .day, value: 70, to: UserDetails.userBirthDate)
-        static let fourteenWeeksDate = gregorian.date(byAdding: .day, value: 98, to: UserDetails.userBirthDate)
-        static let sixMonthsDate = gregorian.date(byAdding: .month, value: 6, to: UserDetails.userBirthDate)
-        static let nineMonthsDate = gregorian.date(byAdding: .month, value: 9, to: UserDetails.userBirthDate)
-        static let oneYearDate = gregorian.date(byAdding: .year, value: 1, to: UserDetails.userBirthDate)
-        static let fifteenMonthsDate = gregorian.date(byAdding: .month, value: 15, to: UserDetails.userBirthDate)
-        static let eighteenMonthsDate = gregorian.date(byAdding: .month, value: 18, to: UserDetails.userBirthDate)
-        static let twoYearDate = gregorian.date(byAdding: .year, value: 2, to: UserDetails.userBirthDate)
-        static let sixYearDate = gregorian.date(byAdding: .year, value: 6, to: UserDetails.userBirthDate)
-        static let twelveYearDate = gregorian.date(byAdding: .year, value: 12, to: UserDetails.userBirthDate)
+        static var sixWeeksDate = Date()
+        static var tenWeeksDate = Date()
+        static var fourteenWeeksDate = Date()
+        static var sixMonthsDate = Date()
+        static var nineMonthsDate = Date()
+        static var oneYearDate = Date()
+        static var fifteenMonthsDate = Date()
+        static var eighteenMonthsDate = Date()
+        static var twoYearDate = Date()
+        static var sixYearDate = Date()
+        static var twelveYearDate = Date()
     }
 }

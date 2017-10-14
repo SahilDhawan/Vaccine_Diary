@@ -20,8 +20,11 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var nextVaccinationLabel : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigationBar()
         addActivityViewController(activityView,true)
         setupViewController()
     }
@@ -36,13 +39,30 @@ class ScheduleViewController: UIViewController {
     }
     
     func setupViewController() {
+        self.nextVaccinationLabel.text = ""
         if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
         } else {
             setUpCollectionView()
             getDataFromFirebase()
-            self.setupNavigationBar()
+        }
+    }
+    
+    func setupNextVaccinationLabel(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        for i in 0..<UserDetails.vaccinationList.count {
+            if i == 0 {
+                let vaccine = UserDetails.vaccinationList.first
+                if (vaccine?.vaccineDate)! > Date() {
+                    self.nextVaccinationLabel.text = dateFormatter.string(from: (vaccine?.vaccineDate)!)
+                    break
+                }
+            } else if (UserDetails.vaccinationList[i].vaccineDate) > Date() && (UserDetails.vaccinationList[i-1].vaccineDate) <= Date(){
+                self.nextVaccinationLabel.text = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
+                break
+            }
         }
     }
     
@@ -63,7 +83,7 @@ class ScheduleViewController: UIViewController {
         self.addActivityViewController(self.activityView,true)
 
         let fir = FirebaseMethods()
-        fir.getDataFromFirebase { (name, birthDate,time) in
+        fir.getDataFromFirebase { (name, birthDate,time,userGender) in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!
@@ -76,6 +96,7 @@ class ScheduleViewController: UIViewController {
 
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.setupNextVaccinationLabel()
                 self.addActivityViewController(self.activityView,false)
             }
         }

@@ -51,7 +51,12 @@ class UserProfileViewController: UIViewController {
             let image = UIImage(data: imageData as Data)
             userImage.image = image
         } else {
-            self.userImage.image = UIImage(named: "userIcon")
+            if UserDetails.userGender == "Boy" {
+                self.userImage.image = UIImage(named: "boy")
+            } else {
+                self.userImage.image = UIImage(named: "girl")
+            }
+            userImage.backgroundColor = UIColor.clear
         }
         
         self.setupNavigationBar()
@@ -66,11 +71,12 @@ class UserProfileViewController: UIViewController {
     func getDataFromFirebase() {
         let fir = FirebaseMethods()
         editButtonItem.isEnabled = false
-        fir.getDataFromFirebase { (name, birthDate,time) in
+        fir.getDataFromFirebase { (name,birthDate,time,userGender) in
             self.nameLabel.text = name!
             self.birthDateLabel.text = birthDate!
             self.notificationTimeLabel.text = time!
             UserDetails.userName = name!
+            UserDetails.userGender = userGender!
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             UserDetails.userBirthDate = dateFormatter.date(from: birthDate!)!

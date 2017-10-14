@@ -13,15 +13,15 @@ import UserNotifications
 class FirebaseMethods : NSObject {
     let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
     
-    func getDataFromFirebase(_ completionHandler : @escaping(_ name : String?, _ birthDate : String? , _ time : String?)-> Void) {
+    func getDataFromFirebase(_ completionHandler : @escaping(_ name : String?, _ birthDate : String? , _ time : String? , _ userGender : String?)-> Void) {
         //Updating Label Values
         ref.child("users").child(UserDetails.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            
             let userName = value?["username"] as? String
             let birthString = value?["birthDate"] as? String
             let notificationTime = value?["notificationTime"] as? String
-            completionHandler(userName,birthString,notificationTime)
+            let userGender = value?["userGender"] as? String
+            completionHandler(userName,birthString,notificationTime,userGender)
         })
     }
     
@@ -34,6 +34,7 @@ class FirebaseMethods : NSObject {
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
         dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
+        saveDict["userGender"] = UserDetails.userGender
         ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
             if error == nil {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -54,6 +55,7 @@ class FirebaseMethods : NSObject {
         saveDict["birthDate"] = dateFormatter.string(from: UserDetails.userBirthDate)
         dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
+        saveDict["userGender"] = UserDetails.userGender
         ref.child("users").child(UserDetails.uid).setValue(saveDict) { (error, databaseRef) in
             if error == nil {
                 completionHandler(true)

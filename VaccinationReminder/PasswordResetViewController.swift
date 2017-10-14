@@ -1,6 +1,6 @@
 //
 //  PasswordResetViewController.swift
-//  Vaccine_Diary
+//  VaccinationReminder
 //
 //  Created by Sahil Dhawan on 13/10/17.
 //  Copyright © 2017 Sahil Dhawan. All rights reserved.

@@ -124,7 +124,7 @@ extension NearbyPharmacyViewController : UITableViewDataSource
     }
     
     func createUserLocation() {
-        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009))
         self.mapView.setRegion(mapRegion, animated: true)
         googleApiFetch()
         addActivityViewController(self.activityView, false)

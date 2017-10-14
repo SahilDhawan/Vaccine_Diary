@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
             UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
             let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                
                 if snapshot.hasChild(UserDetails.uid) {
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }

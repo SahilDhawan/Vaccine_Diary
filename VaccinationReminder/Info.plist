@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Vaccine Diary wants to access your camera to upload the image of user</string>
 	<key>CFBundleDisplayName</key>
 	<string>Vaccine Diary</string>
 	<key>CFBundleExecutable</key>
@@ -48,6 +46,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Vaccine Diary wants to access your camera to upload the image of user</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Vaccine Diary wants to access your location to fetch nearby hospitals and doctors.</string>
 	<key>UILaunchStoryboardName</key>
