@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookSignInButton: FBSDKLoginButton!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var activityView1: UIActivityIndicatorView!
+    @IBOutlet weak var logInButton : UIButton!
+    @IBOutlet weak var forgotPasswordButton : UIButton!
+    @IBOutlet weak var signUpButton : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool)
     {
+        self.interactionEnabled(true)
         emailTextField.text = ""
         passwordTextField.text = ""
         
@@ -44,10 +48,10 @@ class LoginViewController: UIViewController {
         addActivityViewController(self.activityView1, true)
         
         if FIRAuth.auth()?.currentUser != nil {
+            self.interactionEnabled(false)
             UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
             let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-                
                 if snapshot.hasChild(UserDetails.uid) {
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
@@ -58,28 +62,40 @@ class LoginViewController: UIViewController {
             })
         }
         else {
+            interactionEnabled(true)
             self.addActivityViewController(self.activityView1, false)
         }
     }
     
     @IBAction func logInPressed(_ sender: Any) {
         self.activityView.isHidden = false
-        addActivityViewController(self.activityView, true)
-        guard let email = emailTextField.text,let password = passwordTextField.text else {
-            print("Email or Password can't be empty")
-            return
-        }
-        
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            self.showAlert("Email or Password Field cannot be empty!")
             self.addActivityViewController(self.activityView, false)
-            if error == nil {
-                UserDetails.uid = (user?.uid)!
-                self.performSegue(withIdentifier: "LoginSegue", sender: self)
-            }
-            else {
-                self.showAlert((error?.localizedDescription)!)
-            }
-        })
+        } else {
+            addActivityViewController(self.activityView, true)
+            let email = emailTextField.text!
+            let password = passwordTextField.text!
+            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                self.addActivityViewController(self.activityView, false)
+                if error == nil {
+                    UserDetails.uid = (user?.uid)!
+                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                }
+                else {
+                    self.showAlert((error?.localizedDescription)!)
+                }
+            })
+        }
+    }
+    
+    func interactionEnabled(_ bool : Bool){
+        emailTextField.isUserInteractionEnabled = bool
+        passwordTextField.isUserInteractionEnabled = bool
+        logInButton.isUserInteractionEnabled = bool
+        forgotPasswordButton.isUserInteractionEnabled = bool
+        facebookSignInButton.isUserInteractionEnabled = bool
+        signUpButton.isUserInteractionEnabled = bool
     }
 }
 
@@ -95,6 +111,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         self.activityView.isHidden = false
+        self.interactionEnabled(false)
         self.addActivityViewController(self.activityView, true)
         if error != nil {
             self.showAlert(error.localizedDescription)

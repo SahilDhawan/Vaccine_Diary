@@ -10,6 +10,7 @@
 		2D190AE43B0AADC1134D798B /* Pods_Vaccine_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */; };
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
+		5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
 		5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */; };
 		5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA31F632D3A002426A4 /* Geometry.swift */; };
@@ -17,6 +18,9 @@
 		5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA71F632D55002426A4 /* Viewport.swift */; };
 		5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA91F632D63002426A4 /* OpeningHours.swift */; };
 		5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EAB1F632D6E002426A4 /* Photo.swift */; };
+		5F6C3B9E1F93782600F7CDDD /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3B9D1F93782600F7CDDD /* MoreViewController.swift */; };
+		5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */; };
+		5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */; };
 		5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */; };
 		9CBBA5D25DA009D533FA0EA7 /* Pods_VaccinationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */; };
 		BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1752F21ED821CA005131F3 /* NetworkConnection.swift */; };
@@ -50,6 +54,7 @@
 		20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vaccine_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesObject.swift; sourceTree = "<group>"; };
 		5F5E8EA31F632D3A002426A4 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -57,6 +62,9 @@
 		5F5E8EA71F632D55002426A4 /* Viewport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Viewport.swift; sourceTree = "<group>"; };
 		5F5E8EA91F632D63002426A4 /* OpeningHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningHours.swift; sourceTree = "<group>"; };
 		5F5E8EAB1F632D6E002426A4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		5F6C3B9D1F93782600F7CDDD /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		AAC72AC78FEA053AA4102CD3 /* Pods_VaccinationReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VaccinationReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineCollectionViewCell.swift */,
+				5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* Extensions.swift */,
 				5F34AB1B1F7D1EBA00986027 /* Colors.swift */,
 				BA7698B71EC8F28E00B16B72 /* TextField.swift */,
@@ -171,7 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
+				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
+				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
 				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
+				5F6C3B9D1F93782600F7CDDD /* MoreViewController.swift */,
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
 				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
@@ -382,13 +394,17 @@
 				5F5E8EA01F632D23002426A4 /* Result.swift in Sources */,
 				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
 				5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */,
+				5F6C3B9E1F93782600F7CDDD /* MoreViewController.swift in Sources */,
 				5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */,
 				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
 				5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
+				5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */,
+				5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */,
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
+				5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */,
 				5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */,

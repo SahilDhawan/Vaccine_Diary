@@ -51,4 +51,18 @@ extension UIView {
     }
 }
 
+extension UITextView {
+    
+    func addDoneButton(){
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+        doneButton.tintColor = colors.darkBlueColor
+        toolbar.items = [doneButton]
+        self.inputAccessoryView = toolbar
+    }
+    
+    func doneButtonPressed(){
+        self.resignFirstResponder()
+    }
+}
 

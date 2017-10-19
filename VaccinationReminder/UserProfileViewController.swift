@@ -56,9 +56,8 @@ class UserProfileViewController: UIViewController {
             } else {
                 self.userImage.image = UIImage(named: "girl")
             }
-            userImage.backgroundColor = UIColor.clear
         }
-        
+        userImage.backgroundColor = UIColor.clear        
         self.setupNavigationBar()
     }
     
@@ -87,23 +86,7 @@ class UserProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func logOutButtonPressed(_ sender: Any) {
-        addActivityViewController(activityView, true)
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            UserDetails.logOut = true
-            try firebaseAuth?.signOut()
-            FBSDKLoginManager().logOut()
-            self.addActivityViewController(self.activityView, false)
-            let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.window?.rootViewController = loginViewController
-        }
-        catch {
-            self.addActivityViewController(self.activityView, false)
-            showAlert("Problem Logging Out. Try again!")
-        }
-    }
+   
 }
 
 extension UserProfileViewController : CLLocationManagerDelegate {

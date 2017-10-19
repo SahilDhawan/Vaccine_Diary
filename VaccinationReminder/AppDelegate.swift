@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             else {
                 UNUserNotificationCenter.current().delegate = self
             }
-            
         }
         return true
     }

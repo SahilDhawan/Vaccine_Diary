@@ -147,11 +147,10 @@ extension ScheduleViewController : UICollectionViewDelegate {
         detailDate.text = dateFormatter.string(for:vaccine.vaccineDate)
         textView.scrollRangeToVisible(NSMakeRange(0,0))
         textView.text = vaccine.vaccinationDetail
-        
         if vaccine.vaccineCompletion {
             vaccineDetail.backgroundColor = colors.greenColor
         } else {
-            vaccineDetail.backgroundColor = colors.redColor
+            vaccineDetail.backgroundColor = colors.orangeColor
         }
         collectionView.alpha = 0.3
         collectionView.isUserInteractionEnabled = false

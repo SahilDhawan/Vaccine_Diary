@@ -99,9 +99,8 @@ class UserDetailsViewController: UIViewController {
             } else {
                 self.userImage.image = UIImage(named: "girl")
             }
-            userImage.backgroundColor = UIColor.clear
-
         }
+        userImage.backgroundColor = UIColor.clear
     }
     
     func resign(sender : UIBarButtonItem) {
@@ -267,7 +266,11 @@ class UserDetailsViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)
         }
         let removeAction = UIAlertAction(title: "Remove Photo", style: .destructive) { (action) in
-            self.userImage.image = UIImage(named: "userIcon")
+            if UserDetails.userGender == "Boy" {
+                self.userImage.image = UIImage(named: "boy")
+            } else {
+                self.userImage.image = UIImage(named: "girl")
+            }
             self.defaults.removeObject(forKey: "userImage")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

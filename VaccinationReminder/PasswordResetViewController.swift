@@ -28,9 +28,15 @@ class PasswordResetViewController: UIViewController {
             FirebaseMethods().FirebasePasswordReset(email!, completionHandler: { (bool, error) in
                 if bool {
                     DispatchQueue.main.async {
-                        self.showAlert("Password reset email has been sent to " + email!)
-                        self.emailTextField.text = ""
-                        self.emailTextField.resignFirstResponder()
+                        let msg = "A password reset email has been sent to your email address " + self.emailTextField.text! + " . This email should reflect in your mailbox within 24 hours."
+                        let alertController = UIAlertController(title: "Vaccine Diary", message:msg , preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (acion) in
+                            self.emailTextField.text = ""
+                            self.emailTextField.resignFirstResponder()
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
                     }
                 } else {
                     DispatchQueue.main.async {
