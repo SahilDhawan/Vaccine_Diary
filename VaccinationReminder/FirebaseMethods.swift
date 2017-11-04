@@ -11,7 +11,7 @@ import Firebase
 import UserNotifications
 
 class FirebaseMethods : NSObject {
-    let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+    let ref = Database.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
     
     func getDataFromFirebase(_ completionHandler : @escaping(_ name : String?, _ birthDate : String? , _ time : String? , _ userGender : String?)-> Void) {
         //Updating Label Values
@@ -67,7 +67,7 @@ class FirebaseMethods : NSObject {
     }
     
     func FirebasePasswordReset(_ email : String , completionHandler : @escaping(_ bool : Bool, _ error : Error?) -> Void){
-        FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
+        Auth.auth().sendPasswordReset(withEmail: email, completion: { (error) in
             if error != nil {
                 completionHandler(false,error!)
             } else {

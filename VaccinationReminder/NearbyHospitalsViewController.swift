@@ -94,14 +94,14 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
         //activityView
         addActivityViewController(activityView, true)
-        
         //network connection
-        if Reachability().isConnectedToNetwork() == false
-        {
+        if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
+        } else {
+            self.addActivityViewController(self.activityView, false)
+            tableView.reloadData()
         }
-        
     }
     
     func createMapPins() {
@@ -151,6 +151,7 @@ extension NearbyHospitalsViewController : UITableViewDelegate {
         currentHospitalCoordiate  = hospitalCoordinates[indexPath.item]
         self.performSegue(withIdentifier: "hospitalDetailSegue", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: false)
+        addActivityViewController(self.activityView, false)
     }
 }
 

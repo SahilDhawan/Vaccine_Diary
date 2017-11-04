@@ -82,12 +82,6 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
         tableView.dataSource = self
         tableView.delegate = self
-        
-        //network connection
-        if Reachability().isConnectedToNetwork() == false {
-            self.addActivityViewController(self.activityView, false)
-            showAlert("No Internet Connection")
-        }
         mapView.delegate = self
         mapView.showsUserLocation = true
         self.setupNavigationBar()
@@ -98,6 +92,22 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         destination.currentPlace = currentPharmacy
         destination.fromHospital = false
         destination.currentPlaceLocation = currentPharmacyLocation
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+        
+        //activityView
+        addActivityViewController(activityView, true)
+        //network connection
+        if Reachability().isConnectedToNetwork() == false {
+            self.addActivityViewController(self.activityView, false)
+            showAlert("No Internet Connection")
+        } else {
+            self.addActivityViewController(self.activityView, false)
+            tableView.reloadData()
+        }
     }
 }
 

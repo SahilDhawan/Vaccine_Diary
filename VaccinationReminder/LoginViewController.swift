@@ -47,10 +47,10 @@ class LoginViewController: UIViewController {
         
         addActivityViewController(self.activityView1, true)
         
-        if FIRAuth.auth()?.currentUser != nil {
+        if Auth.auth().currentUser != nil {
             self.interactionEnabled(false)
-            UserDetails.uid = (FIRAuth.auth()?.currentUser?.uid)!
-            let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+            UserDetails.uid = (Auth.auth().currentUser?.uid)!
+            let ref = Database.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.hasChild(UserDetails.uid) {
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
             addActivityViewController(self.activityView, true)
             let email = emailTextField.text!
             let password = passwordTextField.text!
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 self.addActivityViewController(self.activityView, false)
                 if error == nil {
                     UserDetails.uid = (user?.uid)!
@@ -110,9 +110,9 @@ extension LoginViewController : UITextFieldDelegate{
 extension LoginViewController : FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        self.activityView.isHidden = false
         self.interactionEnabled(false)
         self.addActivityViewController(self.activityView, true)
+
         if error != nil {
             self.showAlert(error.localizedDescription)
             self.addActivityViewController(self.activityView, false)
@@ -121,15 +121,16 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             if result.isCancelled {
                 self.addActivityViewController(self.activityView, false)
             } else {
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                Auth.auth().signIn(with: credential, completion: { (user, error) in
+                    self.addActivityViewController(self.activityView, true)
                     if error != nil {
+                        self.addActivityViewController(self.activityView, false)
                         self.showAlert((error?.localizedDescription)!)
-                        self.showAlert("\(String(describing: error))")
                     }
                     else {
                         UserDetails.uid = (user?.uid)!
-                        let ref = FIRDatabase.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
+                        let ref = Database.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
                         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
                             if snapshot.hasChild(UserDetails.uid) {
                                 self.addActivityViewController(self.activityView, false)
@@ -149,6 +150,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
     }
     
     func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        self.addActivityViewController(self.activityView, true)
         return true
     }
 }

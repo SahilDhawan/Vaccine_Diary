@@ -44,12 +44,12 @@ class MoreViewController: UIViewController {
         self.navigationItem.title = "Back"
     }
     
-     func logOutButtonPressed(_ sender: Any) {
+    func logOutButtonPressed(_ sender: Any) {
         addActivityViewController(activityView, true)
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
             UserDetails.logOut = true
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
             FBSDKLoginManager().logOut()
             self.addActivityViewController(self.activityView, false)
             let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -66,9 +66,20 @@ class MoreViewController: UIViewController {
 extension MoreViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: segueArray[indexPath.item], sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.item < 2 {
+            self.performSegue(withIdentifier: segueArray[indexPath.item], sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item == 2{
+            return false
+        } else {
+            return true
+        }
+    }
+    
 }
 
 extension MoreViewController : UITableViewDataSource {

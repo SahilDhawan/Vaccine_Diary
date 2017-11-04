@@ -22,6 +22,8 @@ class ScheduleViewController: UIViewController {
     
     @IBOutlet weak var nextVaccinationLabel : UILabel!
     
+     var nextVaccination : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -36,6 +38,12 @@ class ScheduleViewController: UIViewController {
             setupViewController()
             UserDetails.update = false
         }
+    }
+    
+    func addQuickAction(){
+        let icon = UIApplicationShortcutIcon(type: .date)
+        let item = UIApplicationShortcutItem(type: "dhawan-sahil.VaccinationReminder", localizedTitle: "Next Vaccination", localizedSubtitle: nextVaccination, icon: icon, userInfo: nil)
+        UIApplication.shared.shortcutItems = [item]
     }
     
     func setupViewController() {
@@ -57,13 +65,16 @@ class ScheduleViewController: UIViewController {
                 let vaccine = UserDetails.vaccinationList.first
                 if (vaccine?.vaccineDate)! > Date() {
                     self.nextVaccinationLabel.text = dateFormatter.string(from: (vaccine?.vaccineDate)!)
+                    self.nextVaccination = dateFormatter.string(from: (vaccine?.vaccineDate)!)
                     break
                 }
             } else if (UserDetails.vaccinationList[i].vaccineDate) > Date() && (UserDetails.vaccinationList[i-1].vaccineDate) <= Date(){
                 self.nextVaccinationLabel.text = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
+                self.nextVaccination = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
                 break
             }
         }
+        self.addQuickAction()
     }
     
     func setUpCollectionView() {

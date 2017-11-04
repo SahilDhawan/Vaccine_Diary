@@ -32,7 +32,7 @@ class ContactViewController: UIViewController {
     
     func setupTextViews(){
         contentTextView.textColor = colors.placeholderColor
-        contentTextView.text = "Mail Subject"
+        contentTextView.text = "Mail Content"
         contentTextView.backgroundColor = colors.clearColor
         contentTextView.delegate = self
         contentTextView.addDoneButton()
@@ -79,7 +79,7 @@ extension ContactViewController : UITextFieldDelegate {
 
 extension ContactViewController : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Mail Subject"{
+        if textView.text == "Mail Content"{
             textView.text = ""
         }
         textView.textColor = colors.blackColor
@@ -88,7 +88,7 @@ extension ContactViewController : UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.textColor = colors.placeholderColor
-            textView.text = "Mail Subject"
+            textView.text = "Mail Content"
         } else {
             textView.textColor = colors.blackColor
         }
@@ -96,9 +96,8 @@ extension ContactViewController : UITextViewDelegate {
 }
 
 extension ContactViewController : MFMailComposeViewControllerDelegate , UINavigationControllerDelegate {
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    
 }

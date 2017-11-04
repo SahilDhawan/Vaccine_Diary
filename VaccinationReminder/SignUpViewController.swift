@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
                 self.confirmPass.text = ""
             }
             else {
-                FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
+                Auth.auth().createUser(withEmail: email, password: password, completion: { (FIRUser, error) in
                     
                     if error == nil {
                         UserDetails.uid = (FIRUser?.uid)!

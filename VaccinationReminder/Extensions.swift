@@ -20,6 +20,7 @@ extension UIViewController {
     
     func addActivityViewController(_ activityView : UIActivityIndicatorView , _ bool : Bool) {
         if bool {
+            activityView.isHidden = false
             self.view.addSubview(activityView)
             activityView.startAnimating()
         } else {
