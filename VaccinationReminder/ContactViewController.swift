@@ -28,6 +28,7 @@ class ContactViewController: UIViewController {
         subjectTextField.delegate = self
         subjectTextField.placeholder = "Subject"
         contentTextField.isUserInteractionEnabled = false
+        subjectTextField.text = ""
     }
     
     func setupTextViews(){
@@ -61,7 +62,7 @@ class ContactViewController: UIViewController {
     
     func configureMailComponentViewController() -> MFMailComposeViewController {
         let mailController = MFMailComposeViewController()
-        mailController.delegate = self
+        mailController.mailComposeDelegate = self
         mailController.setToRecipients(["sahildhawan2012@icloud.com"])
         mailController.setSubject(subjectTextField.text!)
         mailController.setMessageBody(contentTextView.text!, isHTML: false)
@@ -89,7 +90,7 @@ extension ContactViewController : UITextViewDelegate {
         if textView.text == "" {
             textView.textColor = colors.placeholderColor
             textView.text = "Mail Content"
-        } else {
+        } else  {
             textView.textColor = colors.blackColor
         }
     }
@@ -98,6 +99,25 @@ extension ContactViewController : UITextViewDelegate {
 extension ContactViewController : MFMailComposeViewControllerDelegate , UINavigationControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        switch result {
+        case MFMailComposeResult.sent :
+            showAlert("Mail sent successfully!")
+            controller.dismiss(animated: true, completion: nil)
+            break
+        case MFMailComposeResult.failed :
+            showAlert("Could not send mail!")
+            controller.dismiss(animated: true, completion: nil)
+            break
+        case MFMailComposeResult.saved :
+            showAlert("Mail saved successfully!")
+            controller.dismiss(animated: true, completion: nil)
+            break
+        case MFMailComposeResult.cancelled :
+            controller.dismiss(animated: true, completion: nil)
+            break
+        }
+        // remove text field and text view text
+        setupTextViews()
+        setupTextFields()
     }
 }
