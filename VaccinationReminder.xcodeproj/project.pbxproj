@@ -11,6 +11,8 @@
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */; };
+		5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */; };
+		5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
 		5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */; };
 		5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8EA31F632D3A002426A4 /* Geometry.swift */; };
@@ -54,6 +56,8 @@
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
+		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
+		5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		5F5E8EA11F632D2D002426A4 /* PlacesObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesObject.swift; sourceTree = "<group>"; };
 		5F5E8EA31F632D3A002426A4 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineCollectionViewCell.swift */,
 				5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */,
+				5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* Extensions.swift */,
 				5F34AB1B1F7D1EBA00986027 /* Colors.swift */,
 				BA7698B71EC8F28E00B16B72 /* TextField.swift */,
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
+				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
 				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
 				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
 				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
@@ -338,6 +344,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -351,6 +358,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -389,6 +397,7 @@
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
 				BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */,
+				5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */,
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
 				5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
@@ -408,6 +417,7 @@
 				5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */,
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
+				5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */,
 				5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */,

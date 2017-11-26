@@ -15,14 +15,10 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var vaccineDetail: UIView!
-    @IBOutlet weak var detailDate: UILabel!
-    @IBOutlet weak var detailName: UILabel!
-    @IBOutlet weak var textView: UITextView!
-    
     @IBOutlet weak var nextVaccinationLabel : UILabel!
     
-     var nextVaccination : String?
+    var nextVaccination : String?
+    var selectedVaccine : Vaccine?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,13 +108,6 @@ class ScheduleViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func closeButtonPressed(_ sender: Any) {
-        vaccineDetail.isHidden = true
-        collectionView.alpha = 1.0
-        collectionView.isUserInteractionEnabled = true
-        
-    }
 }
 
 extension ScheduleViewController: UICollectionViewDataSource {
@@ -143,27 +132,18 @@ extension ScheduleViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! VaccineDetailTableViewController
+        destination.currentVaccine = selectedVaccine
+    }
 }
 
 extension ScheduleViewController : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, yyyy"
-        
         let vaccine = UserDetails.vaccinationList[indexPath.item]
-        vaccineDetail.isHidden = false
-        detailName.text = vaccine.vaccineName
-        detailDate.text = dateFormatter.string(for:vaccine.vaccineDate)
-        textView.scrollRangeToVisible(NSMakeRange(0,0))
-        textView.text = vaccine.vaccinationDetail
-        if vaccine.vaccineCompletion {
-            vaccineDetail.backgroundColor = colors.greenColor
-        } else {
-            vaccineDetail.backgroundColor = colors.orangeColor
-        }
-        collectionView.alpha = 0.3
-        collectionView.isUserInteractionEnabled = false
+        selectedVaccine = vaccine
+        self.performSegue(withIdentifier: "detailSegue", sender: self)
     }
 }

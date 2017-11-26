@@ -14,5 +14,6 @@ target 'Vaccine_Diary' do
     pod 'GoogleMaps'
     pod 'Alamofire', '~> 4.5'
     pod 'AlamofireObjectMapper', '~> 4.0'
+    pod 'JTAppleCalendar'
     use_frameworks!
 end
