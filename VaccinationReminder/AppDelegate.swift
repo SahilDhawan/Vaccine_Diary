@@ -12,7 +12,8 @@ import GooglePlaces
 import GooglePlacePicker
 import FBSDKCoreKit
 import UserNotifications
-
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate , UNUserNotificationCenterDelegate
@@ -20,6 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //fabric
+        Fabric.with([Crashlytics.self])
+        
+        let initial = UserDefaults.standard.integer(forKey: "initialPage")
+        if initial == 0 {
+            UserDefaults.standard.set(1, forKey: "initialPage")
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagingViewController") as! PagingViewController
+            delegate.window?.rootViewController = pagingViewController
+        } else {
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            delegate.window?.rootViewController = pagingViewController
+        }
         
         UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
@@ -61,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         content.sound = UNNotificationSound.default()
         let notif_identifier = title + " current"
         let request = UNNotificationRequest(identifier: notif_identifier, content: content, trigger: trigger)
+        
         
         //schedule new notifications
         UNUserNotificationCenter.current().add(request) { (error) in

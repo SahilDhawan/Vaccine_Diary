@@ -24,6 +24,8 @@
 		5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */; };
 		5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */; };
 		5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */; };
+		5FB414571FCD545C0069387A /* InitialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB414561FCD545C0069387A /* InitialPageViewController.swift */; };
+		5FB414591FCD563C0069387A /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB414581FCD563C0069387A /* PagingViewController.swift */; };
 		BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1752F21ED821CA005131F3 /* NetworkConnection.swift */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
@@ -69,6 +71,8 @@
 		5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		5FB414561FCD545C0069387A /* InitialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPageViewController.swift; sourceTree = "<group>"; };
+		5FB414581FCD563C0069387A /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
+				5FB414561FCD545C0069387A /* InitialPageViewController.swift */,
+				5FB414581FCD563C0069387A /* PagingViewController.swift */,
 				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
 				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
 				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
@@ -252,6 +258,7 @@
 				BAE930EE1EBCF02E00F77191 /* Resources */,
 				11DC0216D3BDD76E64F57270 /* [CP] Embed Pods Frameworks */,
 				EE61E6E5C166A73363C79E94 /* [CP] Copy Pods Resources */,
+				5F9E9CDD1FCC7A5D006204B8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -368,6 +375,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vaccine_Diary/Pods-Vaccine_Diary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5F9E9CDD1FCC7A5D006204B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" db793d19a3f20373266039b3c972aac3ab6428d3 81013d91b59f782e5930a0dadb28d4a07aa2db4c8d41894fac267ba042a59835";
+		};
 		EE61E6E5C166A73363C79E94 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,11 +421,13 @@
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
 				5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
+				5FB414591FCD563C0069387A /* PagingViewController.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyPharmacyViewController.swift in Sources */,
 				5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineCollectionViewCell.swift in Sources */,
 				5F5E8EA01F632D23002426A4 /* Result.swift in Sources */,
 				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
+				5FB414571FCD545C0069387A /* InitialPageViewController.swift in Sources */,
 				5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */,
 				5F6C3B9E1F93782600F7CDDD /* MoreViewController.swift in Sources */,
 				5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */,

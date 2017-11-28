@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Fabric
+import Crashlytics
 
 class LoginViewController: UIViewController {
     
@@ -27,6 +29,8 @@ class LoginViewController: UIViewController {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         facebookSignInButton.readPermissions = ["email"]
+        
+      
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -87,6 +91,7 @@ class LoginViewController: UIViewController {
                 }
             })
         }
+//        Crashlytics.sharedInstance().crash()
     }
     
     func interactionEnabled(_ bool : Bool){

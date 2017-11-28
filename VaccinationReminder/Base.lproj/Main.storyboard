@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -249,6 +250,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2Y-IV-SkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2850" y="-1313"/>
+        </scene>
+        <!--Paging View Controller-->
+        <scene sceneID="9mZ-Fb-4rX">
+            <objects>
+                <pageViewController storyboardIdentifier="PagingViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="sdF-5k-fCm" customClass="PagingViewController" customModule="Vaccine_Diary" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHe-WX-tTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="-391"/>
+        </scene>
+        <!--Initial Page View Controller-->
+        <scene sceneID="KDA-7G-Rql">
+            <objects>
+                <viewController storyboardIdentifier="InitialPageViewController" id="Fb6-Tl-VUV" customClass="InitialPageViewController" customModule="Vaccine_Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zBy-4T-chT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cfg-84-XU9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5xf-eY-khL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vaccine 1" translatesAutoresizingMaskIntoConstraints="NO" id="nKN-E0-BRc">
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" translatesAutoresizingMaskIntoConstraints="NO" id="iTQ-j7-bb3">
+                                <rect key="frame" x="109" y="25" width="103" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5G3-6O-hgS"/>
+                                </constraints>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFQ-6B-SyR">
+                                <rect key="frame" x="279" y="30" width="21" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YFQ-6B-SyR" secondAttribute="height" multiplier="1:1" constant="1" id="d4w-0E-TeF"/>
+                                    <constraint firstAttribute="height" constant="20" id="quz-zm-oGO"/>
+                                </constraints>
+                                <state key="normal" image="cross">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="crossButtonPressed:" destination="Fb6-Tl-VUV" eventType="touchUpInside" id="8Sd-qM-Dbr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17069542409999999" green="0.21802434330000001" blue="0.30106791849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iTQ-j7-bb3" firstAttribute="centerX" secondItem="5xf-eY-khL" secondAttribute="centerX" id="6jQ-P9-1F0"/>
+                            <constraint firstItem="nKN-E0-BRc" firstAttribute="top" secondItem="YFQ-6B-SyR" secondAttribute="bottom" constant="10" id="K46-GO-mp2"/>
+                            <constraint firstItem="iTQ-j7-bb3" firstAttribute="top" secondItem="zBy-4T-chT" secondAttribute="bottom" constant="5" id="PWH-vD-GsW"/>
+                            <constraint firstItem="Cfg-84-XU9" firstAttribute="top" secondItem="nKN-E0-BRc" secondAttribute="bottom" id="PZF-YT-Xwy"/>
+                            <constraint firstItem="nKN-E0-BRc" firstAttribute="top" secondItem="iTQ-j7-bb3" secondAttribute="bottom" constant="5" id="Y39-hx-Z1Z"/>
+                            <constraint firstItem="YFQ-6B-SyR" firstAttribute="top" secondItem="zBy-4T-chT" secondAttribute="bottom" constant="10" id="Z4A-ln-uSG"/>
+                            <constraint firstAttribute="trailing" secondItem="YFQ-6B-SyR" secondAttribute="trailing" constant="20" id="cXI-43-F4G"/>
+                            <constraint firstItem="nKN-E0-BRc" firstAttribute="top" secondItem="zBy-4T-chT" secondAttribute="bottom" constant="40" id="cw4-cV-VLm"/>
+                            <constraint firstItem="nKN-E0-BRc" firstAttribute="leading" secondItem="5xf-eY-khL" secondAttribute="leading" id="j3K-J1-I6r"/>
+                            <constraint firstAttribute="trailing" secondItem="nKN-E0-BRc" secondAttribute="trailing" id="rWi-if-wvp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="crossButton" destination="YFQ-6B-SyR" id="0Ue-le-Dui"/>
+                        <outlet property="imageView" destination="nKN-E0-BRc" id="wXG-lW-0qW"/>
+                        <outlet property="pageControl" destination="iTQ-j7-bb3" id="ifV-ja-jIs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpR-Wh-90K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2769.375" y="-392.95774647887322"/>
         </scene>
         <!--Edit User Details-->
         <scene sceneID="8pT-cq-bmt">
@@ -1800,11 +1868,13 @@
         <image name="camera" width="50" height="50"/>
         <image name="clinic" width="26" height="26"/>
         <image name="contact" width="25" height="25"/>
+        <image name="cross" width="104" height="104"/>
         <image name="hospital" width="25" height="25"/>
         <image name="more" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
         <image name="schedule" width="25" height="25"/>
         <image name="vaccine" width="150" height="150"/>
+        <image name="vaccine 1" width="758" height="1322"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="A2m-FX-xyT"/>

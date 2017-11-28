@@ -15,5 +15,7 @@ target 'Vaccine_Diary' do
     pod 'Alamofire', '~> 4.5'
     pod 'AlamofireObjectMapper', '~> 4.0'
     pod 'JTAppleCalendar'
+    pod 'Fabric'
+    pod 'Crashlytics'
     use_frameworks!
 end
