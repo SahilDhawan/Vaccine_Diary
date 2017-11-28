@@ -29,8 +29,7 @@ class LoginViewController: UIViewController {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         facebookSignInButton.readPermissions = ["email"]
-        
-      
+        UserDefaults.standard.set(1, forKey: "initialPage")
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -84,6 +83,7 @@ class LoginViewController: UIViewController {
                 self.addActivityViewController(self.activityView, false)
                 if error == nil {
                     UserDetails.uid = (user?.uid)!
+                    self.logUser((user?.email)!)
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
                 else {
@@ -101,6 +101,10 @@ class LoginViewController: UIViewController {
         forgotPasswordButton.isUserInteractionEnabled = bool
         facebookSignInButton.isUserInteractionEnabled = bool
         signUpButton.isUserInteractionEnabled = bool
+    }
+    
+    func logUser(_ email : String){
+        Crashlytics.sharedInstance().setUserEmail(email)
     }
 }
 
@@ -143,6 +147,7 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
                             } else {
                                 self.addActivityViewController(self.activityView, false)
                                 self.performSegue(withIdentifier: "facebookLogin", sender: self)
+                                self.logUser((user?.email)!)
                             }
                         })
                     }

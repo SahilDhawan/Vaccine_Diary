@@ -61,9 +61,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Vaccine Diary wants to access your camera to upload the image of user</string>
+	<string>Vaccine Diary wants to access your camera to upload the image of user.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Vaccine Diary wants to access your location to fetch nearby hospitals and doctors.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Vaccine Diary wants to access your photo album to upload the image of user.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

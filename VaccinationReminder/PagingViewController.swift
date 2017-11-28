@@ -14,6 +14,9 @@ class PagingViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         self.dataSource = self
         for i in 0..<7 {
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialPageViewController") as! InitialPageViewController

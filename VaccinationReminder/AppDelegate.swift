@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let initial = UserDefaults.standard.integer(forKey: "initialPage")
         if initial == 0 {
-            UserDefaults.standard.set(1, forKey: "initialPage")
             let delegate = UIApplication.shared.delegate as! AppDelegate
             let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagingViewController") as! PagingViewController
             delegate.window?.rootViewController = pagingViewController
