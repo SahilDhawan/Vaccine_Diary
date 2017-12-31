@@ -17,5 +17,6 @@ target 'Vaccine_Diary' do
     pod 'JTAppleCalendar'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'GoogleSignIn'
     use_frameworks!
 end

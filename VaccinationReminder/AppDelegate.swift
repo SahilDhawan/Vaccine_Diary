@@ -14,10 +14,13 @@ import FBSDKCoreKit
 import UserNotifications
 import Fabric
 import Crashlytics
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate , UNUserNotificationCenterDelegate
 {
+    
+    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -37,7 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //googlePlacesAPI
         GMSPlacesClient.provideAPIKey(GooglePlacesConstants.queryValues.apiKey)
         
+        //facebook login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //google login
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
         
         //userNotification Authorisation
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (accepted, error) in
@@ -50,6 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return true
     }
+    
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
+    
     
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

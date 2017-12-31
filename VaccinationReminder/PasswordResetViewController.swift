@@ -49,7 +49,7 @@ class PasswordResetViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonPressed(){
+    @IBAction func logInButtonPressed(){
         self.dismiss(animated: true, completion: nil)
     }
 }
