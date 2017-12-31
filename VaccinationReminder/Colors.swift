@@ -21,3 +21,7 @@ struct colors {
     static let placeholderColor = UIColor(displayP3Red: 199/255, green: 199/255, blue: 205/255, alpha: 1)
     static let redColor = UIColor.red
 }
+
+struct loginColors {
+    static let textFieldColor = UIColor(hexString : "DA6068")
+}

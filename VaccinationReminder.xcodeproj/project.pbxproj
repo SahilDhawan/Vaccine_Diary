@@ -11,6 +11,7 @@
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */; };
+		5F45E3751FF925A700F9AA9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */; };
 		5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */; };
 		5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */; };
 		5F5E8EA01F632D23002426A4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E8E9F1F632D23002426A4 /* Result.swift */; };
@@ -24,8 +25,10 @@
 		5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */; };
 		5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */; };
 		5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */; };
-		5FB414571FCD545C0069387A /* InitialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB414561FCD545C0069387A /* InitialPageViewController.swift */; };
-		5FB414591FCD563C0069387A /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB414581FCD563C0069387A /* PagingViewController.swift */; };
+		5FB828B81FF8D54F0004C777 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828B71FF8D54F0004C777 /* InitialViewController.swift */; };
+		5FB828BB1FF8E78F0004C777 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */; };
+		5FB828BD1FF8E88F0004C777 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BC1FF8E88F0004C777 /* InitialView.swift */; };
+		5FB828BF1FF910A70004C777 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BE1FF910A70004C777 /* HomeViewController.swift */; };
 		BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1752F21ED821CA005131F3 /* NetworkConnection.swift */; };
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
@@ -58,6 +61,7 @@
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
+		5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
 		5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F5E8E9F1F632D23002426A4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -71,8 +75,10 @@
 		5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		5FB414561FCD545C0069387A /* InitialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPageViewController.swift; sourceTree = "<group>"; };
-		5FB414581FCD563C0069387A /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
+		5FB828B71FF8D54F0004C777 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FB828BC1FF8E88F0004C777 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		5FB828BE1FF910A70004C777 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA1752F21ED821CA005131F3 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +139,17 @@
 			name = GooglePlacesObject;
 			sourceTree = "<group>";
 		};
+		5FB828B91FF8E7780004C777 /* InitialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5FB828B71FF8D54F0004C777 /* InitialViewController.swift */,
+				5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */,
+				5FB828BE1FF910A70004C777 /* HomeViewController.swift */,
+				5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */,
+			);
+			name = InitialViewController;
+			sourceTree = "<group>";
+		};
 		B106C1991D35B7E3923B03FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +180,7 @@
 				BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */,
 				BA306E7E1EC2021900DE1B6A /* UserDetails.swift */,
 				BA306E7A1EC17B8800DE1B6A /* Vaccine.swift */,
+				5FB828BC1FF8E88F0004C777 /* InitialView.swift */,
 				5F5E8E9C1F632456002426A4 /* GooglePlacesObject */,
 			);
 			name = Model;
@@ -185,8 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
-				5FB414561FCD545C0069387A /* InitialPageViewController.swift */,
-				5FB414581FCD563C0069387A /* PagingViewController.swift */,
+				5FB828B91FF8E7780004C777 /* InitialViewController */,
 				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
 				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
 				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
@@ -421,21 +438,22 @@
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
 				5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
-				5FB414591FCD563C0069387A /* PagingViewController.swift in Sources */,
 				BA306E871EC23B2900DE1B6A /* NearbyPharmacyViewController.swift in Sources */,
 				5F5E8EAC1F632D6E002426A4 /* Photo.swift in Sources */,
 				BA306E811EC20D0600DE1B6A /* VaccineCollectionViewCell.swift in Sources */,
 				5F5E8EA01F632D23002426A4 /* Result.swift in Sources */,
 				BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */,
-				5FB414571FCD545C0069387A /* InitialPageViewController.swift in Sources */,
 				5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */,
+				5FB828BD1FF8E88F0004C777 /* InitialView.swift in Sources */,
 				5F6C3B9E1F93782600F7CDDD /* MoreViewController.swift in Sources */,
 				5F5E8EA81F632D55002426A4 /* Viewport.swift in Sources */,
 				BA7698B81EC8F28E00B16B72 /* TextField.swift in Sources */,
+				5FB828B81FF8D54F0004C777 /* InitialViewController.swift in Sources */,
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
 				5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
 				5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */,
+				5FB828BF1FF910A70004C777 /* HomeViewController.swift in Sources */,
 				5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */,
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
@@ -443,12 +461,14 @@
 				5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */,
+				5FB828BB1FF8E78F0004C777 /* InitialCollectionViewCell.swift in Sources */,
 				5F5E8EAA1F632D63002426A4 /* OpeningHours.swift in Sources */,
 				BA1752F31ED821CA005131F3 /* NetworkConnection.swift in Sources */,
 				BA306E851EC23B1900DE1B6A /* NearbyHospitalsViewController.swift in Sources */,
 				5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Extensions.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
+				5F45E3751FF925A700F9AA9F /* RegisterViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 				BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */,
 			);

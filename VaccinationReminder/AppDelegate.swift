@@ -25,16 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //fabric
         Fabric.with([Crashlytics.self])
         
-        let initial = UserDefaults.standard.integer(forKey: "initialPage")
-        if initial == 0 {
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagingViewController") as! PagingViewController
-            delegate.window?.rootViewController = pagingViewController
-        } else {
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            delegate.window?.rootViewController = pagingViewController
-        }
+        //        let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        
+        let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+        self.window?.rootViewController = pagingViewController
+        
         
         UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
@@ -102,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         content.body = msg
         content.sound = UNNotificationSound.default()
         let notif_identifier = title + " previous"
-
+        
         let request = UNNotificationRequest(identifier: notif_identifier, content: content, trigger: trigger)
         
         //schedule new notifications
