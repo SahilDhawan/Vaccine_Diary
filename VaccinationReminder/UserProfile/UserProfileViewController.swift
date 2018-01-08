@@ -20,6 +20,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var notificationTimeLabel: UILabel!
+    @IBOutlet weak var profileView : UIImageView!
     
     let locationManager = CLLocationManager()
     let defaults = UserDefaults.standard
@@ -68,8 +69,22 @@ class UserProfileViewController: UIViewController {
         } else {
             userImage.layer.cornerRadius = width/2
         }
+        
         self.setupNavigationBar()
-
+        setupProfile()
+    }
+    
+    func setupProfile(){
+        let height = UIScreen.main.bounds.height
+        profileView.translatesAutoresizingMaskIntoConstraints = true
+        profileView.frame.origin = CGPoint(x: 0, y: 0)
+        if height < 600 {
+            //for iphone 5s and SE
+            profileView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: height - 250)
+        } else {
+            //for other iphones
+            profileView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: height - 350)
+        }
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {

@@ -10,7 +10,6 @@
 		2D190AE43B0AADC1134D798B /* Pods_Vaccine_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */; };
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
-		5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */; };
 		5F45E3781FF941E800F9AA9F /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */; };
 		5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */; };
 		5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */; };
@@ -59,7 +58,6 @@
 		20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vaccine_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
 		5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
 		5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				BA306E801EC20D0600DE1B6A /* VaccineCollectionViewCell.swift */,
-				5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */,
 				5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */,
 				BA2C49411EBE7FF500F3D614 /* Extensions.swift */,
 				5F34AB1B1F7D1EBA00986027 /* Colors.swift */,
@@ -493,7 +490,6 @@
 				BA2C49401EBE7D9500F3D614 /* SignUpViewController.swift in Sources */,
 				5F5E8EA21F632D2D002426A4 /* PlacesObject.swift in Sources */,
 				BA306E831EC239B000DE1B6A /* GooglePlacesConstants.swift in Sources */,
-				5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */,
 				5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */,
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,

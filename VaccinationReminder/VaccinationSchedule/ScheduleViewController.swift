@@ -26,6 +26,10 @@ class ScheduleViewController: UIViewController {
         self.setupNavigationBar()
         addActivityViewController(activityView,true)
         setupViewController()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setupNextVaccinationView()
     }
     

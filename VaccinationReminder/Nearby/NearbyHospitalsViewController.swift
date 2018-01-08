@@ -43,6 +43,12 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         self.setupNavigationBar()
     }
     
+    @IBAction func refreshButtonPressed(){
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        googleApiFetch()
+    }
+    
     func googleApiFetch() {
         //google place api fetch
         let googlePlaces  = GooglePlaces()

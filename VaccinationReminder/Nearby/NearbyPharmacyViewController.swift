@@ -87,6 +87,12 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         self.setupNavigationBar()
     }
     
+    @IBAction func refreshButtonPressed(){
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        googleApiFetch()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! DetailTableViewController
         destination.currentPlace = currentPharmacy

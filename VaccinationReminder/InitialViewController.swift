@@ -22,6 +22,7 @@ class InitialViewController: UIViewController {
         getStartedButton.isHidden = true
         collectionView.backgroundColor = colors.clearColor
         setupBackgroundView()
+        setupGetStartedButton()
     }
     
     func setupBackgroundView(){
@@ -45,6 +46,12 @@ class InitialViewController: UIViewController {
         gradient.add(gradientChangeAnimation, forKey: "colorChange")
         
         self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func setupGetStartedButton(){
+        getStartedButton.clipsToBounds = true
+        getStartedButton.backgroundColor = colors.darkBlueColor
+        getStartedButton.layer.cornerRadius = 15
     }
     
     func setupCollectionView(){

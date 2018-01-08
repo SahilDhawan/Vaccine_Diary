@@ -22,17 +22,27 @@ class ContactViewController: UIViewController {
         setupTextFields()
         setupSendButton()
         self.navigationItem.title = "Contact Developer"
+        setupGradientView()
+    }
+    
+    func setupGradientView(){
+        self.view.backgroundColor = colors.clearColor
+        let gradient = CAGradientLayer()
+        gradient.colors = [colors.darkBlueColor.cgColor , loginColors.pinkColor.cgColor]
+        gradient.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     func setupTextFields(){
         subjectTextField.delegate = self
-        subjectTextField.placeholder = "Subject"
         contentTextField.isUserInteractionEnabled = false
         subjectTextField.text = ""
+        
+        subjectTextField.attributedPlaceholder = NSAttributedString(string: "Subject",attributes: [NSForegroundColorAttributeName : colors.blackColor])
     }
     
     func setupTextViews(){
-        contentTextView.textColor = colors.placeholderColor
+        contentTextView.textColor = colors.blackColor
         contentTextView.text = "Mail Content"
         contentTextView.backgroundColor = colors.clearColor
         contentTextView.delegate = self
@@ -42,7 +52,7 @@ class ContactViewController: UIViewController {
     func setupSendButton(){
         sendButton.setTitle("SEND MAIL", for: .normal)
         sendButton.setTitleColor(colors.whiteColor, for: .normal)
-        sendButton.backgroundColor = colors.navyBlueColor
+        sendButton.backgroundColor = loginColors.pinkColor
     }
     
     @IBAction func sendButtonPressed(sender : AnyObject) {
@@ -88,7 +98,8 @@ extension ContactViewController : UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            textView.textColor = colors.placeholderColor
+            textView.textColor = colors.blackColor
+            
             textView.text = "Mail Content"
         } else  {
             textView.textColor = colors.blackColor
