@@ -24,4 +24,6 @@ struct colors {
 
 struct loginColors {
     static let textFieldColor = UIColor(hexString : "DA6068")
+    static let orangeColor = UIColor(hexString : "F58951")
+    static let pinkColor = UIColor(hexString : "C4466B")
 }

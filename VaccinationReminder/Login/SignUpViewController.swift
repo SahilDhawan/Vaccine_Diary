@@ -55,9 +55,9 @@ class SignUpViewController: UIViewController {
     
     func setupButtons() {
         facebookLoginButton.clipsToBounds = true
-        facebookLoginButton.layer.cornerRadius = 20
+        facebookLoginButton.layer.cornerRadius = 25
         googleLoginButton.clipsToBounds = true
-        googleLoginButton.layer.cornerRadius = 20
+        googleLoginButton.layer.cornerRadius = 25
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
@@ -171,6 +171,7 @@ class SignUpViewController: UIViewController {
     func loginError() {
         self.addActivityViewController(self.activityView, false)
         self.showAlert(errorMessages.loginError)
+        self.interactionEnabled(true)
     }
 }
 
@@ -198,13 +199,20 @@ extension SignUpViewController : GIDSignInDelegate , GIDSignInUIDelegate  {
         Auth.auth().signIn(with: credential) { (user, error) in
             if error != nil {
                 self.loginError()
-                self.interactionEnabled(true)
                 return
             }
             self.interactionEnabled(false)
             UserDetails.uid = (user?.uid)!
             self.performLogin(user : user!)
         }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        
     }
 }
 

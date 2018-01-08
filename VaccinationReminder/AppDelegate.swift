@@ -19,8 +19,6 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate , UNUserNotificationCenterDelegate
 {
-    
-    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -67,8 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                                                      annotation: [:])
     }
     
-    
-    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         return handled
@@ -83,12 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         dayComponents.hour = timeComponents.hour
         let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
         let content = UNMutableNotificationContent()
-        content.title = title + " Vaccination Today"
-        content.body = msg
+        content.title = title + " Vaccination is Today"
         content.sound = UNNotificationSound.default()
-        let notif_identifier = title + " current"
+        let notif_identifier = UserDetails.userName + "'s " + title + " current"
         let request = UNNotificationRequest(identifier: notif_identifier, content: content, trigger: trigger)
-        
         
         //schedule new notifications
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -110,8 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dayComponents, repeats: false)
         let content = UNMutableNotificationContent()
-        content.title = title + " Vaccination Tommorrow"
-        content.body = msg
+        content.title = title + " Vaccination is tommorrow"
         content.sound = UNNotificationSound.default()
         let notif_identifier = title + " previous"
         

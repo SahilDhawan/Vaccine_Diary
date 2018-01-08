@@ -29,6 +29,6 @@ struct GooglePlacesConstants
         static let hospitalType = "Hospital"
         static let pharmacyType = "pharmacy"
         static let doctorKeyboard  = "Keyboard"
-        static let apiKey = "AIzaSyBJItU0E8gSaSKQOEvaaCbCcUDsmHKYJHk"
+        static let apiKey = "AIzaSyCPPQsICUcl8e8Z62djCJsGirFALQdXbTI"
     }
 }

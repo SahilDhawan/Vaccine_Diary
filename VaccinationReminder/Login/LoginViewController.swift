@@ -150,7 +150,6 @@ class LoginViewController: UIViewController {
                         self.addActivityViewController(self.activityView, true)
                         if error != nil {
                             self.loginError()
-                            self.interactionEnabled(true)
                         }
                         else {
                             self.interactionEnabled(false)
@@ -182,6 +181,7 @@ class LoginViewController: UIViewController {
     func loginError() {
         self.addActivityViewController(self.activityView, false)
         self.showAlert(errorMessages.loginError)
+        self.interactionEnabled(true)
     }
 }
 
@@ -216,5 +216,13 @@ extension LoginViewController : GIDSignInDelegate , GIDSignInUIDelegate  {
             UserDetails.uid = (user?.uid)!
             self.performLogin(user : user!)
         }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        
     }
 }

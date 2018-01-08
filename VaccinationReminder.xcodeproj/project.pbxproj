@@ -11,7 +11,6 @@
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F3707751F995D1F00085649 /* LogOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */; };
-		5F45E3751FF925A700F9AA9F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */; };
 		5F45E3781FF941E800F9AA9F /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */; };
 		5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */; };
 		5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */; };
@@ -61,7 +60,6 @@
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F3707741F995D1F00085649 /* LogOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTableViewCell.swift; sourceTree = "<group>"; };
-		5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
 		5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -128,11 +126,49 @@
 		5F45E3761FF9382F00F9AA9F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				5F45E3741FF925A700F9AA9F /* RegisterViewController.swift */,
 				BAE931091EBCF4AC00F77191 /* LoginViewController.swift */,
 				BA2C493F1EBE7D9500F3D614 /* SignUpViewController.swift */,
+				5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5F45E3791FF980B300F9AA9F /* More */ = {
+			isa = PBXGroup;
+			children = (
+				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
+				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
+				5F6C3B9D1F93782600F7CDDD /* MoreViewController.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		5F45E37A1FF9812100F9AA9F /* VaccinationSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
+				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
+			);
+			path = VaccinationSchedule;
+			sourceTree = "<group>";
+		};
+		5F45E37B1FF9813500F9AA9F /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
+				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		5F45E37C1FF9813F00F9AA9F /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
+				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
+				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
+			);
+			path = Nearby;
 			sourceTree = "<group>";
 		};
 		5F5E8E9C1F632456002426A4 /* GooglePlacesObject */ = {
@@ -211,19 +247,12 @@
 		BA0F68801EBD224800DAF7A3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
 				5FB828B91FF8E7780004C777 /* InitialViewController */,
-				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
-				5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */,
-				5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */,
-				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
-				5F6C3B9D1F93782600F7CDDD /* MoreViewController.swift */,
-				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
-				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
-				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
+				5F45E37A1FF9812100F9AA9F /* VaccinationSchedule */,
+				5F45E3791FF980B300F9AA9F /* More */,
+				5F45E37B1FF9813500F9AA9F /* UserProfile */,
+				5F45E37C1FF9813F00F9AA9F /* Nearby */,
 				5F45E3761FF9382F00F9AA9F /* Login */,
-				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
-				5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -479,7 +508,6 @@
 				5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */,
 				BA2C49421EBE7FF500F3D614 /* Extensions.swift in Sources */,
 				BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */,
-				5F45E3751FF925A700F9AA9F /* RegisterViewController.swift in Sources */,
 				BAE930F41EBCF03000F77191 /* AppDelegate.swift in Sources */,
 				BA306E7F1EC2021900DE1B6A /* UserDetails.swift in Sources */,
 			);

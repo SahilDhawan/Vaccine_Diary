@@ -24,23 +24,21 @@ class InitialViewController: UIViewController {
         setupBackgroundView()
     }
     
-    
     func setupBackgroundView(){
         let gradient = CAGradientLayer()
         gradient.frame = self.view.bounds
         gradient.colors = [
-            colors.darkBlueColor.cgColor,
-            UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1).cgColor
-//            UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor
+            loginColors.pinkColor.cgColor,
+            loginColors.orangeColor.cgColor
         ]
         gradient.startPoint = CGPoint(x:0, y:0)
         gradient.endPoint = CGPoint(x:1, y:1)
         
         let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
-        gradientChangeAnimation.duration = 5.0
+        gradientChangeAnimation.duration = 2.0
         gradientChangeAnimation.toValue = [
-            UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor,
-            UIColor(red: 196/255, green: 70/255, blue: 107/255, alpha: 1).cgColor
+            loginColors.orangeColor.cgColor,
+            loginColors.pinkColor.cgColor
         ]
         gradientChangeAnimation.fillMode = kCAFillModeForwards
         gradientChangeAnimation.isRemovedOnCompletion = false
@@ -60,7 +58,7 @@ class InitialViewController: UIViewController {
         let spacing : CGFloat = 0.0
         collectionViewFlowLayout.minimumInteritemSpacing = spacing
         collectionViewFlowLayout.minimumLineSpacing = spacing
-        let height = collectionView.frame.height
+        let height = collectionView.frame.height - 100
         let width = self.view.frame.width
         let itemSize : CGSize = CGSize(width: width, height: height)
         collectionViewFlowLayout.itemSize = itemSize
@@ -84,7 +82,7 @@ extension InitialViewController : UICollectionViewDelegate {
 }
 
 extension InitialViewController : UICollectionViewDataSource {
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3

@@ -60,7 +60,6 @@ class GooglePlaces : NSObject {
             } else {
                 completionHandler(nil,response.result.error)
             }
-            
         }
     }
 }
