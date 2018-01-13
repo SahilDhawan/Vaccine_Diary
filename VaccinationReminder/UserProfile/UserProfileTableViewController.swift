@@ -35,6 +35,20 @@ class UserProfileTableViewController: UITableViewController {
     let tableImageArray = ["contact","credits","refer"]
     
     
+    fileprivate func setupUserImage() {
+        //getting user image
+        if let imageData = defaults.object(forKey: "userImage") as? NSData {
+            let image = UIImage(data: imageData as Data)
+            userImage.image = image
+        } else {
+            if UserDetails.userGender == "Boy" {
+                self.userImage.image = UIImage(named: "boy")
+            } else {
+                self.userImage.image = UIImage(named: "girl")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
@@ -52,17 +66,7 @@ class UserProfileTableViewController: UITableViewController {
         //tableView
         tableView.tableFooterView = UIView()
         
-        //getting user image
-        if let imageData = defaults.object(forKey: "userImage") as? NSData {
-            let image = UIImage(data: imageData as Data)
-            userImage.image = image
-        } else {
-            if UserDetails.userGender == "Boy" {
-                self.userImage.image = UIImage(named: "boy")
-            } else {
-                self.userImage.image = UIImage(named: "girl")
-            }
-        }
+        setupUserImage()
         
         userImage.clipsToBounds = true
         userImage.layer.borderColor = colors.whiteColor.cgColor
@@ -117,6 +121,8 @@ class UserProfileTableViewController: UITableViewController {
             
             let dueVaccines = UserDetails.vaccinationList.count - UserDetails.completedVaccines
             self.dueVaccinesLabel.text = "\(dueVaccines)"
+            
+            self.setupUserImage()
             
             self.activityView.stopAnimating()
             self.activityView.isHidden = true

@@ -15,7 +15,6 @@ class InitialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel : UILabel!
     @IBOutlet weak var cellView : UIView!
     
-    
     func setupCollectionViewCell(image : String , title : String , description : String) {
         imageView.image = UIImage(named : image)
         titleLabel.text = title.uppercased()
@@ -25,8 +24,10 @@ class InitialCollectionViewCell: UICollectionViewCell {
         descriptionLabel.text = description
         descriptionLabel.font = UIFont.systemFont(ofSize: 18)
         descriptionLabel.textColor = colors.whiteColor
-        cellView.backgroundColor = colors.blackColor.withAlphaComponent(0.1)
         cellView.clipsToBounds = true
-        cellView.layer.cornerRadius = 10
+        cellView.layer.cornerRadius = 30
+        cellView.layer.borderWidth = 2.5
+        cellView.layer.borderColor = colors.placeholderColor.cgColor
+        
     }
 }

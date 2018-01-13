@@ -32,6 +32,8 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(1, forKey: "initialPage")
         setupButtons()
         setupGoogleSignIn()
+        
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool)

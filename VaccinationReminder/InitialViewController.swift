@@ -21,29 +21,31 @@ class InitialViewController: UIViewController {
         setupCollectionViewFlowLayout()
         getStartedButton.isHidden = true
         collectionView.backgroundColor = colors.clearColor
-        setupBackgroundView()
         setupGetStartedButton()
+        
+        UIApplication.shared.statusBarStyle = .default
+
     }
     
     func setupBackgroundView(){
         let gradient = CAGradientLayer()
         gradient.frame = self.view.bounds
         gradient.colors = [
-            loginColors.pinkColor.cgColor,
-            loginColors.orangeColor.cgColor
+            colors.placeholderColor.cgColor,
+            colors.whiteColor.cgColor
         ]
         gradient.startPoint = CGPoint(x:0, y:0)
         gradient.endPoint = CGPoint(x:1, y:1)
         
-        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
-        gradientChangeAnimation.duration = 2.0
-        gradientChangeAnimation.toValue = [
-            loginColors.orangeColor.cgColor,
-            loginColors.pinkColor.cgColor
-        ]
-        gradientChangeAnimation.fillMode = kCAFillModeForwards
-        gradientChangeAnimation.isRemovedOnCompletion = false
-        gradient.add(gradientChangeAnimation, forKey: "colorChange")
+//        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
+//        gradientChangeAnimation.duration = 2.0
+//        gradientChangeAnimation.toValue = [
+//            loginColors.orangeColor.cgColor,
+//            loginColors.pinkColor.cgColor
+//        ]
+//        gradientChangeAnimation.fillMode = kCAFillModeForwards
+//        gradientChangeAnimation.isRemovedOnCompletion = false
+//        gradient.add(gradientChangeAnimation, forKey: "colorChange")
         
         self.view.layer.insertSublayer(gradient, at: 0)
     }
@@ -65,7 +67,7 @@ class InitialViewController: UIViewController {
         let spacing : CGFloat = 0.0
         collectionViewFlowLayout.minimumInteritemSpacing = spacing
         collectionViewFlowLayout.minimumLineSpacing = spacing
-        let height = collectionView.frame.height - 100
+        let height = collectionView.frame.height
         let width = self.view.frame.width
         let itemSize : CGSize = CGSize(width: width, height: height)
         collectionViewFlowLayout.itemSize = itemSize
@@ -80,9 +82,11 @@ extension InitialViewController : UICollectionViewDelegate {
         
         if currentIndex == 2{
             UIView.animate(withDuration: 2.0, animations: {
+                self.pageControl.isHidden = true
                 self.getStartedButton.isHidden = false
             })
         } else {
+            pageControl.isHidden = false
             getStartedButton.isHidden = true
         }
     }
@@ -98,6 +102,7 @@ extension InitialViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "initialCell", for: indexPath) as! InitialCollectionViewCell
         cell.setupCollectionViewCell(image: InitialViewStruct.imageArray[indexPath.item], title: InitialViewStruct.titleArray[indexPath.item], description: InitialViewStruct.descriptionArray[indexPath.item])
+        
         return cell
     }
 }

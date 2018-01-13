@@ -12,4 +12,5 @@ import JTAppleCalendar
 class VaccineDateCollectionViewCell: JTAppleCell {
     
     @IBOutlet weak var dateLabel : UILabel!
+
 }

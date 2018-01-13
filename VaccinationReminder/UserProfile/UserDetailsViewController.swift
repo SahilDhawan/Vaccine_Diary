@@ -30,6 +30,20 @@ class UserDetailsViewController: UIViewController {
     let defaults = UserDefaults.standard
     let userGenderArray = ["Boy" , "Girl"]
     
+    fileprivate func setupUserImage() {
+        //getting user image
+        if let imageData = defaults.object(forKey: "userImage") as? NSData {
+            let image = UIImage(data: imageData as Data)
+            userImage.image = image
+        } else {
+            if UserDetails.userGender == "Boy" {
+                self.userImage.image = UIImage(named: "boy")
+            } else {
+                self.userImage.image = UIImage(named: "girl")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -98,17 +112,7 @@ class UserDetailsViewController: UIViewController {
         //imagePicker
         imagePicker.delegate = self
         
-        //getting user image
-        if let imageData = defaults.object(forKey: "userImage") as? NSData {
-            let image = UIImage(data: imageData as Data)
-            userImage.image = image
-        } else {
-            if UserDetails.userGender == "Boy" {
-                self.userImage.image = UIImage(named: "boy")
-            } else {
-                self.userImage.image = UIImage(named: "girl")
-            }
-        }
+        setupUserImage()
         
         userImage.clipsToBounds = true
         userImage.layer.borderColor = colors.whiteColor.cgColor
@@ -159,6 +163,7 @@ class UserDetailsViewController: UIViewController {
                     } else {
                         self.segmentController.selectedSegmentIndex = 1
                     }
+                    self.setupUserImage()
                 }
             }
             else {
