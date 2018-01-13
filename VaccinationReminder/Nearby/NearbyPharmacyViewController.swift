@@ -25,6 +25,29 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addActivityViewController(self.activityView, true)
+        
+        //locationManager
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        //table view
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+        tableView.isHidden = true
+        
+        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
+      
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        self.setupNavigationBar()
+    }
     
     func googleApiFetch() {
         let googlePlaces = GooglePlaces()
@@ -58,6 +81,7 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
                     self.pharmacyDetailArray.append(pharmacyDetail)
                 }
                 self.addActivityViewController(self.activityView, false)
+                self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.createMapPins()
             }
@@ -66,25 +90,6 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
                 print(error.debugDescription)
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        addActivityViewController(self.activityView, true)
-        
-        //locationManager
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-        
-        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
-        tableView.dataSource = self
-        tableView.delegate = self
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        self.setupNavigationBar()
     }
     
     @IBAction func refreshButtonPressed(){
@@ -150,12 +155,32 @@ extension NearbyPharmacyViewController : UITableViewDataSource
 
 
 extension NearbyPharmacyViewController : UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentPharmacy = pharmacyDetailArray[indexPath.item]
         currentPharmacyLocation = pharmacyCoordinates[indexPath.item]
         self.performSegue(withIdentifier: "pharmacyDetailSegue", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if(velocity.y>0) {
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.mapView.frame.size.height = 0
+                self.tableView.frame.origin.y = 0
+                self.tableView.frame.size.height = self.view.frame.height
+                
+            })
+        } else if (velocity.y<=0) {
+            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.mapView.frame.size.height = 225
+                self.tableView.frame.origin.y = 225
+                self.tableView.frame.size.height = self.view.frame.height - 225
+            })
+        }
+    }
+    
 }
 
 

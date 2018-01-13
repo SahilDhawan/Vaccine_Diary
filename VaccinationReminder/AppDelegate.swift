@@ -26,11 +26,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         //fabric
         Fabric.with([Crashlytics.self])
         
-        //        let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let defaults = UserDefaults.standard
         
-        let pagingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-        self.window?.rootViewController = pagingViewController
-        
+        if let initialPageCounter = defaults.object(forKey: "initialPage") as? Int  {
+            if initialPageCounter == 1 {
+                let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.window?.rootViewController = loginViewController
+            } else {
+                let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+                self.window?.rootViewController = initialViewController
+            }
+        } else {
+            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+            self.window?.rootViewController = initialViewController
+        }
         
         UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
@@ -46,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         
         //userNotification Authorisation
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound]) { (accepted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]) { (accepted, error) in
             if !accepted {
                 print("Notification Denied")
             }
@@ -55,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return true
+        
+        
     }
     
     
@@ -121,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert,.sound])
+        completionHandler([.alert,.sound,.badge])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

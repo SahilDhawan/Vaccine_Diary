@@ -23,8 +23,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityView : UIActivityIndicatorView!
-    @IBOutlet weak var googleLoginButton : UIButton!
-    @IBOutlet weak var facebookLoginButton : UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,16 +46,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButtons()
         activityView.isHidden = true
-        setupGoogleSignIn()
-    }
-    
-    func setupButtons() {
-        facebookLoginButton.clipsToBounds = true
-        facebookLoginButton.layer.cornerRadius = 25
-        googleLoginButton.clipsToBounds = true
-        googleLoginButton.layer.cornerRadius = 25
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
@@ -86,7 +75,7 @@ class SignUpViewController: UIViewController {
                         self.performSegue(withIdentifier: "SignUpSegue", sender: self)
                     }
                     else {
-                        self.showAlert("Can not create a new user")
+                        self.loginError(error!)
                     }
                 })
             }
@@ -102,8 +91,6 @@ class SignUpViewController: UIViewController {
         emailTextField.isEnabled = bool
         passwordTextField.isEnabled = bool
         confirmPasswordTextField.isEnabled = bool
-        facebookLoginButton.isEnabled = bool
-        googleLoginButton.isEnabled = bool
         signUpButton.isEnabled = bool
     }
     
@@ -111,48 +98,8 @@ class SignUpViewController: UIViewController {
         Crashlytics.sharedInstance().setUserEmail(email)
     }
     
-    func setupGoogleSignIn() {
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-    }
-    
-    @IBAction func googleLoginPressed() {
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    @IBAction func facebookLoginPressed() {
-        let facebookManager = FBSDKLoginManager()
-        facebookManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-            
-            self.interactionEnabled(false)
-            self.addActivityViewController(self.activityView, true)
-            
-            if error != nil {
-                self.loginError()
-            } else {
-                if (result?.isCancelled)! {
-                    self.addActivityViewController(self.activityView, false)
-                    self.interactionEnabled(true)
-                } else {
-                    let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                    Auth.auth().signIn(with: credential, completion: { (user, error) in
-                        self.addActivityViewController(self.activityView, true)
-                        if error != nil {
-                            self.loginError()
-                            self.interactionEnabled(true)
-                        }
-                        else {
-                            self.interactionEnabled(false)
-                            UserDetails.uid = (user?.uid)!
-                            self.performLogin(user : user!)
-                        }
-                    })
-                }
-            }
-        }
-    }
-    
     func performLogin(user : User){
+        self.addActivityViewController(self.activityView, true)
         let ref = Database.database().reference(fromURL: "https://vaccinationreminder-e7f81.firebaseio.com/")
         ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(UserDetails.uid) {
@@ -168,9 +115,12 @@ class SignUpViewController: UIViewController {
         })
     }
     
-    func loginError() {
+    func loginError(_ error : Error) {
         self.addActivityViewController(self.activityView, false)
-        self.showAlert(errorMessages.loginError)
+        self.passwordTextField.text = ""
+        self.emailTextField.text = ""
+        self.confirmPasswordTextField.text = ""
+        self.showAlert(error.localizedDescription)
         self.interactionEnabled(true)
     }
 }
@@ -180,39 +130,6 @@ extension SignUpViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-}
-
-extension SignUpViewController : GIDSignInDelegate , GIDSignInUIDelegate  {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        self.interactionEnabled(false)
-        self.addActivityViewController(self.activityView, true)
-        if  error != nil {
-            loginError()
-            self.interactionEnabled(true)
-            return
-        }
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if error != nil {
-                self.loginError()
-                return
-            }
-            self.interactionEnabled(false)
-            UserDetails.uid = (user?.uid)!
-            self.performLogin(user : user!)
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-        
-    }
-    
-    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        
     }
 }
 

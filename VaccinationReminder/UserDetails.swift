@@ -22,6 +22,8 @@ struct UserDetails {
     static var update : Bool = false
     static var vaccinationList : [Vaccine] = []
     static var logOut : Bool = false
+    static var nextVaccination : String = ""
+    static var completedVaccines : Int = 0
     
     struct VaccinationDates {
         static var sixWeeksDate = Date()

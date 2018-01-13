@@ -101,11 +101,10 @@ class LoginViewController: UIViewController {
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
                 else {
-                    self.loginError()
+                    self.loginError(error!)
                 }
             })
         }
-        //        Crashlytics.sharedInstance().crash()
     }
     
     func interactionEnabled(_ bool : Bool){
@@ -139,7 +138,7 @@ class LoginViewController: UIViewController {
             self.addActivityViewController(self.activityView, true)
             
             if error != nil {
-                self.loginError()
+                self.loginError(error!)
             } else {
                 if (result?.isCancelled)! {
                     self.addActivityViewController(self.activityView, false)
@@ -149,7 +148,7 @@ class LoginViewController: UIViewController {
                     Auth.auth().signIn(with: credential, completion: { (user, error) in
                         self.addActivityViewController(self.activityView, true)
                         if error != nil {
-                            self.loginError()
+                            self.loginError(error!)
                         }
                         else {
                             self.interactionEnabled(false)
@@ -178,9 +177,12 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func loginError() {
+    func loginError(_ error : Error) {
         self.addActivityViewController(self.activityView, false)
-        self.showAlert(errorMessages.loginError)
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+//        self.showAlert(errorMessages.loginError)
+        self.showAlert(error.localizedDescription)
         self.interactionEnabled(true)
     }
 }
@@ -199,7 +201,7 @@ extension LoginViewController : GIDSignInDelegate , GIDSignInUIDelegate  {
         self.interactionEnabled(false)
         self.addActivityViewController(self.activityView, true)
         if  error != nil {
-            loginError()
+            loginError(error!)
             self.interactionEnabled(true)
             return
         }
@@ -208,7 +210,7 @@ extension LoginViewController : GIDSignInDelegate , GIDSignInUIDelegate  {
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
             if error != nil {
-                self.loginError()
+                self.loginError(error!)
                 self.interactionEnabled(true)
                 return
             }

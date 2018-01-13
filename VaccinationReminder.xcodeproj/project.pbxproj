@@ -31,7 +31,7 @@
 		BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */; };
 		BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */; };
 		BA1C2BFA1EC0D2E40000C1B7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */; };
-		BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */; };
+		BA1CB7331EC35F7B00AF24E1 /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7321EC35F7B00AF24E1 /* UserProfileTableViewController.swift */; };
 		BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */; };
 		BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */; };
 		BA2011F01ED0B217003B8233 /* FirebaseMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */; };
@@ -79,7 +79,7 @@
 		BA1C2BF51EBF5F690000C1B7 /* VaccinationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccinationList.swift; sourceTree = "<group>"; };
 		BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		BA1CB7321EC35F7B00AF24E1 /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		BA1CB7341EC3677800AF24E1 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 		BA1CB7361EC429CB00AF24E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA2011EF1ED0B217003B8233 /* FirebaseMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMethods.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		5F45E37B1FF9813500F9AA9F /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
-				BA1CB7321EC35F7B00AF24E1 /* UserProfileViewController.swift */,
+				BA1CB7321EC35F7B00AF24E1 /* UserProfileTableViewController.swift */,
 				BA1C2BF71EC0A7E40000C1B7 /* UserDetailsViewController.swift */,
 			);
 			path = UserProfile;
@@ -470,7 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1C2BF61EBF5F690000C1B7 /* VaccinationList.swift in Sources */,
-				BA1CB7331EC35F7B00AF24E1 /* UserProfileViewController.swift in Sources */,
+				BA1CB7331EC35F7B00AF24E1 /* UserProfileTableViewController.swift in Sources */,
 				5F45E3781FF941E800F9AA9F /* ErrorMessages.swift in Sources */,
 				5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */,
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,

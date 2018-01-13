@@ -31,7 +31,6 @@ class MoreViewController: UIViewController {
     func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        setupLogOutButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,18 +43,7 @@ class MoreViewController: UIViewController {
         self.navigationItem.title = "Back"
     }
     
-     func setupLogOutButton(){
-        let logOutButton = UIButton(frame: CGRect(x: 25, y: 185, width: self.view.frame.width - 50, height: 40))
-        logOutButton.setTitle("LOG OUT", for: .normal)
-        logOutButton.backgroundColor = colors.redColor
-        logOutButton.setTitleColor(colors.whiteColor, for: .normal)
-        logOutButton.addTarget(self, action: #selector(logOutButtonPressed(_:)), for: .touchUpInside)
-        let footerView = UIView(frame: CGRect(x: 0, y: 180, width: self.view.frame.width, height: 50))
-        view.addSubview(logOutButton)
-        tableView.tableFooterView = footerView
-    }
-    
-    func logOutButtonPressed(_ sender: Any) {
+    @IBAction func logOutButtonPressed(_ sender: Any) {
         addActivityViewController(activityView, true)
         let firebaseAuth = Auth.auth()
         do {
@@ -107,9 +95,9 @@ extension MoreViewController : UITableViewDataSource {
         cell?.selectionStyle = .none
         return cell!
     }
-}
-
-func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 40
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
 }
 

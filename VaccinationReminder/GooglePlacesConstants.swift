@@ -19,7 +19,6 @@ struct GooglePlacesConstants
         static let type = "keyword"
         static let sensor = "sensor"
         static let apiKey = "key"
-
     }
     
     struct queryValues {

@@ -75,14 +75,18 @@ class ScheduleViewController: UIViewController {
                 if (vaccine?.vaccineDate)! > Date() {
                     self.nextVaccinationLabel.text = dateFormatter.string(from: (vaccine?.vaccineDate)!)
                     self.nextVaccination = dateFormatter.string(from: (vaccine?.vaccineDate)!)
+                    UserDetails.completedVaccines = i
                     break
                 }
             } else if (UserDetails.vaccinationList[i].vaccineDate) > Date() && (UserDetails.vaccinationList[i-1].vaccineDate) <= Date(){
                 self.nextVaccinationLabel.text = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
                 self.nextVaccination = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
+                UserDetails.completedVaccines = i
                 break
             }
         }
+        
+        UserDetails.nextVaccination = self.nextVaccination!
         self.addQuickAction()
     }
     
