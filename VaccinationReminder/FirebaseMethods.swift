@@ -21,13 +21,18 @@ class FirebaseMethods : NSObject {
             let birthString = value?["birthDate"] as? String
             let notificationTime = value?["notificationTime"] as? String
             let userGender = value?["userGender"] as? String
+            let vaccinationList = value?["vaccinationList"] as? [String : String]
+            if vaccinationList != nil {
+            UserDetails.firebaseVaccination = vaccinationList!
+            }
+            
             completionHandler(userName,birthString,notificationTime,userGender)
         })
     }
     
     
     func FirebaseUpdateData(_ completionHandler: @escaping(_ success : Bool)->Void) {
-        var saveDict = [String: String]()
+        var saveDict = [String: Any]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
@@ -35,6 +40,7 @@ class FirebaseMethods : NSObject {
         dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         saveDict["userGender"] = UserDetails.userGender
+        saveDict["vaccinationList"] = UserDetails.firebaseVaccination
         ref.child("users").child(UserDetails.uid).updateChildValues(saveDict) { (error, databaseRef) in
             if error == nil {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -48,7 +54,7 @@ class FirebaseMethods : NSObject {
     }
     
     func FirebaseWriteData(_ completionHandler: @escaping(_ success : Bool)->Void) {
-        var saveDict = [String: String]()
+        var saveDict = [String: Any]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         saveDict["username"] =  UserDetails.userName
@@ -56,6 +62,7 @@ class FirebaseMethods : NSObject {
         dateFormatter.dateFormat = "h:mm a"
         saveDict["notificationTime"] = dateFormatter.string(from: UserDetails.notificationTime)
         saveDict["userGender"] = UserDetails.userGender
+        saveDict["vaccinationList"] = UserDetails.firebaseVaccination
         ref.child("users").child(UserDetails.uid).setValue(saveDict) { (error, databaseRef) in
             if error == nil {
                 completionHandler(true)
@@ -76,4 +83,7 @@ class FirebaseMethods : NSObject {
         })
     }
     
+    func saveVaccinationList(){
+        
+    }
 }

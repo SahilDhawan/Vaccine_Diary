@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D190AE43B0AADC1134D798B /* Pods_Vaccine_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */; };
 		5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0186421F6C800800462319 /* DetailTableViewController.swift */; };
+		5F0C4841202B99A90009EB0A /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */; };
 		5F34AB1C1F7D1EBA00986027 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34AB1B1F7D1EBA00986027 /* Colors.swift */; };
 		5F45E3781FF941E800F9AA9F /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */; };
 		5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		20E25B883AF3B3103ED6EE71 /* Pods_Vaccine_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vaccine_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		BAE930F21EBCF02E00F77191 /* VaccinationReminder */ = {
 			isa = PBXGroup;
 			children = (
+				5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */,
 				BA0F68811EBD225C00DAF7A3 /* SupportingFiles */,
 				BA0F687E1EBD223C00DAF7A3 /* Model */,
 				BA0F687F1EBD224300DAF7A3 /* View */,
@@ -362,6 +365,7 @@
 			files = (
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
 				BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */,
+				5F0C4841202B99A90009EB0A /* Ubuntu-Bold.ttf in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);

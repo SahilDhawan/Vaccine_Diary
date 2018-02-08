@@ -103,9 +103,29 @@ class ScheduleViewController: UIViewController {
         collectionView.delegate = self
     }
     
+    func setupVaccinationList(){
+        var vaccinationList : [String : String] = [:]
+        for vaccine in UserDetails.vaccinationList {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, yyyy"
+            let date = dateFormatter.string(from: vaccine.vaccineDate)
+            vaccinationList[vaccine.vaccineName] = date
+        }
+        
+        UserDetails.firebaseVaccination = vaccinationList
+        
+        FirebaseMethods().FirebaseUpdateData { (bool) in
+            if bool {
+                self.showAlert("Data Written to Firebase Successfully")
+            } else {
+                self.showAlert("Error Occured")
+            }
+        }
+    }
+    
     func getDataFromFirebase(){
         self.addActivityViewController(self.activityView,true)
-
+        
         let fir = FirebaseMethods()
         fir.getDataFromFirebase { (name, birthDate,time,userGender) in
             let dateFormatter = DateFormatter()
@@ -117,10 +137,13 @@ class ScheduleViewController: UIViewController {
             vaccineObject.setVaccineList()
             vaccineObject.setNotifications()
             tableSize = UserDetails.vaccinationList.count
-
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.setupNextVaccinationLabel()
+                if UserDetails.firebaseVaccination.count == 0 {
+                    self.setupVaccinationList()
+                }
                 self.addActivityViewController(self.activityView,false)
             }
         }

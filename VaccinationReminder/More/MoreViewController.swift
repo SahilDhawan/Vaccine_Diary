@@ -51,9 +51,9 @@ class MoreViewController: UIViewController {
             try firebaseAuth.signOut()
             FBSDKLoginManager().logOut()
             self.addActivityViewController(self.activityView, false)
-            let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
             let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.window?.rootViewController = loginViewController
+            delegate.window?.rootViewController = initialViewController
         }
         catch {
             self.addActivityViewController(self.activityView, false)

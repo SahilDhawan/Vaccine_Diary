@@ -25,6 +25,8 @@ struct UserDetails {
     static var nextVaccination : String = ""
     static var completedVaccines : Int = 0
     
+    static var firebaseVaccination : [String : Any] = [:]
+    
     struct VaccinationDates {
         static var sixWeeksDate = Date()
         static var tenWeeksDate = Date()

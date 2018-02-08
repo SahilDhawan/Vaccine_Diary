@@ -28,20 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let defaults = UserDefaults.standard
         
-        if let initialPageCounter = defaults.object(forKey: "initialPage") as? Int  {
-            if initialPageCounter == 1 {
-                let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                self.window?.rootViewController = loginViewController
-            } else {
-                let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-                self.window?.rootViewController = initialViewController
-            }
-        } else {
-            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
-            self.window?.rootViewController = initialViewController
-        }
+//        if let initialPageCounter = defaults.object(forKey: "initialPage") as? Int  {
+//            if initialPageCounter == 1 {
+//                let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+//                self.window?.rootViewController = loginViewController
+//            } else {
+//                let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+//                self.window?.rootViewController = initialViewController
+//            }
+//        } else {
+//            let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
+//            self.window?.rootViewController = initialViewController
+//        }
         
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
         FirebaseApp.configure()
         
         //googlePlacesAPI
@@ -64,8 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         return true
-        
-        
     }
     
     

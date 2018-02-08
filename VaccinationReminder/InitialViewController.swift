@@ -15,45 +15,15 @@ class InitialViewController: UIViewController {
     @IBOutlet weak var getStartedButton : UIButton!
     @IBOutlet weak var collectionViewFlowLayout : UICollectionViewFlowLayout!
     
+    var currentIndex : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         setupCollectionViewFlowLayout()
         getStartedButton.isHidden = true
         collectionView.backgroundColor = colors.clearColor
-        setupGetStartedButton()
-        
         UIApplication.shared.statusBarStyle = .default
-
-    }
-    
-    func setupBackgroundView(){
-        let gradient = CAGradientLayer()
-        gradient.frame = self.view.bounds
-        gradient.colors = [
-            colors.placeholderColor.cgColor,
-            colors.whiteColor.cgColor
-        ]
-        gradient.startPoint = CGPoint(x:0, y:0)
-        gradient.endPoint = CGPoint(x:1, y:1)
-        
-//        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
-//        gradientChangeAnimation.duration = 2.0
-//        gradientChangeAnimation.toValue = [
-//            loginColors.orangeColor.cgColor,
-//            loginColors.pinkColor.cgColor
-//        ]
-//        gradientChangeAnimation.fillMode = kCAFillModeForwards
-//        gradientChangeAnimation.isRemovedOnCompletion = false
-//        gradient.add(gradientChangeAnimation, forKey: "colorChange")
-        
-        self.view.layer.insertSublayer(gradient, at: 0)
-    }
-    
-    func setupGetStartedButton(){
-        getStartedButton.clipsToBounds = true
-        getStartedButton.backgroundColor = colors.darkBlueColor
-        getStartedButton.layer.cornerRadius = 15
     }
     
     func setupCollectionView(){
@@ -61,33 +31,63 @@ class InitialViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.isScrollEnabled = true
+        collectionView.backgroundColor = colors.whiteColor
     }
     
     func setupCollectionViewFlowLayout(){
         let spacing : CGFloat = 0.0
         collectionViewFlowLayout.minimumInteritemSpacing = spacing
         collectionViewFlowLayout.minimumLineSpacing = spacing
-        let height = collectionView.frame.height
+        var height : CGFloat
+        if self.view.frame.height < 600 {
+            //for iphone 5s and SE
+            height = collectionView.frame.height - 120
+        } else {
+            //for other iphones
+             height = collectionView.frame.height
+        }
         let width = self.view.frame.width
         let itemSize : CGSize = CGSize(width: width, height: height)
         collectionViewFlowLayout.itemSize = itemSize
+    }
+    
+    func hideButton(bool : Bool , button : UIButton){
+        button.isUserInteractionEnabled = !bool
+        button.isHidden = bool
+    }
+    
+    @IBAction func leftButtonPressed(){
+        let indexPath = IndexPath(item: currentIndex - 1, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    
+    @IBAction func rightButtonPressed(){
+        let indexPath = IndexPath(item: currentIndex + 1, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
     }
 }
 
 extension InitialViewController : UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentIndex = self.collectionView.contentOffset.x/self.view.frame.width
+        currentIndex = Int(self.collectionView.contentOffset.x/self.view.frame.width)
         pageControl.currentPage = Int(currentIndex)
         
-        if currentIndex == 2{
-            UIView.animate(withDuration: 2.0, animations: {
-                self.pageControl.isHidden = true
-                self.getStartedButton.isHidden = false
-            })
-        } else {
-            pageControl.isHidden = false
+        if currentIndex < 2 {
             getStartedButton.isHidden = true
+            pageControl.isHidden = false
+        } else {
+            let height = UIScreen.main.bounds.height
+
+            self.getStartedButton.frame.origin.y = height - 40
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.getStartedButton.frame.origin.y = height - 60
+            }, completion: { _ in
+                self.getStartedButton.frame.origin.y = height - 60
+            })
+            getStartedButton.isHidden = false
+            pageControl.isHidden = true
         }
     }
 }
