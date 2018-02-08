@@ -10,12 +10,15 @@ import UIKit
 
 class InitialViewController: UIViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var pageControl : UIPageControl!
     @IBOutlet weak var getStartedButton : UIButton!
     @IBOutlet weak var collectionViewFlowLayout : UICollectionViewFlowLayout!
     
     var currentIndex : Int = 0
+    
+    //MARK: View related functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class InitialViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .default
     }
     
+    //setting the collection view
     func setupCollectionView(){
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -34,6 +38,7 @@ class InitialViewController: UIViewController {
         collectionView.backgroundColor = colors.whiteColor
     }
     
+    // setting the collection view size usig collection view flow layout
     func setupCollectionViewFlowLayout(){
         let spacing : CGFloat = 0.0
         collectionViewFlowLayout.minimumInteritemSpacing = spacing
@@ -51,24 +56,17 @@ class InitialViewController: UIViewController {
         collectionViewFlowLayout.itemSize = itemSize
     }
     
+    // hiding button
     func hideButton(bool : Bool , button : UIButton){
         button.isUserInteractionEnabled = !bool
         button.isHidden = bool
     }
-    
-    @IBAction func leftButtonPressed(){
-        let indexPath = IndexPath(item: currentIndex - 1, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-    }
-    
-    @IBAction func rightButtonPressed(){
-        let indexPath = IndexPath(item: currentIndex + 1, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-    }
 }
 
+//MARK: UICollectionViewDelegate
 extension InitialViewController : UICollectionViewDelegate {
     
+    // updating the page Control according to collection view scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         currentIndex = Int(self.collectionView.contentOffset.x/self.view.frame.width)
         pageControl.currentPage = Int(currentIndex)
@@ -78,9 +76,9 @@ extension InitialViewController : UICollectionViewDelegate {
             pageControl.isHidden = false
         } else {
             let height = UIScreen.main.bounds.height
-
             self.getStartedButton.frame.origin.y = height - 40
             
+            //animating get started button
             UIView.animate(withDuration: 0.2, animations: {
                 self.getStartedButton.frame.origin.y = height - 60
             }, completion: { _ in
@@ -92,13 +90,15 @@ extension InitialViewController : UICollectionViewDelegate {
     }
 }
 
+//MARK: UICollectionViewDataSource
 extension InitialViewController : UICollectionViewDataSource {
     
-    
+    //setting the number of items in a section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
     
+    // setting up collection view cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "initialCell", for: indexPath) as! InitialCollectionViewCell
         cell.setupCollectionViewCell(image: InitialViewStruct.imageArray[indexPath.item], title: InitialViewStruct.titleArray[indexPath.item], description: InitialViewStruct.descriptionArray[indexPath.item])
