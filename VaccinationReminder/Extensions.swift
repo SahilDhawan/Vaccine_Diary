@@ -32,10 +32,12 @@ extension UIViewController {
     
     func setupNavigationBar() {
         
-        self.navigationController?.navigationBar.barTintColor = colors.darkBlueColor
+//        self.navigationController?.navigationBar.barTintColor = colors.darkBlueColor
+                self.navigationController?.navigationBar.barTintColor = colors.whiteColor
+
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : colors.whiteColor]
-        self.navigationController?.navigationBar.tintColor = colors.whiteColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : colors.blackColor]
+        self.navigationController?.navigationBar.tintColor = colors.darkBlueColor
     }
 }
 

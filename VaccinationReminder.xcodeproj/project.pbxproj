@@ -25,6 +25,10 @@
 		5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */; };
 		5F6C3BA21F938A4C00F7CDDD /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */; };
 		5F7AF0301F9121B100811458 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */; };
+		5FB33C2E202F5DFC00B16A79 /* NearbyViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C2D202F5DFC00B16A79 /* NearbyViewTableViewCell.xib */; };
+		5FB33C30202F614C00B16A79 /* NearbyViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */; };
+		5FB33C32202F7B6700B16A79 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */; };
+		5FB33C36202F7DF000B16A79 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */; };
 		5FB828B81FF8D54F0004C777 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828B71FF8D54F0004C777 /* InitialViewController.swift */; };
 		5FB828BB1FF8E78F0004C777 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */; };
 		5FB828BD1FF8E88F0004C777 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BC1FF8E88F0004C777 /* InitialView.swift */; };
@@ -74,6 +78,10 @@
 		5F6C3B9F1F93826500F7CDDD /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		5F6C3BA11F938A4C00F7CDDD /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5F7AF02F1F9121B100811458 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		5FB33C2D202F5DFC00B16A79 /* NearbyViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyViewTableViewCell.xib; sourceTree = "<group>"; };
+		5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyViewTableViewCell.swift; sourceTree = "<group>"; };
+		5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		5FB828B71FF8D54F0004C777 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FB828BC1FF8E88F0004C777 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -165,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
+				5FB33C2D202F5DFC00B16A79 /* NearbyViewTableViewCell.xib */,
+				5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */,
 				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
 			);
@@ -291,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */,
+				5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */,
+				5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */,
 				BA0F68811EBD225C00DAF7A3 /* SupportingFiles */,
 				BA0F687E1EBD223C00DAF7A3 /* Model */,
 				BA0F687F1EBD224300DAF7A3 /* View */,
@@ -363,10 +375,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB33C36202F7DF000B16A79 /* Ubuntu-Regular.ttf in Resources */,
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
 				BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */,
+				5FB33C32202F7B6700B16A79 /* Ubuntu-Medium.ttf in Resources */,
 				5F0C4841202B99A90009EB0A /* Ubuntu-Bold.ttf in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
+				5FB33C2E202F5DFC00B16A79 /* NearbyViewTableViewCell.xib in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +513,7 @@
 				5F5E8EA61F632D44002426A4 /* Location.swift in Sources */,
 				BA1C2BF81EC0A7E40000C1B7 /* UserDetailsViewController.swift in Sources */,
 				5F4F9FB81FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift in Sources */,
+				5FB33C30202F614C00B16A79 /* NearbyViewTableViewCell.swift in Sources */,
 				5F6C3BA01F93826500F7CDDD /* CreditsViewController.swift in Sources */,
 				BAE9310A1EBCF4AC00F77191 /* LoginViewController.swift in Sources */,
 				5F0186431F6C800800462319 /* DetailTableViewController.swift in Sources */,

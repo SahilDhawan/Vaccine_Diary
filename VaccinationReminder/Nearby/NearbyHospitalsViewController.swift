@@ -23,6 +23,9 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var userLocButton : UIButton!
+    
+    let tableViewCellIdentifier = "hospitalCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +47,23 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         
         mapView.showsUserLocation = true
         self.setupNavigationBar()
+        
+        let nearbyNib = UINib(nibName: "NearbyViewTableViewCell", bundle: nil)
+        tableView.register(nearbyNib, forCellReuseIdentifier: tableViewCellIdentifier)
+        
+        self.userLocButton.isHidden = true
+        userLocButton.addTarget(self, action: #selector(centerMap), for: .touchUpInside)
     }
     
     @IBAction func refreshButtonPressed(){
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         googleApiFetch()
+    }
+    
+    func centerMap(){
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009))
+        self.mapView.setRegion(mapRegion, animated: true)
     }
     
     func googleApiFetch() {
@@ -118,6 +132,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
             mapPin.title = hospitalsArray[i].name!
             self.mapView.addAnnotation(mapPin)
         }
+        self.userLocButton.isHidden = false
     }
     
     func createUserLocation() {
@@ -126,6 +141,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         googleApiFetch()
         addActivityViewController(self.activityView, false)
         self.updateLocation = false
+        self.locationManager.stopUpdatingLocation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,16 +150,29 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         destination.fromHospital = true
         destination.currentPlaceLocation = currentHospitalCoordiate
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "hospitalPin")
+        if annotation.title! != "My Location" {
+            annotationView.image = UIImage(named : "hospitalPin")
+        } else {
+            annotationView.image = UIImage(named : "userPin")
+            
+        }
+        return annotationView
+    }
 }
 
 extension NearbyHospitalsViewController : UITableViewDataSource
 {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyHospitalCell")
-            cell?.textLabel?.text = "\(indexPath.item + 1). " + hospitalsArray[indexPath.item].name!
-            cell?.accessoryType = .disclosureIndicator
-            return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier) as! NearbyViewTableViewCell
+        cell.ratingLabel.text = hospitalsArray[indexPath.item].vicinity
+        cell.titleLabel.text = hospitalsArray[indexPath.item].name
+        cell.countLabel.text = "\(indexPath.item + 1)."
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,14 +186,16 @@ extension NearbyHospitalsViewController : UITableViewDataSource
                 self.mapView.frame.size.height = 0
                 self.tableView.frame.origin.y = 0
                 self.tableView.frame.size.height = self.view.frame.height
-
             })
+            self.userLocButton.isHidden = true
         } else if (velocity.y<=0) {
             UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                self.mapView.frame.size.height = 225
-                self.tableView.frame.origin.y = 225
-                self.tableView.frame.size.height = self.view.frame.height - 225
+                self.mapView.frame.size.height = 250
+                self.tableView.frame.origin.y = 250
+                self.tableView.frame.size.height = self.view.frame.height - 250
             })
+            self.userLocButton.isHidden = false
+
         }
     }
 }
@@ -176,6 +207,10 @@ extension NearbyHospitalsViewController : UITableViewDelegate {
         self.performSegue(withIdentifier: "hospitalDetailSegue", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: false)
         addActivityViewController(self.activityView, false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
     }
 }
 
@@ -203,3 +238,6 @@ extension NearbyHospitalsViewController : CLLocationManagerDelegate
         }
     }
 }
+
+
+

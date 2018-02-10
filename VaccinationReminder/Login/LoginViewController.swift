@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         setupButtons()
         setupGoogleSignIn()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
     }
     
     override func viewWillAppear(_ animated: Bool)
