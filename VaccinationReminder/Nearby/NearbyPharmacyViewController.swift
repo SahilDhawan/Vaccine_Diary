@@ -20,10 +20,15 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
     let locationManager = CLLocationManager()
     var updateLocation = true
     
+    let tableViewCellIdentifier = "nearbyPharmacy"
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var userLocButton : UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +45,25 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.isHidden = true
+//        tableView.isHidden = true
+        tableView.showsVerticalScrollIndicator = false
         
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
       
         mapView.delegate = self
         mapView.showsUserLocation = true
         self.setupNavigationBar()
+        
+        let nearbyNib = UINib(nibName: "NearbyViewTableViewCell", bundle: nil)
+        tableView.register(nearbyNib, forCellReuseIdentifier: tableViewCellIdentifier)
+        
+        self.userLocButton.isHidden = true
+        userLocButton.addTarget(self, action: #selector(centerMap), for: .touchUpInside)
+    }
+    
+    func centerMap(){
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009))
+        self.mapView.setRegion(mapRegion, animated: true)
     }
     
     func googleApiFetch() {
@@ -69,7 +86,7 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
                     } else {
                         pharmacyDetail["Rating"] = "Information Not Available"
                     }
-                    if let openingHour = pharmacy.openingHours?.openNow!{
+                    if let openingHour = pharmacy.openingHours?.openNow{
                         if openingHour == true {
                             pharmacyDetail["Open Now"] = "Yes"
                         } else {
@@ -81,7 +98,7 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
                     self.pharmacyDetailArray.append(pharmacyDetail)
                 }
                 self.addActivityViewController(self.activityView, false)
-                self.tableView.isHidden = false
+//                self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.createMapPins()
             }
@@ -120,6 +137,17 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
             tableView.reloadData()
         }
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "hospitalPin")
+        if annotation.title! != "My Location" {
+            annotationView.image = UIImage(named : "pharmacyPin")
+        } else {
+            annotationView.image = UIImage(named : "userPin")
+            
+        }
+        return annotationView
+    }
 }
 
 extension NearbyPharmacyViewController : UITableViewDataSource
@@ -129,10 +157,12 @@ extension NearbyPharmacyViewController : UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NearbyDoctorCell")
-        cell?.textLabel?.text = "\(indexPath.item + 1). " + pharmacyArray[indexPath.item].name!
-        cell?.accessoryType = .disclosureIndicator
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier) as! NearbyViewTableViewCell
+        cell.ratingLabel.text = pharmacyArray[indexPath.item].vicinity
+        cell.titleLabel.text = pharmacyArray[indexPath.item].name
+        cell.countLabel.text = "\(indexPath.item + 1)."
+        cell.titleLabel.textColor = colors.darkBlueColor
+        return cell
     }
     
     func createMapPins() {
@@ -142,6 +172,7 @@ extension NearbyPharmacyViewController : UITableViewDataSource
             mapPin.title = pharmacyArray[i].name!
             self.mapView.addAnnotation(mapPin)
         }
+        self.userLocButton.isHidden = false
     }
     
     func createUserLocation() {
@@ -163,22 +194,8 @@ extension NearbyPharmacyViewController : UITableViewDelegate {
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if(velocity.y>0) {
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-                self.mapView.frame.size.height = 0
-                self.tableView.frame.origin.y = 0
-                self.tableView.frame.size.height = self.view.frame.height
-                
-            })
-        } else if (velocity.y<=0) {
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                self.mapView.frame.size.height = 225
-                self.tableView.frame.origin.y = 225
-                self.tableView.frame.size.height = self.view.frame.height - 225
-            })
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
     }
     
 }

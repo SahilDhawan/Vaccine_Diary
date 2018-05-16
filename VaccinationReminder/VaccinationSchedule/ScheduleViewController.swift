@@ -8,36 +8,25 @@
 
 import UIKit
 import UserNotifications
-var tableSize : Int = 0
 
 class ScheduleViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var nextVaccinationLabel : UILabel!
-    @IBOutlet weak var nextVaccinationView : UIView!
+    @IBOutlet weak var searchBar : UISearchBar!
     
     var nextVaccination : String?
     var selectedVaccine : Vaccine?
+    var vaccineArray : [Vaccine] = []
+    var searchVaccineArray : [Vaccine] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
         addActivityViewController(activityView,true)
         setupViewController()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setupNextVaccinationView()
-    }
-    
-    func setupNextVaccinationView() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [colors.darkBlueColor.cgColor, loginColors.pinkColor.cgColor]
-        gradient.frame = nextVaccinationView.bounds
-        nextVaccinationView.layer.insertSublayer(gradient, at: 0)
+        setupTableView()
+        setupSearchBar()
     }
     
     // if the user updates notification time or birth date
@@ -56,14 +45,28 @@ class ScheduleViewController: UIViewController {
     }
     
     func setupViewController() {
-        self.nextVaccinationLabel.text = ""
         if Reachability().isConnectedToNetwork() == false {
             self.addActivityViewController(self.activityView, false)
             showAlert("No Internet Connection")
         } else {
-            setUpCollectionView()
+            //            setUpCollectionView()
             getDataFromFirebase()
         }
+    }
+    
+    fileprivate func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+    }
+    
+    //setup table view
+    fileprivate func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        let scheduleNib = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
+        tableView.register(scheduleNib, forCellReuseIdentifier: "scheduleCell")
     }
     
     func setupNextVaccinationLabel(){
@@ -73,13 +76,11 @@ class ScheduleViewController: UIViewController {
             if i == 0 {
                 let vaccine = UserDetails.vaccinationList.first
                 if (vaccine?.vaccineDate)! > Date() {
-                    self.nextVaccinationLabel.text = dateFormatter.string(from: (vaccine?.vaccineDate)!)
                     self.nextVaccination = dateFormatter.string(from: (vaccine?.vaccineDate)!)
                     UserDetails.completedVaccines = i
                     break
                 }
             } else if (UserDetails.vaccinationList[i].vaccineDate) > Date() && (UserDetails.vaccinationList[i-1].vaccineDate) <= Date(){
-                self.nextVaccinationLabel.text = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
                 self.nextVaccination = dateFormatter.string(from : UserDetails.vaccinationList[i].vaccineDate)
                 UserDetails.completedVaccines = i
                 break
@@ -88,19 +89,6 @@ class ScheduleViewController: UIViewController {
         
         UserDetails.nextVaccination = self.nextVaccination!
         self.addQuickAction()
-    }
-    
-    func setUpCollectionView() {
-        //removing extra padding from top
-        self.edgesForExtendedLayout = UIRectEdge.init(rawValue : 0)
-        let cellSize = CGSize(width: self.view.frame.width - 20, height: 55)
-        let spacing  : CGFloat = 5.0
-        flowLayout.minimumLineSpacing = spacing
-        flowLayout.minimumInteritemSpacing = spacing
-        flowLayout.itemSize = cellSize
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
     }
     
     func setupVaccinationList(){
@@ -136,10 +124,11 @@ class ScheduleViewController: UIViewController {
             UserDetails.notificationTime = dateFormatter.date(from: time!)!
             vaccineObject.setVaccineList()
             vaccineObject.setNotifications()
-            tableSize = UserDetails.vaccinationList.count
+            self.vaccineArray = UserDetails.vaccinationList
+            self.searchVaccineArray = self.vaccineArray
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
                 self.setupNextVaccinationLabel()
                 if UserDetails.firebaseVaccination.count == 0 {
                     self.setupVaccinationList()
@@ -150,26 +139,80 @@ class ScheduleViewController: UIViewController {
     }
 }
 
-extension ScheduleViewController: UICollectionViewDataSource {
+extension ScheduleViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableSize
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchVaccineArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, yyyy"
-        let vaccine = UserDetails.vaccinationList[indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VaccineCell", for: indexPath) as! VaccineCollectionViewCell
+        let vaccine = searchVaccineArray[indexPath.item]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleTableViewCell
         cell.vaccineLabel?.text = vaccine.vaccineName
         cell.dateLabel?.text = dateFormatter.string(for:vaccine.vaccineDate)
         
-        if !vaccine.vaccineCompletion {
-            cell.vaccineImageView.image = UIImage(named: "orangeVaccine")
-        }else {
-            cell.vaccineImageView.image = UIImage(named: "greenVaccine")
+        
+        let calendarUnit : Set<Calendar.Component> = [.day,.month,.year]
+        let difference = NSCalendar.current.dateComponents(calendarUnit, from: Date(), to: vaccine.vaccineDate)
+        
+        if let days = difference.day {
+            if days > 0 {
+                if days == 1 {
+                    cell.timeLabel.text = "in \(days) day"
+                } else {
+                    cell.timeLabel.text = "in \(days) days"
+                }
+            } else if days < 0 {
+                if days == -1 {
+                    cell.timeLabel.text = "\(-days) day ago"
+                } else {
+                    cell.timeLabel.text = "\(-days) days ago"
+                }
+            }
         }
+        
+        if let month = difference.month {
+            if month > 0 {
+                if month == 1 {
+                    cell.timeLabel.text = "in \(month) month"
+                } else {
+                    cell.timeLabel.text = "in \(month) months"
+                }
+            } else if month < 0 {
+                if month == -1 {
+                    cell.timeLabel.text = "\(-month) month ago"
+                } else {
+                    cell.timeLabel.text = "\(-month) months ago"
+                }
+            }
+        }
+        
+        if let year = difference.year {
+            if year > 0 {
+                if year == 1 {
+                    cell.timeLabel.text = "in \(year) year"
+                } else {
+                    cell.timeLabel.text = "in \(year) years"
+                }
+            } else if year < 0 {
+                if year == -1 {
+                    cell.timeLabel.text = "\(-year) year ago"
+                } else {
+                    cell.timeLabel.text = "\(-year) years ago"
+                }
+            }
+        }
+        
+        if !vaccine.vaccineCompletion {
+            cell.vaccineImageView?.image = UIImage(named: "vacRed")
+            cell.vaccineLabel.textColor = colors.orangeColor
+        }else {
+            cell.vaccineImageView?.image = UIImage(named: "vacGreen")
+            cell.vaccineLabel.textColor = colors.greenColor
+        }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -179,11 +222,46 @@ extension ScheduleViewController: UICollectionViewDataSource {
     }
 }
 
-extension ScheduleViewController : UICollectionViewDelegate {
+extension ScheduleViewController : UITableViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vaccine = UserDetails.vaccinationList[indexPath.item]
-        selectedVaccine = vaccine
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedVaccine = searchVaccineArray[indexPath.item]
         self.performSegue(withIdentifier: "detailSegue", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+}
+
+//MARK: UISearchBarDelegate
+extension ScheduleViewController : UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchVaccineArray = []
+        if let searchText = searchBar.text {
+            if searchText == "" {
+                self.searchVaccineArray = self.vaccineArray
+            } else {
+                for vaccine in self.vaccineArray {
+                    let vaccineLabel = vaccine.vaccineName
+                    if vaccineLabel.lowercased().contains(searchText.lowercased()) {
+                        self.searchVaccineArray.append(vaccine)
+                    }
+                }
+            }
+        } else {
+            self.searchVaccineArray = self.vaccineArray
+        }
+        searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
 }

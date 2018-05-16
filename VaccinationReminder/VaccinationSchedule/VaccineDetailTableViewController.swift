@@ -40,7 +40,8 @@ class VaccineDetailTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.tableHeaderView = UIView()
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20))
+        tableView.showsVerticalScrollIndicator = false
     }
     
     func handleCellColor( _ cell : JTAppleCell , _ cellState : CellState) {
@@ -97,16 +98,22 @@ extension VaccineDetailTableViewController : JTAppleCalendarViewDelegate, JTAppl
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "calendarCell", for: indexPath) as! VaccineDateCollectionViewCell
         cell.dateLabel.text = cellState.text
+        handleCellColor(cell, cellState)
         if cell.isSelected {
             if (currentVaccine?.vaccineCompletion)! {
                 cell.backgroundColor = colors.greenColor
+                vaccineNameLabel.textColor = colors.greenColor
             } else {
                 cell.backgroundColor = colors.orangeColor
+                vaccineNameLabel.textColor = colors.orangeColor
             }
+            cell.dateLabel.textColor = colors.whiteColor
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = (cell.frame.width + cell.frame.height)/4
         } else {
             cell.backgroundColor = colors.whiteColor
+            cell.dateLabel.textColor = colors.blackColor
         }
-        handleCellColor(cell, cellState)
         return cell
     }
     

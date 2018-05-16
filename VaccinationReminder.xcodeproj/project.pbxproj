@@ -29,6 +29,9 @@
 		5FB33C30202F614C00B16A79 /* NearbyViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */; };
 		5FB33C32202F7B6700B16A79 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */; };
 		5FB33C36202F7DF000B16A79 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */; };
+		5FB33C38202F8D9A00B16A79 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB33C37202F8D9A00B16A79 /* ScheduleTableViewCell.swift */; };
+		5FB33C3A202F8DA700B16A79 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C39202F8DA700B16A79 /* ScheduleTableViewCell.xib */; };
+		5FB33C3C20302B4000B16A79 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB33C3B20302B4000B16A79 /* Ubuntu-Light.ttf */; };
 		5FB828B81FF8D54F0004C777 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828B71FF8D54F0004C777 /* InitialViewController.swift */; };
 		5FB828BB1FF8E78F0004C777 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */; };
 		5FB828BD1FF8E88F0004C777 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB828BC1FF8E88F0004C777 /* InitialView.swift */; };
@@ -64,6 +67,7 @@
 		5F0186421F6C800800462319 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		5F34AB1B1F7D1EBA00986027 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5F42A6A8205A6D6100A813A6 /* Vaccine_Diary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vaccine_Diary.entitlements; sourceTree = "<group>"; };
 		5F45E3771FF941E800F9AA9F /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDetailTableViewController.swift; sourceTree = "<group>"; };
 		5F4F9FB71FCB121F00F408E9 /* VaccineDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineDateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +86,9 @@
 		5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyViewTableViewCell.swift; sourceTree = "<group>"; };
 		5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		5FB33C37202F8D9A00B16A79 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		5FB33C39202F8DA700B16A79 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		5FB33C3B20302B4000B16A79 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		5FB828B71FF8D54F0004C777 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		5FB828BA1FF8E78F0004C777 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FB828BC1FF8E88F0004C777 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -156,6 +163,8 @@
 			children = (
 				5F4F9FB51FCB0CE900F408E9 /* VaccineDetailTableViewController.swift */,
 				BA1C2BF91EC0D2E40000C1B7 /* ScheduleViewController.swift */,
+				5FB33C37202F8D9A00B16A79 /* ScheduleTableViewCell.swift */,
+				5FB33C39202F8DA700B16A79 /* ScheduleTableViewCell.xib */,
 			);
 			path = VaccinationSchedule;
 			sourceTree = "<group>";
@@ -173,9 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				BA306E841EC23B1900DE1B6A /* NearbyHospitalsViewController.swift */,
+				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
 				5FB33C2D202F5DFC00B16A79 /* NearbyViewTableViewCell.xib */,
 				5FB33C2F202F614C00B16A79 /* NearbyViewTableViewCell.swift */,
-				BA306E861EC23B2900DE1B6A /* NearbyPharmacyViewController.swift */,
 				5F0186421F6C800800462319 /* DetailTableViewController.swift */,
 			);
 			path = Nearby;
@@ -282,6 +291,7 @@
 		BAE930E71EBCF02E00F77191 = {
 			isa = PBXGroup;
 			children = (
+				5F42A6A8205A6D6100A813A6 /* Vaccine_Diary.entitlements */,
 				BAE930F21EBCF02E00F77191 /* VaccinationReminder */,
 				BAE930F11EBCF02E00F77191 /* Products */,
 				B69BA861D9569B27168B3351 /* Pods */,
@@ -303,6 +313,7 @@
 				5F0C4840202B99A60009EB0A /* Ubuntu-Bold.ttf */,
 				5FB33C31202F7B6700B16A79 /* Ubuntu-Medium.ttf */,
 				5FB33C35202F7DF000B16A79 /* Ubuntu-Regular.ttf */,
+				5FB33C3B20302B4000B16A79 /* Ubuntu-Light.ttf */,
 				BA0F68811EBD225C00DAF7A3 /* SupportingFiles */,
 				BA0F687E1EBD223C00DAF7A3 /* Model */,
 				BA0F687F1EBD224300DAF7A3 /* View */,
@@ -349,6 +360,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7Q7M69XNR3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -377,10 +393,12 @@
 			files = (
 				5FB33C36202F7DF000B16A79 /* Ubuntu-Regular.ttf in Resources */,
 				BAE931001EBCF03000F77191 /* LaunchScreen.storyboard in Resources */,
+				5FB33C3C20302B4000B16A79 /* Ubuntu-Light.ttf in Resources */,
 				BA1CB7371EC429CB00AF24E1 /* GoogleService-Info.plist in Resources */,
 				5FB33C32202F7B6700B16A79 /* Ubuntu-Medium.ttf in Resources */,
 				5F0C4841202B99A90009EB0A /* Ubuntu-Bold.ttf in Resources */,
 				BAE930FD1EBCF03000F77191 /* Assets.xcassets in Resources */,
+				5FB33C3A202F8DA700B16A79 /* ScheduleTableViewCell.xib in Resources */,
 				5FB33C2E202F5DFC00B16A79 /* NearbyViewTableViewCell.xib in Resources */,
 				BAE930FB1EBCF03000F77191 /* Main.storyboard in Resources */,
 			);
@@ -492,6 +510,7 @@
 				BA1CB7331EC35F7B00AF24E1 /* UserProfileTableViewController.swift in Sources */,
 				5F45E3781FF941E800F9AA9F /* ErrorMessages.swift in Sources */,
 				5F4F9FB61FCB0CE900F408E9 /* VaccineDetailTableViewController.swift in Sources */,
+				5FB33C38202F8D9A00B16A79 /* ScheduleTableViewCell.swift in Sources */,
 				BA1CB7351EC3677800AF24E1 /* GooglePlaces.swift in Sources */,
 				5F5E8EA41F632D3A002426A4 /* Geometry.swift in Sources */,
 				BA306E7B1EC17B8800DE1B6A /* Vaccine.swift in Sources */,
@@ -649,6 +668,7 @@
 			baseConfigurationReference = FADC9D37A8D43E275691D728 /* Pods-Vaccine_Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vaccine_Diary.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;
@@ -668,6 +688,7 @@
 			baseConfigurationReference = F49D720EEC1F5D14F64F8476 /* Pods-Vaccine_Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vaccine_Diary.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7Q7M69XNR3;
 				INFOPLIST_FILE = VaccinationReminder/Info.plist;

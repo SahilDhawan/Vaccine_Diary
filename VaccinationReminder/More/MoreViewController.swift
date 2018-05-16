@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 import StoreKit
+import UserNotifications
 
 class MoreViewController: UIViewController {
     
@@ -51,6 +52,10 @@ class MoreViewController: UIViewController {
             try firebaseAuth.signOut()
             FBSDKLoginManager().logOut()
             self.addActivityViewController(self.activityView, false)
+            
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            
             let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController") as! InitialViewController
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.window?.rootViewController = initialViewController

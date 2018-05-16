@@ -17,6 +17,13 @@ class DetailTableViewController : UITableViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var openNowLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var userLocButton : UIButton!
+    @IBOutlet weak var directionsButton : UIButton!
+
+    @IBOutlet weak var name : UILabel!
+    @IBOutlet weak var address : UILabel!
+    @IBOutlet weak var rating : UILabel!
+    @IBOutlet weak var openNow : UILabel!
     
     var updateLocation = true
     var fromHospital : Bool = false
@@ -26,20 +33,59 @@ class DetailTableViewController : UITableViewController {
     let locationManager = CLLocationManager()
     var currentPlaceLocation = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     
+    var mapHeight : CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.allowsSelection = false
-        if fromHospital {
-            self.navigationItem.title = "Hospital Detail"
-        } else {
-            self.navigationItem.title = "Pharmacy Detail"
-        }
+        setupView()
         self.setupNavigationBar()
         setupTableView()
         setupLocationManager()
         createMapPin()
         createUserLocation()
+    }
+    
+    func setupView(){
+        if fromHospital {
+            self.navigationItem.title = "Hospital Detail"
+        } else {
+            self.navigationItem.title = "Pharmacy Detail"
+        }
+        self.userLocButton.isHidden = true
+        self.directionsButton.isHidden = true
         
+        if fromHospital {
+           setupButtonColor(color: colors.orangeColor)
+        } else {
+           setupButtonColor(color: colors.darkBlueColor)
+        }
+        
+        userLocButton.addTarget(self, action: #selector(centerMap), for: .touchUpInside)
+        directionsButton.addTarget(self, action: #selector(directionButtonTapped), for: .touchUpInside)
+    }
+    
+    //setup text label colors
+    func setupButtonColor(color : UIColor) {
+        name.textColor = color
+        address.textColor = color
+        rating.textColor = color
+        openNow.textColor = color
+    }
+    
+    func directionButtonTapped(){
+        
+        let latitude = currentPlaceLocation.latitude
+        let longitude = currentPlaceLocation.longitude
+        
+        if UIApplication.shared.canOpenURL(URL(string : "comgooglemaps://")!) {
+            let appUrlString = "comgooglemaps://?daddr=\(latitude),\(longitude)&zoom=14"
+            UIApplication.shared.open(URL(string : appUrlString)!, options: [:], completionHandler: nil)
+        }
+    }
+        
+    func centerMap(){
+        let mapRegion = MKCoordinateRegion(center: UserDetails.locationCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.010, longitudeDelta: 0.010))
+        self.mapView.setRegion(mapRegion, animated: true)
     }
     
     func setupTableView() {
@@ -51,18 +97,17 @@ class DetailTableViewController : UITableViewController {
         
         ratingLabel.text = currentPlace["Rating"]
         openNowLabel.text = currentPlace["Open Now"]
-        
+        tableView.allowsSelection = false
+
         tableView.tableFooterView = UIView()
         tableView.reloadData()
         setupMapView()
     }
     
     func setupMapView() {
-        
         let navigationBarHeight = self.navigationController?.navigationBar.frame.height
         let tabBarHeight = self.tabBarController?.tabBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        mapView.translatesAutoresizingMaskIntoConstraints = true
         nameLabelHeight = nameLabel.frame.height + 15.0
         addressLabelHeight = addressLabel.frame.height + 15.0
         if nameLabelHeight < 45 {
@@ -71,10 +116,12 @@ class DetailTableViewController : UITableViewController {
         if addressLabelHeight < 45 {
             addressLabelHeight = 45.0
         }
-        let mapHeight  = self.view.frame.height - navigationBarHeight! - tabBarHeight! - statusBarHeight - 90 - nameLabelHeight  - addressLabelHeight
+        mapHeight  = self.view.frame.height - navigationBarHeight! - tabBarHeight! - statusBarHeight - 90 - nameLabelHeight  - addressLabelHeight
         mapView.showsUserLocation = true
-        mapView.frame.size.height = mapHeight
+        mapView.delegate = self
+        tableView.tableHeaderView?.frame.size.height = mapHeight
     }
+    
     
     func setupLocationManager(){
         //locationManager
@@ -89,6 +136,9 @@ class DetailTableViewController : UITableViewController {
             mapPin.coordinate = currentPlaceLocation
             mapPin.title = currentPlace["Name"]
             self.mapView.addAnnotation(mapPin)
+        self.userLocButton.isHidden = false
+        self.directionsButton.isHidden = false
+
     }
     
     func createUserLocation() {
@@ -120,8 +170,27 @@ class DetailTableViewController : UITableViewController {
     }
 }
 
-extension DetailTableViewController : CLLocationManagerDelegate
-{
+//MARK: MKMapViewDelegate
+extension DetailTableViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "hospitalPin")
+        if annotation.title! != "My Location" {
+            if fromHospital {
+            annotationView.image = UIImage(named : "hospitalPin")
+            } else {
+                annotationView.image = UIImage(named : "pharmacyPin")
+            }
+        } else {
+            annotationView.image = UIImage(named : "userPin")
+            
+        }
+        return annotationView
+    }
+}
+
+//MARK: CLLocationManagerDelegate
+extension DetailTableViewController : CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.updateLocation == true {
             let location = locations.last
@@ -135,8 +204,8 @@ extension DetailTableViewController : CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse
-        {
+        
+        if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
     }

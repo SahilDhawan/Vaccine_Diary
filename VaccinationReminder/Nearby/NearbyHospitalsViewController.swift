@@ -37,7 +37,8 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.isHidden = true
+//        tableView.isHidden = true
+        tableView.showsVerticalScrollIndicator = false
         
         //locationManager
         locationManager.requestWhenInUseAuthorization()
@@ -87,7 +88,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
                     } else {
                         hospitalDetail["Rating"] = "Information Not Available"
                     }
-                    if let openingHour = hospital.openingHours?.openNow!{
+                    if let openingHour = hospital.openingHours?.openNow{
                         if openingHour == true {
                             hospitalDetail["Open Now"] = "Yes"
                         } else {
@@ -98,7 +99,7 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
                     }
                     self.hospitalDetailArray.append(hospitalDetail)
                 }
-                self.tableView.isHidden = false
+//                self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.createMapPins()
             }
@@ -177,26 +178,6 @@ extension NearbyHospitalsViewController : UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hospitalsArray.count
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if(velocity.y>0) {
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-                self.mapView.frame.size.height = 0
-                self.tableView.frame.origin.y = 0
-                self.tableView.frame.size.height = self.view.frame.height
-            })
-            self.userLocButton.isHidden = true
-        } else if (velocity.y<=0) {
-            UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                self.mapView.frame.size.height = 250
-                self.tableView.frame.origin.y = 250
-                self.tableView.frame.size.height = self.view.frame.height - 250
-            })
-            self.userLocButton.isHidden = false
-
-        }
     }
 }
 
