@@ -142,11 +142,10 @@ class NearbyPharmacyViewController: UIViewController , MKMapViewDelegate {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "hospitalPin")
         if annotation.title! != "My Location" {
             annotationView.image = UIImage(named : "pharmacyPin")
+            return annotationView
         } else {
-            annotationView.image = UIImage(named : "userPin")
-            
+            return nil
         }
-        return annotationView
     }
 }
 

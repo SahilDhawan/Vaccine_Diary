@@ -52,10 +52,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bve-Cl-6VM">
-                                                    <rect key="frame" x="20" y="10" width="340" height="531"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="541"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="child" translatesAutoresizingMaskIntoConstraints="NO" id="QM0-tN-hLi">
-                                                            <rect key="frame" x="32.5" y="30" width="275" height="275"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="child" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QM0-tN-hLi">
+                                                            <rect key="frame" x="52.5" y="30" width="275" height="275"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="275" id="4iq-IQ-qXd"/>
@@ -63,7 +63,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VACCINATION SCHEDULE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaC-2g-d3U">
-                                                            <rect key="frame" x="52" y="335" width="237.5" height="30"/>
+                                                            <rect key="frame" x="72" y="335" width="237.5" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="K15-4y-3Iy"/>
                                                             </constraints>
@@ -72,13 +72,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A complete vaccine schedule along with timely notifications so that you never miss the vaccinations of your loved ones! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6c-oo-R64">
-                                                            <rect key="frame" x="10" y="375" width="320" height="57.5"/>
+                                                            <rect key="frame" x="20" y="375" width="340" height="57.5"/>
                                                             <fontDescription key="fontDescription" name="Ubuntu-Regular" family="Ubuntu" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pulse" translatesAutoresizingMaskIntoConstraints="NO" id="ErL-XT-Ybu">
-                                                            <rect key="frame" x="120" y="442.5" width="100" height="21"/>
+                                                            <rect key="frame" x="140" y="442.5" width="100" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="3GZ-fz-KhA"/>
                                                             </constraints>
@@ -86,7 +86,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="h6c-oo-R64" firstAttribute="leading" secondItem="bve-Cl-6VM" secondAttribute="leading" constant="10" id="2oQ-eK-bu6"/>
+                                                        <constraint firstItem="h6c-oo-R64" firstAttribute="leading" secondItem="bve-Cl-6VM" secondAttribute="leading" constant="20" id="2oQ-eK-bu6"/>
                                                         <constraint firstItem="h6c-oo-R64" firstAttribute="top" secondItem="oaC-2g-d3U" secondAttribute="bottom" constant="10" id="49p-vX-3PN"/>
                                                         <constraint firstItem="ErL-XT-Ybu" firstAttribute="centerX" secondItem="bve-Cl-6VM" secondAttribute="centerX" id="AFb-Zj-fto"/>
                                                         <constraint firstItem="QM0-tN-hLi" firstAttribute="centerX" secondItem="bve-Cl-6VM" secondAttribute="centerX" id="Jl2-D8-e76"/>
@@ -94,16 +94,16 @@
                                                         <constraint firstItem="oaC-2g-d3U" firstAttribute="top" secondItem="QM0-tN-hLi" secondAttribute="bottom" constant="30" id="nIf-QJ-B9U"/>
                                                         <constraint firstItem="QM0-tN-hLi" firstAttribute="top" secondItem="bve-Cl-6VM" secondAttribute="top" constant="30" id="nwh-BI-BP0"/>
                                                         <constraint firstItem="oaC-2g-d3U" firstAttribute="centerX" secondItem="bve-Cl-6VM" secondAttribute="centerX" id="ouy-ru-Be9"/>
-                                                        <constraint firstAttribute="trailing" secondItem="h6c-oo-R64" secondAttribute="trailing" constant="10" id="yeZ-GC-aJW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="h6c-oo-R64" secondAttribute="trailing" constant="20" id="yeZ-GC-aJW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="bve-Cl-6VM" secondAttribute="bottom" id="2tj-Ht-vBo"/>
-                                            <constraint firstItem="bve-Cl-6VM" firstAttribute="leading" secondItem="NT2-eK-OID" secondAttribute="leading" constant="20" id="E6k-hE-Hmo"/>
-                                            <constraint firstItem="bve-Cl-6VM" firstAttribute="top" secondItem="NT2-eK-OID" secondAttribute="top" constant="10" id="Orr-bJ-0fA"/>
-                                            <constraint firstAttribute="trailing" secondItem="bve-Cl-6VM" secondAttribute="trailing" constant="20" id="yGp-Jz-kd8"/>
+                                            <constraint firstItem="bve-Cl-6VM" firstAttribute="leading" secondItem="NT2-eK-OID" secondAttribute="leading" id="CxS-xL-hQA"/>
+                                            <constraint firstAttribute="bottom" secondItem="bve-Cl-6VM" secondAttribute="bottom" id="EMU-ii-P1V"/>
+                                            <constraint firstAttribute="trailing" secondItem="bve-Cl-6VM" secondAttribute="trailing" id="eAH-SB-3UN"/>
+                                            <constraint firstItem="bve-Cl-6VM" firstAttribute="top" secondItem="NT2-eK-OID" secondAttribute="top" id="iRz-Rp-gp0"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cellView" destination="bve-Cl-6VM" id="7g4-on-z8a"/>
@@ -1905,9 +1905,7 @@
                             <outlet property="delegate" destination="tp4-B7-z4b" id="Tqa-By-xtn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="lmB-m5-AQD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Y35-Wa-HKP"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="lmB-m5-AQD"/>
                     <connections>
                         <outlet property="calendarCollectionView" destination="Lz7-KB-Hly" id="vRK-c6-pnj"/>
                         <outlet property="monthLabel" destination="oq1-La-xjI" id="5cL-Ch-YV1"/>

@@ -101,8 +101,20 @@ extension InitialViewController : UICollectionViewDataSource {
     // setting up collection view cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "initialCell", for: indexPath) as! InitialCollectionViewCell
+        
         cell.setupCollectionViewCell(image: InitialViewStruct.imageArray[indexPath.item], title: InitialViewStruct.titleArray[indexPath.item], description: InitialViewStruct.descriptionArray[indexPath.item])
         
+        //setup image view height
+        cell.imageView.translatesAutoresizingMaskIntoConstraints = true
+        cell.imageView.frame.origin.y = 30
+        
+        if UIScreen.main.bounds.height < 600 {
+            cell.imageView.frame.size = CGSize(width: 200, height: 200)
+        } else {
+            cell.imageView.frame.size = CGSize(width: 275, height: 275)
+        }
+        
+        cell.imageView.center.x = collectionView.center.x
         return cell
     }
 }

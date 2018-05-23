@@ -156,11 +156,11 @@ class NearbyHospitalsViewController: UIViewController, MKMapViewDelegate {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "hospitalPin")
         if annotation.title! != "My Location" {
             annotationView.image = UIImage(named : "hospitalPin")
+            return annotationView
+
         } else {
-            annotationView.image = UIImage(named : "userPin")
-            
+            return nil
         }
-        return annotationView
     }
 }
 

@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "orangeVaccine.png"
+      "filename" : "vaccine 2.5.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

@@ -180,11 +180,10 @@ extension DetailTableViewController : MKMapViewDelegate {
             } else {
                 annotationView.image = UIImage(named : "pharmacyPin")
             }
+            return annotationView
         } else {
-            annotationView.image = UIImage(named : "userPin")
-            
+            return nil
         }
-        return annotationView
     }
 }
 

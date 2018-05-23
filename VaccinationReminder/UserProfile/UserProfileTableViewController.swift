@@ -133,7 +133,3 @@ class UserProfileTableViewController: UITableViewController {
         return 20.0
     }
 }
-
-
-
-
